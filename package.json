@@ -1,0 +1,30 @@
+{
+  "name": "playground-videos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Remotion project for the Verana Playground use-case videos (shared intro + per-use-case acts). Spec: verana-spec/playground/video/spec.md",
+  "scripts": {
+    "dev": "remotion studio",
+    "sync": "node scripts/sync-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "still": "remotion still VestaFull out/preview.png --frame",
+    "render:intro": "remotion render IntroOnly out/intro-v1.mp4",
+    "render:vesta": "remotion render VestaFull out/vesta.mp4",
+    "render:vesta-vertical": "remotion render VestaVertical out/vesta-vertical.mp4",
+    "render:verandia": "remotion render VerandiaFull out/verandia.mp4",
+    "render:verandia-vertical": "remotion render VerandiaVertical out/verandia-vertical.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.5.0"
+  }
+}
