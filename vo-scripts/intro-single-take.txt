@@ -1,0 +1,41 @@
+Verana. The open trust infrastructure for the verifiable internet.
+
+<break time="1.5s" />
+
+Have you ever wondered... who is really behind this service?
+
+<break time="1.5s" />
+
+And behind this AI agent?
+
+<break time="1.5s" />
+
+And when you receive a credential... is it real? Is the issuer accredited?
+
+<break time="1.5s" />
+
+And when a service asks for your ID: is it even allowed to ask?
+
+<break time="1.5s" />
+
+And what if you build your own ecosystem: where do your schemas and accredited issuers live?
+
+<break time="1.5s" />
+
+And finally: how do others find your ecosystem, and join?
+
+<break time="1.5s" />
+
+Today: static trust lists, vendor lock-in, or silos.
+
+<break time="1.5s" />
+
+But there is Verana.
+
+<break time="1.5s" />
+
+Ecosystems. Verifiable identity. Discovery. One open, public trust layer.
+
+<break time="1.5s" />
+
+Attach credentials to your services. Prove you're accredited. Then let your users simply verify they can trust you. Verana dot io.
