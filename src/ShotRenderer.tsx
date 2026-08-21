@@ -11,6 +11,15 @@ import { QrScanToPhone } from "./components/QrScan";
 import { Constellation } from "./components/Constellation";
 import { BrandOpen, BrandReveal, Triptych } from "./components/Triptych";
 import { EcosystemSearch, SovereignBuild } from "./components/SovereignScenes";
+import { VestaCompany } from "./components/VestaCompany";
+import {
+  VestaBuildEco,
+  VestaJoin,
+  VestaNeeds,
+  VestaProblems,
+} from "./components/VestaStory";
+import { VestaJourney } from "./components/VestaJourney";
+import { PlaygroundClose, SoloOpen, VestaDemos } from "./components/VestaFinish";
 import { HandoffCard, StandardsStrip, UrlCard, WalletRoster } from "./components/Cards";
 import { CaptureSequence, DirectoryTeaser, ImageScene } from "./components/Scenes";
 import { theme } from "./theme";
@@ -54,6 +63,24 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <StandardsStrip />;
     case "handoff":
       return <HandoffCard emblem={v.emblem} title={v.title} subtitle={v.subtitle} />;
+    case "vesta-company":
+      return <VestaCompany part={v.part} />;
+    case "vesta-problems":
+      return <VestaProblems />;
+    case "vesta-needs":
+      return <VestaNeeds />;
+    case "vesta-join":
+      return <VestaJoin />;
+    case "vesta-build-eco":
+      return <VestaBuildEco />;
+    case "vesta-journey":
+      return <VestaJourney data={v} />;
+    case "vesta-demos":
+      return <VestaDemos />;
+    case "playground-close":
+      return <PlaygroundClose />;
+    case "solo-open":
+      return <SoloOpen emblem={v.emblem} title={v.title} subtitle={v.subtitle} />;
     case "image-scene":
       return <ImageScene items={v.items} tint={v.tint} />;
     case "build":

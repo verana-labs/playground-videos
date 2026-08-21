@@ -2,6 +2,24 @@
 // (verana-spec/playground/video/spec.md §3 to §5) becomes one Shot here, so
 // timings and on-screen copy stay reviewable as data.
 
+/** One journey subsection: the scene graph at a stage, a moving selection,
+ *  and the page's exact story text. */
+export type JourneySelect = { at: number; node: string };
+export type JourneyStepVisual = {
+  kind: "vesta-journey";
+  sectionKicker: string;
+  sectionTitle: string;
+  stage: string;
+  stepId: string;
+  stepTitle: string;
+  /** The page's full copy, kept for reference; not rendered (VO lines carry it). */
+  story?: string;
+  points?: string[];
+  selects: JourneySelect[];
+  noDiagram?: boolean;
+  umbraOverride?: boolean;
+};
+
 export type Visual =
   | { kind: "login-glitch" } // I-1
   | { kind: "agent-flicker" } // I-2
@@ -22,6 +40,18 @@ export type Visual =
   | { kind: "triptych" } // I-9
   | { kind: "standards" } // I-10
   | { kind: "handoff"; emblem: string; title: string; subtitle: string }
+  | {
+      kind: "vesta-company";
+      part: "product-line" | "factory" | "repair-network" | "services";
+    } // S-1a..S-1d: playground journey §1, exact content
+  | { kind: "vesta-problems" } // S-2: problems, titles + van + root cause
+  | { kind: "vesta-needs" } // S-4: the five-item checklist
+  | { kind: "vesta-join" } // S-5: the two ecosystems Vesta joins
+  | { kind: "vesta-build-eco" } // S-6: the ecosystem Vesta builds
+  | JourneyStepVisual // J-1..J-9: Marc's journey, one shot per page subsection
+  | { kind: "vesta-demos" } // D-1: run the demos
+  | { kind: "playground-close" } // the conclusion, playground-branded finale
+  | { kind: "solo-open"; emblem: string; title: string; subtitle: string } // standalone cut opener
   | {
       kind: "image-scene";
       items: { asset?: string; mock?: "password" | "pdf"; label?: string }[];

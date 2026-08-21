@@ -1,0 +1,81 @@
+In the Verana Playground: today, Vesta Appliances. A brand fights impostors with proof.
+
+<break time="1.5s" />
+
+Vesta Appliances: forty years of washing machines and ovens. Machines that last, and get repaired, not replaced.
+
+<break time="1.5s" />
+
+One plant, one assembly line, forty years of engineering. Designed from the first screw to be serviceable in your kitchen.
+
+<break time="1.5s" />
+
+One hundred twenty independent repair companies, certified by Vesta. Training, yearly audits, a signed partner contract.
+
+<break time="1.5s" />
+
+Customers ask for help. Employees sign in. Partners order parts.
+
+<break time="1.5s" />
+
+Fake support lines. Password pain. Paperwork, again and again. And at the front door: fake authorized repairers. Nothing can be proven.
+
+<break time="1.5s" />
+
+Marc, CTO of Vesta, will make the company verifiable. His list is short: verifiable identities for organizations. Verifiable identities for services. Credentials people can hold. Certifications as proof, not PDFs. And Vesta's own rules for its network.
+
+<break time="1.5s" />
+
+Vesta picks the two it needs. The Verana ECS Ecosystem: one KYB, and Vesta is provable everywhere. And the ISO Certification Ecosystem: the paper certificate becomes proof.
+
+<break time="1.5s" />
+
+One need remains: only Vesta can say who is an authorized Vesta repairer. So Vesta builds its own ecosystem: the Vesta Repair Network. Issuance governed, verification open, and revocable.
+
+<break time="1.5s" />
+
+Marc deploys Vesta's Business Wallet: a decentralized identifier is generated. It proves nothing yet: the empty identity card.
+
+<break time="1.5s" />
+
+Helvetia Trust runs the KYB, once, over DIDComm. Vesta's wallet receives its Organization credential.
+
+<break time="1.5s" />
+
+Vesta self-issues its Service credential. Valid: the same identifier presents the proven organization.
+
+<break time="1.5s" />
+
+Vesta self-accredits as an ECS-Badge issuer. Every employee gets a badge, in their own wallet.
+
+<break time="1.5s" />
+
+A dedicated login service, verifiable in its own right. Only badges from Vesta's trust anchor are accepted. No passwords. The same badge opens the door.
+
+<break time="1.5s" />
+
+NormaCert recognizes Vesta's credential: no paperwork, no re-checks. ISO 9001 becomes a verifiable credential.
+
+<break time="1.5s" />
+
+Vesta creates the Vesta Repair Network ecosystem. Issuance governed. Verification open. Zenith Repairs joins: an Authorized Repairer.
+
+<break time="1.5s" />
+
+Zenith badges its technicians. They log in to the Vesta portal. And at the door: the Vesta Authorized Repairer seal.
+
+<break time="1.5s" />
+
+Umbra Repairs: verifiable, even trusted. But no Authorized Repairer credential. Refused.
+
+<break time="1.5s" />
+
+Try it yourself: get a badge from Vesta Appliances, Zenith Repairs, or even Umbra Repairs. Log in to the Vesta portal and see the result. And at the front door, scan the technician's badge: trust before you open.
+
+<break time="1.5s" />
+
+Any of these wallets. Nothing simulated.
+
+<break time="1.5s" />
+
+See the other use cases, in the Verana Playground.

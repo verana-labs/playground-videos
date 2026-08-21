@@ -1,11 +1,14 @@
 import React from "react";
 import { CalculateMetadataFunction, Composition } from "remotion";
 import {
-  FULL_DURATION,
   IntroOnly,
   VerandiaFull,
+  VERANDIA_DURATION,
+  VestaSolo,
+  VESTA_SOLO_DURATION,
   VerandiaVertical,
   VestaFull,
+  VESTA_DURATION,
   VestaVertical,
   VERTICAL_DURATION,
   VideoProps,
@@ -24,11 +27,22 @@ const withManifest: CalculateMetadataFunction<VideoProps> = async ({ props }) =>
 
 export const RemotionRoot: React.FC = () => (
   <>
-    {/* Vesta: the first video */}
+    {/* Vesta: the standalone distribution cut (no intro) */}
+    <Composition
+      id="VestaSolo"
+      component={VestaSolo}
+      durationInFrames={VESTA_SOLO_DURATION * FPS}
+      fps={FPS}
+      width={1920}
+      height={1080}
+      defaultProps={{ manifest: {} }}
+      calculateMetadata={withManifest}
+    />
+    {/* Vesta: intro + act, the full assembly */}
     <Composition
       id="VestaFull"
       component={VestaFull}
-      durationInFrames={FULL_DURATION * FPS}
+      durationInFrames={VESTA_DURATION * FPS}
       fps={FPS}
       width={1920}
       height={1080}
@@ -60,7 +74,7 @@ export const RemotionRoot: React.FC = () => (
     <Composition
       id="VerandiaFull"
       component={VerandiaFull}
-      durationInFrames={FULL_DURATION * FPS}
+      durationInFrames={VERANDIA_DURATION * FPS}
       fps={FPS}
       width={1920}
       height={1080}

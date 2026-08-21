@@ -1,11 +1,8 @@
-// The series time budget (spec §1): intro to 0:50, handoff to 0:55, act
-// (2:50, authored relative and shifted at assembly) to 3:45, outro to 4:05.
-// Derived from INTRO_END so intro edits re-time everything downstream; the
-// outro always lands on the same timecodes across acts and the intro stays
-// byte-identical across videos.
+// The series time budget (spec §1), derived from INTRO_END so intro edits
+// re-time everything downstream. Acts are authored RELATIVE and shifted to
+// ACT_START at assembly; each act brings its own length (Vesta 231 s,
+// Verandia 170 s), so the outro is placed per video from the act's end.
 import { INTRO_END } from "./intro";
 
-export const HANDOFF_START = INTRO_END; // 50
-export const ACT_START = INTRO_END + 5; // 55
-export const ACT_LENGTH = 170; // 2:50
-export const ACT_END = ACT_START + ACT_LENGTH; // 225
+export const HANDOFF_START = INTRO_END;
+export const ACT_START = INTRO_END + 5;
