@@ -1,0 +1,41 @@
+Verana. The open trust infrastructure for the verifiable internet.
+
+<break time="1.5s" />
+
+Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and the W3C standards ecosystem. We build on both.
+
+<break time="1.5s" />
+
+These technologies have proven their worth. The next challenge: scalability, and interoperability.
+
+<break time="1.5s" />
+
+Have you ever wondered... who is really behind this service?
+
+<break time="1.5s" />
+
+And behind this AI agent?
+
+<break time="1.5s" />
+
+And when you receive a credential... is it real? Is the issuer accredited?
+
+<break time="1.5s" />
+
+And when a service asks for your ID: is it even allowed to ask?
+
+<break time="1.5s" />
+
+And finally: how do you, or your AI agent, find a trusted service?
+
+<break time="1.5s" />
+
+Verana addresses all of this. At scale, and across ecosystems.
+
+<break time="1.5s" />
+
+Build your own ecosystem, freely, on Verana's public infrastructure. Choose any wallet provider. And bridge to other ecosystems.
+
+<break time="1.5s" />
+
+In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.

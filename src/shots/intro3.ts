@@ -1,0 +1,126 @@
+// INTRO v3 (spec/intro-v3.md) - starts as a copy of INTRO v2; iterate
+// here freely: v1 and v2 stay locked and byte-identical. Scene kinds are the
+// v3 copies (IntroV3Scenes.tsx), so visual edits never touch v2 either.
+import { Shot, validateShots } from "./types";
+
+export const INTRO3_SHOTS: Shot[] = validateShots([
+  {
+    id: "N-0",
+    start: 0,
+    end: 6,
+    lines: [],
+    vo: "Verana. The open trust infrastructure for the verifiable internet.",
+    visual: { kind: "brand-open" },
+    tone: "light",
+  },
+  {
+    id: "N-1",
+    start: 6,
+    end: 18,
+    lines: [
+      "Decentralized digital identity is becoming a reality.",
+      "eIDAS 2.0 in Europe, and the W3C standards. We build on both.",
+    ],
+    vo: "Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and the W3C standards ecosystem. We build on both.",
+    visual: { kind: "foundations-v3" },
+    tone: "light",
+  },
+  {
+    id: "N-2",
+    start: 18,
+    end: 28,
+    lines: [
+      "These technologies have proven their worth.",
+      "The next challenge: scalability, and interoperability.",
+    ],
+    vo: "These technologies have proven their worth. The next challenge: scalability, and interoperability.",
+    visual: { kind: "silos-v3" },
+    tone: "dark",
+  },
+  {
+    id: "N-3",
+    start: 28,
+    end: 34,
+    lines: ["Have you ever wondered...", "who is really behind this service?"],
+    vo: "Have you ever wondered... who is really behind this service?",
+    visual: { kind: "login-glitch" },
+    tone: "dark",
+  },
+  {
+    id: "N-4",
+    start: 34,
+    end: 41,
+    lines: ["And behind this AI agent?"],
+    vo: "And behind this AI agent?",
+    visual: { kind: "agent-flicker" },
+    tone: "dark",
+  },
+  {
+    id: "N-5",
+    start: 41,
+    end: 47,
+    lines: ["And when you receive a credential...", "is it real? Is the issuer accredited?"],
+    vo: "And when you receive a credential... is it real? Is the issuer accredited?",
+    visual: {
+      kind: "qr-scan-phone",
+      asset: "clips/intro-issuer-unaccredited",
+      qrLabel: "Scan this QR to get your credential",
+      phoneSide: "right",
+    },
+    duck: true,
+    tone: "dark",
+  },
+  {
+    id: "N-6",
+    start: 47,
+    end: 53,
+    lines: ["And when a service asks for your ID...", "is it even allowed to ask?"],
+    vo: "And when a service asks for your ID: is it even allowed to ask?",
+    visual: {
+      kind: "qr-scan-phone",
+      asset: "clips/intro-verifier-unaccredited",
+      qrLabel: "Scan this QR to present your ID",
+      phoneSide: "left",
+    },
+    duck: true,
+    tone: "dark",
+  },
+  {
+    id: "N-7",
+    start: 53,
+    end: 59,
+    lines: ["And finally... how do you, or your AI agent,", "find a trusted service?"],
+    vo: "And finally: how do you, or your AI agent, find a trusted service?",
+    visual: { kind: "ecosystem-search-v3" },
+    tone: "dark",
+  },
+  {
+    id: "N-8",
+    start: 59,
+    end: 67,
+    lines: ["Verana addresses all of this.", "At scale, and across ecosystems."],
+    vo: "Verana addresses all of this. At scale, and across ecosystems.",
+    visual: { kind: "brand-reveal" },
+    tone: "light",
+  },
+  {
+    id: "N-9",
+    start: 67,
+    end: 79,
+    lines: [],
+    vo: "Build your own ecosystem, freely, on Verana's public infrastructure. Choose any wallet provider. And bridge to other ecosystems.",
+    visual: { kind: "freedoms-v3" },
+    tone: "light",
+  },
+  {
+    id: "N-10",
+    start: 79,
+    end: 92,
+    lines: [],
+    vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
+    visual: { kind: "verana-close-v3" },
+    tone: "light",
+  },
+]);
+
+export const INTRO3_END = 92;

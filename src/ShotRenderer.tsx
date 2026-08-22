@@ -27,6 +27,13 @@ import {
   Silos,
   VeranaClose,
 } from "./components/IntroV2Scenes";
+import {
+  EcosystemSearchV3,
+  FoundationsV3,
+  FreedomsV3,
+  SilosV3,
+  VeranaCloseV3,
+} from "./components/IntroV3Scenes";
 import { HandoffCard, StandardsStrip, UrlCard, WalletRoster } from "./components/Cards";
 import { CaptureSequence, DirectoryTeaser, ImageScene } from "./components/Scenes";
 import { theme } from "./theme";
@@ -98,6 +105,16 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <Freedoms />;
     case "verana-close":
       return <VeranaClose />;
+    case "foundations-v3":
+      return <FoundationsV3 />;
+    case "silos-v3":
+      return <SilosV3 />;
+    case "ecosystem-search-v3":
+      return <EcosystemSearchV3 />;
+    case "freedoms-v3":
+      return <FreedomsV3 />;
+    case "verana-close-v3":
+      return <VeranaCloseV3 />;
     case "image-scene":
       return <ImageScene items={v.items} tint={v.tint} />;
     case "build":

@@ -16,6 +16,7 @@ import { Format, Timeline } from "./ShotRenderer";
 import { Shot, shotsEnd, validateShots } from "./shots/types";
 import { INTRO_SHOTS } from "./shots/intro";
 import { INTRO2_SHOTS } from "./shots/intro2";
+import { INTRO3_SHOTS } from "./shots/intro3";
 import { VESTA_HANDOFF, VESTA_SHOTS } from "./shots/vesta";
 import { VERANDIA_HANDOFF, VERANDIA_SHOTS } from "./shots/verandia";
 import { outroShots, VERANDIA_URL, VESTA_URL } from "./shots/outro";
@@ -202,6 +203,18 @@ export const IntroV2: React.FC<VideoProps> = ({ manifest }) => (
     bannerFrom={Infinity}
     musicId="music/intro2"
     voId="vo/intro2"
+  />
+);
+
+/** INTRO v3: starts as a copy of v2, iterate freely. */
+export const IntroV3: React.FC<VideoProps> = ({ manifest }) => (
+  <Stage
+    manifest={manifest}
+    shots={INTRO3_SHOTS}
+    format="wide"
+    bannerFrom={Infinity}
+    musicId="music/intro3"
+    voId="vo/intro3"
   />
 );
 

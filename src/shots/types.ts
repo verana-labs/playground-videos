@@ -57,6 +57,11 @@ export type Visual =
   | { kind: "ecosystem-search-v2" } // N-7: search lens + human/agent pair (intro v2)
   | { kind: "freedoms" } // N-9: Build · Choose · Bridge (intro v2)
   | { kind: "verana-close" } // N-10: verana.io finale (intro v2)
+  | { kind: "foundations-v3" } // intro v3 copies of the v2 scenes
+  | { kind: "silos-v3" }
+  | { kind: "ecosystem-search-v3" }
+  | { kind: "freedoms-v3" }
+  | { kind: "verana-close-v3" }
   | {
       kind: "image-scene";
       items: { asset?: string; mock?: "password" | "pdf"; label?: string }[];
