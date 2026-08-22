@@ -108,7 +108,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     start: 67,
     end: 79,
     lines: [],
-    vo: "Build your own ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.",
+    vo: "Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.",
     visual: { kind: "freedoms-v3" },
     tone: "light",
   },

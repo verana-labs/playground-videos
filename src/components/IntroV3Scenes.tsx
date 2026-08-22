@@ -514,7 +514,7 @@ export const FreedomsV3: React.FC = () => {
         justifyContent: "center",
       }}
     >
-      <FreedomPanel index={1} title="Build" subtitle="your own ecosystem, freely" appearAt={0.4}>
+      <FreedomPanel index={1} title="Build" subtitle="your own sovereign ecosystem, freely" appearAt={0.4}>
         <div
           style={{
             width: "100%",

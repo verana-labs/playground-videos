@@ -17,6 +17,6 @@ A separate video merging two contributed framings: the credibility ladder (W3C s
 | N-6 | 0:47–0:53 | v1's ID-request QR scene, mirrored | And when a service asks for your ID: is it even allowed to ask? |
 | N-7 | 0:53–0:59 | The search lens over ecosystem nodes, with a person and their AI agent searching side by side | And finally: how do you, or your AI agent, find a trusted service? |
 | N-8 | 0:59–1:07 | The reveal: the verana.io lockup on the light stage | Verana addresses all of this. At scale, and across ecosystems. |
-| N-9 | 1:07–1:19 | The freedoms triptych: 1 Build (your ecosystem card) · 2 Choose (wallet-provider tiles, privacy preserved) · 3 Bridge (two ecosystem clusters linked through the Verana mark) | Build your own ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems. |
+| N-9 | 1:07–1:19 | The freedoms triptych: 1 Build (your ecosystem card) · 2 Choose (wallet-provider tiles, privacy preserved) · 3 Bridge (two ecosystem clusters linked through the Verana mark) | Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems. |
 | N-10 | 1:19–1:32 | The finale: lockup to center, https://verana.io, the sovereign tagline | In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io. |
 

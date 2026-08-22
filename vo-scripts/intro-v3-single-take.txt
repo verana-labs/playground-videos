@@ -34,7 +34,7 @@ Verana addresses all of this. At scale, and across ecosystems.
 
 <break time="1.5s" />
 
-Build your own ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.
+Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.
 
 <break time="1.5s" />
 

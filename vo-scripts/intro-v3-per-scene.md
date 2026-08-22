@@ -41,7 +41,7 @@ And finally: how do you, or your AI agent, find a trusted service?
 Verana addresses all of this. At scale, and across ecosystems.
 
 ## N-9.mp3  (12s)
-Build your own ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.
+Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.
 
 ## N-10.mp3  (13s)
 In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.
