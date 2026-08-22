@@ -97,19 +97,19 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   {
     id: "N-8a",
     start: 59,
-    end: 83,
+    end: 69,
     lines: [
-      "Official trust lists exist, run by governments and big organizations.",
-      "Most private ecosystems fall outside: they need an independent bridge.",
+      "Official trust lists exist.",
+      "A solution is needed to scale, monetize, and address private ecosystems.",
     ],
-    vo: "Official trust lists exist: the EU Trusted Lists, Adobe's approved list, the browser root programs, ICAO's passport directory, GLEIF's legal entity identifiers. Governments and big organizations manage them. But most private ecosystems fall outside: they need an independent solution to bridge the gap.",
+    vo: "Official trust lists exist. But a solution is needed to scale, monetize and address the private ecosystems.",
     visual: { kind: "trust-lists-v3" },
     tone: "light",
   },
   {
     id: "N-8b",
-    start: 83,
-    end: 91,
+    start: 69,
+    end: 77,
     lines: ["Verana is that bridge.", "Independent, at scale, and across ecosystems."],
     vo: "Verana is that bridge. Independent, at scale, and across ecosystems.",
     visual: { kind: "brand-reveal" },
@@ -117,8 +117,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9a",
-    start: 91,
-    end: 101,
+    start: 77,
+    end: 87,
     lines: [
       "Build your own sovereign ecosystem, freely.",
       "Your rules, your business model.",
@@ -129,8 +129,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9b",
-    start: 101,
-    end: 114,
+    start: 87,
+    end: 100,
     lines: [],
     vo: "Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.",
     visual: { kind: "build-service-v3" },
@@ -138,8 +138,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 114,
-    end: 131,
+    start: 100,
+    end: 117,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -147,4 +147,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 131;
+export const INTRO3_END = 117;
