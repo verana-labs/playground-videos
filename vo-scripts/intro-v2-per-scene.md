@@ -1,32 +1,47 @@
 # Intro v2 narration, one clip per scene
 
-The institutional intro (foundations-first: W3C, eIDAS, Verana, scale).
-Same flow as the other videos: generate each block as its own ElevenLabs
-generation (or as one take with a single `<break time="1.5s" />` between
-blocks, then split on the markers) and save the clips under the exact
-filenames shown, in `public/assets/vo/intro2/`. A full-length
-`public/assets/vo/intro2.mp3` wins over the per-scene clips when present.
-Run `npm run sync`, then render.
+The merged intro: foundations (W3C + eIDAS), the scalability gap, the
+question chain, Verana's answer, the three freedoms, the essence.
+Generate each block as its own ElevenLabs generation (or as one take with a
+single `<break time="1.5s" />` between blocks, then split on the markers)
+and save the clips under the exact filenames shown, in
+`public/assets/vo/intro2/`. A full-length `public/assets/vo/intro2.mp3`
+wins over the per-scene clips when present. Run `npm run sync`, then render.
 
 Each clip starts exactly at its scene; it may run shorter than the scene
 (silence follows) but must not run longer. Scene lengths are the budget.
 Keep "eIDAS" and "W3C" written plainly; if the voice mangles "eIDAS",
 regenerate that clip alone with "e-idas".
 
-## V2-0.mp3  (6s)
+## N-0.mp3  (6s)
 Verana. The open trust infrastructure for the verifiable internet.
 
-## V2-1.mp3  (10s)
-The World Wide Web Consortium defined the standards for digital identity: for people, for organizations, and for things. We build on them.
+## N-1.mp3  (12s)
+Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and the W3C standards ecosystem. We build on both.
 
-## V2-2.mp3  (10s)
-The European Union built the legal frame: eIDAS. State-grade guarantees that work across borders. We rely on them.
+## N-2.mp3  (10s)
+These technologies have proven their worth. The next challenge: scalability, and interoperability.
 
-## V2-3.mp3  (14s)
-Verana already gives public and private operators the way to combine both, on a decentralized trust infrastructure: create your own governance, fit to your ecosystem.
+## N-3.mp3  (6s)
+Have you ever wondered... who is really behind this service?
 
-## V2-4.mp3  (14s)
-Deploy your web services and your AI agents with the strongest cryptographic guarantees of cybersecurity. And interconnect ecosystems: no silos.
+## N-4.mp3  (7s)
+And behind this AI agent?
 
-## V2-5.mp3  (12s)
-Build and join sovereign ecosystems. Verana. Verana dot io.
+## N-5.mp3  (6s)
+And when you receive a credential... is it real? Is the issuer accredited?
+
+## N-6.mp3  (6s)
+And when a service asks for your ID: is it even allowed to ask?
+
+## N-7.mp3  (6s)
+And finally: how do you, or your AI agent, find a trusted service?
+
+## N-8.mp3  (8s)
+Verana addresses all of this. At scale, and across ecosystems.
+
+## N-9.mp3  (12s)
+Build your own ecosystem, freely, on Verana's public infrastructure. Choose any wallet provider. And bridge to other ecosystems.
+
+## N-10.mp3  (13s)
+In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.
