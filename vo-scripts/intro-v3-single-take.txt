@@ -30,7 +30,7 @@ And finally: how do you, or your AI agent, find a trusted service?
 
 <break time="1.5s" />
 
-Official trust lists exist: the EU Trusted Lists, Adobe's approved list, the browser root programs, ICAO's passport directory. Governments and big organizations manage them. But most private ecosystems fall outside: they need an independent solution to bridge the gap.
+Official trust lists exist: the EU Trusted Lists, Adobe's approved list, the browser root programs, ICAO's passport directory, GLEIF's legal entity identifiers. Governments and big organizations manage them. But most private ecosystems fall outside: they need an independent solution to bridge the gap.
 
 <break time="1.5s" />
 

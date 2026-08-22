@@ -445,6 +445,12 @@ const LIST_ICON = {
       <path d="M3 12 h18 M12 3 a14 14 0 0 1 0 18 M12 3 a14 14 0 0 0 0 18" fill="none" stroke="#047857" strokeWidth="1.6" />
     </svg>
   ),
+  lei: (
+    <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
+      <path d="M4 21 V5.5 L13 3 v18 M13 9 l7 2 v10 M2.5 21 h19" fill="none" stroke="#0369a1" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
+      <path d="M7 8.5 h2.5 M7 12 h2.5 M7 15.5 h2.5 M15.5 13.5 h2 M15.5 16.5 h2" stroke="#0369a1" strokeWidth="1.6" strokeLinecap="round" opacity="0.8" />
+    </svg>
+  ),
   passport: (
     <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
       <rect x="5" y="2.5" width="14" height="19" rx="2" fill="none" stroke="#6d28d9" strokeWidth="1.8" />
@@ -462,6 +468,7 @@ export const TrustListsV3: React.FC = () => {
     { icon: "doc" as const, name: "Adobe AATL", sub: "document signing", at: 0.8 },
     { icon: "globe" as const, name: "Root programs", sub: "Microsoft · Apple · Mozilla", at: 1.1 },
     { icon: "passport" as const, name: "ICAO PKD", sub: "ePassports", at: 1.4 },
+    { icon: "lei" as const, name: "GLEIF", sub: "LEI · vLEI issuers", at: 1.7 },
   ];
   const gapIn = pop(frame, fps, 7.5);
   const clusters = [
@@ -470,18 +477,18 @@ export const TrustListsV3: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: theme.surface, alignItems: "center" }}>
       {/* the official layer */}
-      <div style={{ position: "absolute", top: 170, display: "flex", gap: 26 }}>
+      <div style={{ position: "absolute", top: 170, display: "flex", gap: 22 }}>
         {lists.map((l) => {
           const s = pop(frame, fps, l.at);
           return (
             <div
               key={l.name}
               style={{
-                width: 400,
+                width: 342,
                 background: theme.card,
                 border: "1.5px solid #e2e8f0",
                 borderRadius: 18,
-                padding: "22px 24px",
+                padding: "20px 20px",
                 boxShadow: "0 14px 40px rgba(15,23,42,0.09)",
                 opacity: s,
                 transform: `translateY(${(1 - s) * 40}px)`,
@@ -491,8 +498,8 @@ export const TrustListsV3: React.FC = () => {
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 {l.icon === "stars" ? <StarsSeal size={44} /> : LIST_ICON[l.icon]}
                 <div>
-                  <div style={{ fontSize: 23, fontWeight: 700, color: theme.ink }}>{l.name}</div>
-                  <div style={{ fontSize: 17, color: theme.muted }}>{l.sub}</div>
+                  <div style={{ fontSize: 21, fontWeight: 700, color: theme.ink }}>{l.name}</div>
+                  <div style={{ fontSize: 15.5, color: theme.muted }}>{l.sub}</div>
                 </div>
               </div>
               <span
