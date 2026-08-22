@@ -32,6 +32,7 @@ import {
   FoundationsV3,
   FreedomsV3,
   SilosV3,
+  TrustListsV3,
   VeranaCloseV3,
 } from "./components/IntroV3Scenes";
 import { HandoffCard, StandardsStrip, UrlCard, WalletRoster } from "./components/Cards";
@@ -115,6 +116,8 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <FreedomsV3 />;
     case "verana-close-v3":
       return <VeranaCloseV3 />;
+    case "trust-lists-v3":
+      return <TrustListsV3 />;
     case "image-scene":
       return <ImageScene items={v.items} tint={v.tint} />;
     case "build":
@@ -143,7 +146,7 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const frames = durationInFrames;
-  const big = shot.visual.kind === "black" || shot.id === "I-8" || shot.id === "N-8";
+  const big = shot.visual.kind === "black" || shot.id === "I-8" || shot.id === "N-8" || shot.id === "N-8b";
   // The dense standards + Proof of Trust scene needs a smaller line to
   // clear the wallet roster.
   const compact = shot.visual.kind === "standards";

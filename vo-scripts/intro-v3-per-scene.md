@@ -37,8 +37,11 @@ And when a service asks for your ID: is it even allowed to ask?
 ## N-7.mp3  (6s)
 And finally: how do you, or your AI agent, find a trusted service?
 
-## N-8.mp3  (8s)
-Verana addresses all of this. At scale, and across ecosystems.
+## N-8a.mp3  (17s)
+Official trust lists exist: the EU Trusted Lists, Adobe's approved list, the browser root programs, ICAO's passport directory. Governments and big organizations manage them. But most private ecosystems fall outside: they need an independent solution to bridge the gap.
+
+## N-8b.mp3  (8s)
+Verana is that bridge. Independent, at scale, and across ecosystems.
 
 ## N-9.mp3  (12s)
 Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.

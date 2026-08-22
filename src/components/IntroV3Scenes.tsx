@@ -430,6 +430,125 @@ export const EcosystemSearchV3: React.FC = () => {
   );
 };
 
+// ---------------------------------------------------------------- N-8a
+const LIST_ICON = {
+  stars: null, // rendered via StarsSeal
+  doc: (
+    <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
+      <path d="M6 2 h9 l5 5 v15 a1 1 0 0 1 -1 1 H6 a1 1 0 0 1 -1 -1 V3 a1 1 0 0 1 1 -1 z" fill="none" stroke="#b45309" strokeWidth="1.8" />
+      <path d="M15 2 v5 h5 M8.5 13 l2.5 2.5 L15.5 10" fill="none" stroke="#b45309" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  globe: (
+    <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
+      <circle cx="12" cy="12" r="9" fill="none" stroke="#047857" strokeWidth="1.8" />
+      <path d="M3 12 h18 M12 3 a14 14 0 0 1 0 18 M12 3 a14 14 0 0 0 0 18" fill="none" stroke="#047857" strokeWidth="1.6" />
+    </svg>
+  ),
+  passport: (
+    <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
+      <rect x="5" y="2.5" width="14" height="19" rx="2" fill="none" stroke="#6d28d9" strokeWidth="1.8" />
+      <circle cx="12" cy="10" r="3.2" fill="none" stroke="#6d28d9" strokeWidth="1.7" />
+      <path d="M8.5 16.5 h7" stroke="#6d28d9" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  ),
+};
+
+export const TrustListsV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const lists = [
+    { icon: "stars" as const, name: "EU Trusted Lists", sub: "eIDAS · European Commission", at: 0.5 },
+    { icon: "doc" as const, name: "Adobe AATL", sub: "document signing", at: 0.8 },
+    { icon: "globe" as const, name: "Root programs", sub: "Microsoft · Apple · Mozilla", at: 1.1 },
+    { icon: "passport" as const, name: "ICAO PKD", sub: "ePassports", at: 1.4 },
+  ];
+  const gapIn = pop(frame, fps, 7.5);
+  const clusters = [
+    { x: 430, y: 0 }, { x: 750, y: 40 }, { x: 1080, y: 10 }, { x: 1400, y: 45 },
+  ];
+  return (
+    <AbsoluteFill style={{ background: theme.surface, alignItems: "center" }}>
+      {/* the official layer */}
+      <div style={{ position: "absolute", top: 170, display: "flex", gap: 26 }}>
+        {lists.map((l) => {
+          const s = pop(frame, fps, l.at);
+          return (
+            <div
+              key={l.name}
+              style={{
+                width: 400,
+                background: theme.card,
+                border: "1.5px solid #e2e8f0",
+                borderRadius: 18,
+                padding: "22px 24px",
+                boxShadow: "0 14px 40px rgba(15,23,42,0.09)",
+                opacity: s,
+                transform: `translateY(${(1 - s) * 40}px)`,
+                fontFamily: theme.font,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                {l.icon === "stars" ? <StarsSeal size={44} /> : LIST_ICON[l.icon]}
+                <div>
+                  <div style={{ fontSize: 23, fontWeight: 700, color: theme.ink }}>{l.name}</div>
+                  <div style={{ fontSize: 17, color: theme.muted }}>{l.sub}</div>
+                </div>
+              </div>
+              <span
+                style={{
+                  display: "inline-block",
+                  marginTop: 14,
+                  fontFamily: theme.mono,
+                  fontSize: 14,
+                  letterSpacing: 2,
+                  color: "#1d4ed8",
+                  background: "#eff6ff",
+                  border: "1.5px solid #bfdbfe",
+                  borderRadius: 999,
+                  padding: "4px 12px",
+                }}
+              >
+                OFFICIAL
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      {/* the boundary of the official scope */}
+      <svg width="1700" height="4" style={{ position: "absolute", top: 430 }} aria-hidden>
+        <line x1="0" y1="2" x2="1700" y2="2" stroke="#cbd5e1" strokeWidth="3" strokeDasharray="12 10" opacity={gapIn} />
+      </svg>
+      {/* below the line: the private world, uncovered */}
+      <div style={{ position: "absolute", top: 470, width: 1700, opacity: gapIn }}>
+        {clusters.map((c2, ci) => (
+          <svg key={ci} width={210} height={140} style={{ position: "absolute", left: c2.x - 105, top: c2.y }} aria-hidden>
+            <ellipse cx={105} cy={70} rx={95} ry={60} fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="6 6" />
+            {Array.from({ length: 5 }, (_, i) => {
+              const a = (i / 5) * Math.PI * 2;
+              return <circle key={i} cx={105 + 55 * Math.cos(a)} cy={70 + 34 * Math.sin(a)} r={9} fill="#e2e8f0" stroke="#94a3b8" strokeWidth="1.6" />;
+            })}
+          </svg>
+        ))}
+        <div
+          style={{
+            position: "absolute",
+            top: 160,
+            width: "100%",
+            textAlign: "center",
+            fontFamily: theme.mono,
+            fontSize: 19,
+            letterSpacing: 2,
+            color: theme.muted,
+          }}
+        >
+          private ecosystems · not covered
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ---------------------------------------------------------------- N-9
 const FreedomPanel: React.FC<{
   index: number;

@@ -62,6 +62,7 @@ export type Visual =
   | { kind: "ecosystem-search-v3" }
   | { kind: "freedoms-v3" }
   | { kind: "verana-close-v3" }
+  | { kind: "trust-lists-v3" } // N-8a: official trust lists vs the private gap
   | {
       kind: "image-scene";
       items: { asset?: string; mock?: "password" | "pdf"; label?: string }[];
