@@ -16,7 +16,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   {
     id: "N-1",
     start: 6,
-    end: 18,
+    end: 24,
     lines: [
       "Decentralized digital identity is becoming a reality.",
       "eIDAS 2.0 in Europe, and the W3C standards. We build on both.",
@@ -24,11 +24,13 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     vo: "Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and the W3C standards ecosystem. We build on both.",
     visual: { kind: "foundations-v3" },
     tone: "light",
+    // The beat-3 band takes the lower third at 9.2s (scene-relative).
+    textFadeOut: [8.2, 9.2],
   },
   {
     id: "N-2",
-    start: 18,
-    end: 28,
+    start: 24,
+    end: 34,
     lines: [
       "These technologies have proven their worth.",
       "The next challenges: scalability, interoperability, and monetization.",
@@ -39,8 +41,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-3",
-    start: 28,
-    end: 34,
+    start: 34,
+    end: 40,
     lines: ["Have you ever wondered...", "who is really behind this service?"],
     vo: "Have you ever wondered... who is really behind this service?",
     visual: { kind: "login-glitch" },
@@ -48,8 +50,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-4",
-    start: 34,
-    end: 41,
+    start: 40,
+    end: 47,
     lines: ["And behind this AI agent?"],
     vo: "And behind this AI agent?",
     visual: { kind: "agent-flicker" },
@@ -57,8 +59,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-5",
-    start: 41,
-    end: 47,
+    start: 47,
+    end: 53,
     lines: ["And when you receive a credential...", "is it real? Is the issuer accredited?"],
     vo: "And when you receive a credential... is it real? Is the issuer accredited?",
     visual: {
@@ -72,8 +74,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-6",
-    start: 47,
-    end: 53,
+    start: 53,
+    end: 59,
     lines: ["And when a service asks for your ID...", "is it even allowed to ask?"],
     vo: "And when a service asks for your ID: is it even allowed to ask?",
     visual: {
@@ -87,8 +89,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-7",
-    start: 53,
-    end: 59,
+    start: 59,
+    end: 65,
     lines: ["And finally... how do you, or your AI agent,", "find a trusted service?"],
     vo: "And finally: how do you, or your AI agent, find a trusted service?",
     visual: { kind: "ecosystem-search-v3" },
@@ -96,8 +98,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-8a",
-    start: 59,
-    end: 69,
+    start: 65,
+    end: 75,
     lines: [
       "Official trust lists exist.",
       "A solution is needed to scale, monetize, and address private ecosystems.",
@@ -108,8 +110,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-8b",
-    start: 69,
-    end: 77,
+    start: 75,
+    end: 83,
     lines: ["Verana is that bridge.", "Independent, at scale, and across ecosystems."],
     vo: "Verana is that bridge. Independent, at scale, and across ecosystems.",
     visual: { kind: "brand-reveal" },
@@ -117,8 +119,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9a",
-    start: 77,
-    end: 87,
+    start: 83,
+    end: 93,
     lines: [
       "Build your own sovereign ecosystem, freely.",
       "Your rules, your business model.",
@@ -129,8 +131,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9b",
-    start: 87,
-    end: 100,
+    start: 93,
+    end: 106,
     lines: [],
     vo: "Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.",
     visual: { kind: "build-service-v3" },
@@ -138,8 +140,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 100,
-    end: 117,
+    start: 106,
+    end: 123,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -147,4 +149,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 117;
+export const INTRO3_END = 123;

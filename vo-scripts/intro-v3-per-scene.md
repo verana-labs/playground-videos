@@ -16,7 +16,7 @@ regenerate that clip alone with "e-idas".
 ## N-0.mp3  (6s)
 Verana. The open trust infrastructure for the verifiable internet.
 
-## N-1.mp3  (12s)
+## N-1.mp3  (18s)
 Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and the W3C standards ecosystem. We build on both.
 
 ## N-2.mp3  (10s)
