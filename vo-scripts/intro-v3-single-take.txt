@@ -22,7 +22,7 @@ And when you receive a credential... is it real? Is the issuer accredited?
 
 <break time="1.5s" />
 
-And when a service asks for your ID: is it even allowed to ask? Should it pay for what it asks? And is your privacy preserved?
+And when a service asks for your ID: is it even allowed to ask?
 
 <break time="1.5s" />
 
