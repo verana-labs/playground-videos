@@ -559,7 +559,7 @@ export const FreedomsV3: React.FC = () => {
         </div>
       </FreedomPanel>
 
-      <FreedomPanel index={2} title="Choose" subtitle="any wallet provider" appearAt={1.1}>
+      <FreedomPanel index={2} title="Choose" subtitle="any wallet provider · privacy preserved" appearAt={1.1}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", maxWidth: 420 }}>
           {wallets.map((id, i) => (
             <div key={id} style={{ transform: `scale(${pop(frame, fps, 1.6 + i * 0.12)})` }}>

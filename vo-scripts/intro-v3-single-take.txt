@@ -6,7 +6,7 @@ Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and t
 
 <break time="1.5s" />
 
-These technologies have proven their worth. The next challenge: scalability, and interoperability.
+These technologies have proven their worth. The next challenges: scalability, interoperability, and monetization.
 
 <break time="1.5s" />
 
@@ -34,7 +34,7 @@ Verana addresses all of this. At scale, and across ecosystems.
 
 <break time="1.5s" />
 
-Build your own ecosystem, freely, on Verana's public infrastructure. Choose any wallet provider. And bridge to other ecosystems.
+Build your own ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.
 
 <break time="1.5s" />
 
