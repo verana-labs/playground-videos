@@ -15,6 +15,7 @@ import { AssetContext, AssetManifest, useAsset } from "./lib/assets";
 import { Format, Timeline } from "./ShotRenderer";
 import { Shot, shotsEnd, validateShots } from "./shots/types";
 import { INTRO_SHOTS } from "./shots/intro";
+import { INTRO2_SHOTS } from "./shots/intro2";
 import { VESTA_HANDOFF, VESTA_SHOTS } from "./shots/vesta";
 import { VERANDIA_HANDOFF, VERANDIA_SHOTS } from "./shots/verandia";
 import { outroShots, VERANDIA_URL, VESTA_URL } from "./shots/outro";
@@ -189,6 +190,18 @@ export const IntroOnly: React.FC<VideoProps> = ({ manifest }) => (
     bannerFrom={Infinity}
     musicId="music/intro"
     voId="vo/intro"
+  />
+);
+
+/** INTRO v2, the merged institutional intro: an independent video. */
+export const IntroV2: React.FC<VideoProps> = ({ manifest }) => (
+  <Stage
+    manifest={manifest}
+    shots={INTRO2_SHOTS}
+    format="wide"
+    bannerFrom={Infinity}
+    musicId="music/intro2"
+    voId="vo/intro2"
   />
 );
 

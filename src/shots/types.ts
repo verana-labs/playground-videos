@@ -52,6 +52,11 @@ export type Visual =
   | { kind: "vesta-demos" } // D-1: run the demos
   | { kind: "playground-close" } // the conclusion, playground-branded finale
   | { kind: "solo-open"; emblem: string; title: string; subtitle: string } // standalone cut opener
+  | { kind: "foundations" } // N-1: W3C + eIDAS layer stack (intro v2)
+  | { kind: "silos" } // N-2: isolated ecosystem islands (intro v2)
+  | { kind: "ecosystem-search-v2" } // N-7: search lens + human/agent pair (intro v2)
+  | { kind: "freedoms" } // N-9: Build · Choose · Bridge (intro v2)
+  | { kind: "verana-close" } // N-10: verana.io finale (intro v2)
   | {
       kind: "image-scene";
       items: { asset?: string; mock?: "password" | "pdf"; label?: string }[];

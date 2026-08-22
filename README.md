@@ -24,6 +24,7 @@ Renders:
 
 ```bash
 npm run render:intro            # out/intro-v1.mp4          (1:12, 16:9)
+npm run render:intro2           # out/intro-v2.mp4          (1:32, 16:9, institutional)
 npm run render:vesta            # out/vesta.mp4             (5:10, 16:9, standalone: no intro)
 npm run render:vesta-full       # out/vesta-full.mp4        (6:19, 16:9, intro + act)
 npm run render:vesta-vertical   # out/vesta-vertical.mp4    (1:00, 9:16)
@@ -79,6 +80,7 @@ Each video ships standalone with its own audio. Drop the files and re-run
 
 ```
 public/assets/music/intro.mp3       # music bed for the intro video
+public/assets/music/intro2.mp3      # music bed for intro v2
 public/assets/music/vesta.mp3       # music bed for the Vesta video
 public/assets/music/verandia.mp3    # (later) Verandia
 public/assets/vo/intro.mp3          # optional narration track, full length

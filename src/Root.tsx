@@ -2,6 +2,7 @@ import React from "react";
 import { CalculateMetadataFunction, Composition } from "remotion";
 import {
   IntroOnly,
+  IntroV2,
   VerandiaFull,
   VERANDIA_DURATION,
   VestaSolo,
@@ -14,6 +15,7 @@ import {
   VideoProps,
 } from "./compositions";
 import { INTRO_END } from "./shots/intro";
+import { INTRO2_END } from "./shots/intro2";
 import { fetchManifest } from "./lib/assets";
 
 const FPS = 30;
@@ -64,6 +66,17 @@ export const RemotionRoot: React.FC = () => (
       id="IntroOnly"
       component={IntroOnly}
       durationInFrames={INTRO_END * FPS}
+      fps={FPS}
+      width={1920}
+      height={1080}
+      defaultProps={{ manifest: {} }}
+      calculateMetadata={withManifest}
+    />
+    {/* INTRO v2: the merged institutional intro (independent video) */}
+    <Composition
+      id="IntroV2"
+      component={IntroV2}
+      durationInFrames={INTRO2_END * FPS}
       fps={FPS}
       width={1920}
       height={1080}

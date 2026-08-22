@@ -20,6 +20,13 @@ import {
 } from "./components/VestaStory";
 import { VestaJourney } from "./components/VestaJourney";
 import { PlaygroundClose, SoloOpen, VestaDemos } from "./components/VestaFinish";
+import {
+  EcosystemSearchV2,
+  Foundations,
+  Freedoms,
+  Silos,
+  VeranaClose,
+} from "./components/IntroV2Scenes";
 import { HandoffCard, StandardsStrip, UrlCard, WalletRoster } from "./components/Cards";
 import { CaptureSequence, DirectoryTeaser, ImageScene } from "./components/Scenes";
 import { theme } from "./theme";
@@ -81,6 +88,16 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <PlaygroundClose />;
     case "solo-open":
       return <SoloOpen emblem={v.emblem} title={v.title} subtitle={v.subtitle} />;
+    case "foundations":
+      return <Foundations />;
+    case "silos":
+      return <Silos />;
+    case "ecosystem-search-v2":
+      return <EcosystemSearchV2 />;
+    case "freedoms":
+      return <Freedoms />;
+    case "verana-close":
+      return <VeranaClose />;
     case "image-scene":
       return <ImageScene items={v.items} tint={v.tint} />;
     case "build":
@@ -109,7 +126,7 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const frames = durationInFrames;
-  const big = shot.visual.kind === "black" || shot.id === "I-8";
+  const big = shot.visual.kind === "black" || shot.id === "I-8" || shot.id === "N-8";
   // The dense standards + Proof of Trust scene needs a smaller line to
   // clear the wallet roster.
   const compact = shot.visual.kind === "standards";
@@ -117,7 +134,8 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
   // The intro's dark question shots dip to black between cuts, so each
   // question lands as its own beat (I-0 already ends on night, I-8 turns on
   // the light).
-  const isQuestion = shot.id.startsWith("I-") && (shot.tone ?? "dark") === "dark";
+  const isQuestion =
+    (shot.id.startsWith("I-") || shot.id.startsWith("N-")) && (shot.tone ?? "dark") === "dark";
   const dip = isQuestion
     ? Math.min(
         interpolate(frame, [0, fps * 0.35], [0, 1], {
@@ -156,7 +174,7 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
           size={format === "vertical" ? 54 : big ? 76 : compact ? 36 : 56}
           // Question shots: the final line lands early, then everything holds
           // >= 3 s fully assembled (spec pacing rule).
-          leadSeconds={/^I-[0-6]$/.test(shot.id) ? 2.2 : undefined}
+          leadSeconds={/^(I-[0-6]|N-[2-7])$/.test(shot.id) ? 2.2 : undefined}
         />
       </AbsoluteFill>
       </AbsoluteFill>
