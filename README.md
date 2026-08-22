@@ -25,7 +25,7 @@ Renders:
 ```bash
 npm run render:intro            # out/intro-v1.mp4          (1:12, 16:9)
 npm run render:intro2           # out/intro-v2.mp4          (1:32, 16:9, institutional)
-npm run render:intro3           # out/intro-v3.mp4          (draft, copy of v2)
+npm run render:intro3           # out/intro-v3.mp4          (1:36, 16:9, v2 + monetization/privacy)
 npm run render:vesta            # out/vesta.mp4             (5:10, 16:9, standalone: no intro)
 npm run render:vesta-full       # out/vesta-full.mp4        (6:19, 16:9, intro + act)
 npm run render:vesta-vertical   # out/vesta-vertical.mp4    (1:00, 9:16)

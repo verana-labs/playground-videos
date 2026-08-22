@@ -73,9 +73,12 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   {
     id: "N-6",
     start: 47,
-    end: 53,
-    lines: ["And when a service asks for your ID...", "is it even allowed to ask?"],
-    vo: "And when a service asks for your ID: is it even allowed to ask?",
+    end: 57,
+    lines: [
+      "And when a service asks for your ID...",
+      "is it allowed? Should it pay for what it asks? And is your privacy preserved?",
+    ],
+    vo: "And when a service asks for your ID: is it even allowed to ask? Should it pay for what it asks? And is your privacy preserved?",
     visual: {
       kind: "qr-scan-phone",
       asset: "clips/intro-verifier-unaccredited",
@@ -87,8 +90,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-7",
-    start: 53,
-    end: 59,
+    start: 57,
+    end: 63,
     lines: ["And finally... how do you, or your AI agent,", "find a trusted service?"],
     vo: "And finally: how do you, or your AI agent, find a trusted service?",
     visual: { kind: "ecosystem-search-v3" },
@@ -96,8 +99,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-8",
-    start: 59,
-    end: 67,
+    start: 63,
+    end: 71,
     lines: ["Verana addresses all of this.", "At scale, and across ecosystems."],
     vo: "Verana addresses all of this. At scale, and across ecosystems.",
     visual: { kind: "brand-reveal" },
@@ -105,8 +108,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9",
-    start: 67,
-    end: 79,
+    start: 71,
+    end: 83,
     lines: [],
     vo: "Build your own ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.",
     visual: { kind: "freedoms-v3" },
@@ -114,8 +117,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 79,
-    end: 92,
+    start: 83,
+    end: 96,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -123,4 +126,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 92;
+export const INTRO3_END = 96;

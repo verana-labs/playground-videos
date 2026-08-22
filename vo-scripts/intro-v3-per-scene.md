@@ -31,8 +31,8 @@ And behind this AI agent?
 ## N-5.mp3  (6s)
 And when you receive a credential... is it real? Is the issuer accredited?
 
-## N-6.mp3  (6s)
-And when a service asks for your ID: is it even allowed to ask?
+## N-6.mp3  (10s)
+And when a service asks for your ID: is it even allowed to ask? Should it pay for what it asks? And is your privacy preserved?
 
 ## N-7.mp3  (6s)
 And finally: how do you, or your AI agent, find a trusted service?
