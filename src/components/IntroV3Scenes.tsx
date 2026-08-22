@@ -3,8 +3,8 @@
 //   N-1 "foundations": the W3C standards layer and the eIDAS 2.0 legal layer
 //       locking together as a stack.
 //   N-2 "silos": the stack holds, but around it ecosystems sit isolated.
-//   N-9 "freedoms": Build (your ecosystem) · Choose (any wallet) · Bridge
-//       (to other ecosystems).
+//   N-9a "build-eco": for ecosystem builders, the governance card alone.
+//   N-9b "build-service": for service builders: Join · Choose · Bridge.
 //   N-10 "verana-close": lockup, verana.io, the sovereign tagline.
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
@@ -622,7 +622,69 @@ const FreedomPanel: React.FC<{
   );
 };
 
-export const FreedomsV3: React.FC = () => {
+const EcoCard: React.FC<{ width?: number; fontScale?: number }> = ({ width = 780, fontScale = 1.35 }) => (
+  <div
+    style={{
+      width,
+      background: theme.card,
+      border: "1.5px solid #e2e8f0",
+      borderRadius: 20,
+      boxShadow: "0 24px 60px rgba(15,23,42,0.12)",
+      padding: "30px 34px",
+      fontFamily: theme.font,
+    }}
+  >
+    <div style={{ fontSize: 24 * fontScale, fontWeight: 700, color: theme.ink, marginBottom: 16 }}>
+      Your Ecosystem
+    </div>
+    <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 18 }}>
+      <Chip>your governance framework</Chip>
+      <Chip>your credential schemas</Chip>
+    </div>
+    {["Accredited issuers", "Accredited verifiers"].map((r) => (
+      <div
+        key={r}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          border: "1.5px solid #e2e8f0",
+          borderRadius: 12,
+          padding: "12px 16px",
+          marginBottom: 10,
+          fontSize: 19 * fontScale,
+          color: "#475569",
+        }}
+      >
+        <svg width={22} height={22} viewBox="0 0 20 20" aria-hidden>
+          <circle cx="10" cy="10" r="10" fill={theme.green} />
+          <path d="M5.5 10.5 L8.5 13.5 L14.5 7" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        {r}
+      </div>
+    ))}
+    <div style={{ fontFamily: theme.mono, fontSize: 15 * fontScale, color: theme.violet }}>
+      your rules · your business model
+    </div>
+  </div>
+);
+
+/** N-9a: for ecosystem builders, the governance card alone, center stage. */
+export const BuildEcoV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = pop(frame, fps, 0.4);
+  return (
+    <AbsoluteFill style={{ background: theme.surface, alignItems: "center" }}>
+      <div style={{ position: "absolute", top: 170, opacity: s, transform: `translateY(${(1 - s) * 50}px)` }}>
+        <EcoCard />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** N-9b: for service builders: Join · Choose · Bridge. */
+export const ServiceV3: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const wallets = ["inji", "eudi", "paradym", "bcwallet", "hologram", "talao"];
@@ -640,52 +702,45 @@ export const FreedomsV3: React.FC = () => {
         justifyContent: "center",
       }}
     >
-      <FreedomPanel index={1} title="Build" subtitle="your own sovereign ecosystem, freely" appearAt={0.4}>
-        <div
-          style={{
-            width: "100%",
-            border: "1.5px solid #e2e8f0",
-            borderRadius: 16,
-            padding: "20px 22px",
-            fontFamily: theme.font,
-          }}
-        >
-          <div style={{ fontSize: 24, fontWeight: 700, color: theme.ink, marginBottom: 14 }}>
-            Your Ecosystem
-          </div>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 16 }}>
-            <Chip>your governance framework</Chip>
-            <Chip>your credential schemas</Chip>
-          </div>
-          {["Accredited issuers", "Accredited verifiers"].map((r) => (
+      <FreedomPanel index={1} title="Join" subtitle="ecosystems, on Verana or other trust lists" appearAt={0.4}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 18, width: "100%" }}>
+          {[
+            { icon: <VeranaMark size={44} />, name: "Ecosystems on Verana", sub: "sovereign trust registries" },
+            {
+              icon: (
+                <svg width={44} height={44} viewBox="0 0 24 24" aria-hidden>
+                  <path d="M4 5.5 h16 M4 10 h16 M4 14.5 h16 M4 19 h10" stroke="#1d4ed8" strokeWidth="1.9" strokeLinecap="round" />
+                </svg>
+              ),
+              name: "Other trust lists",
+              sub: "official and industry lists",
+            },
+          ].map((e) => (
             <div
-              key={r}
+              key={e.name}
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
+                gap: 16,
                 border: "1.5px solid #e2e8f0",
-                borderRadius: 12,
-                padding: "10px 14px",
-                marginBottom: 10,
-                fontSize: 19,
-                color: "#475569",
+                borderRadius: 16,
+                padding: "18px 20px",
+                fontFamily: theme.font,
               }}
             >
-              <svg width={20} height={20} viewBox="0 0 20 20" aria-hidden>
-                <circle cx="10" cy="10" r="10" fill={theme.green} />
-                <path d="M5.5 10.5 L8.5 13.5 L14.5 7" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              {r}
+              <span style={{ display: "inline-flex", width: 56, height: 56, borderRadius: 14, background: "#f8fafc", alignItems: "center", justifyContent: "center" }}>
+                {e.icon}
+              </span>
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 700, color: theme.ink }}>{e.name}</div>
+                <div style={{ fontSize: 17, color: theme.muted }}>{e.sub}</div>
+              </div>
             </div>
           ))}
-          <div style={{ fontFamily: theme.mono, fontSize: 15, color: theme.violet }}>
-            your rules · your business model
-          </div>
         </div>
       </FreedomPanel>
 
-      <FreedomPanel index={2} title="Choose" subtitle="any wallet provider · privacy preserved" appearAt={1.1}>
+      <FreedomPanel index={2} title="Choose" subtitle="your personal wallet · privacy preserved" appearAt={1.1}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", maxWidth: 420 }}>
           {wallets.map((id, i) => (
             <div key={id} style={{ transform: `scale(${pop(frame, fps, 1.6 + i * 0.12)})` }}>
@@ -698,16 +753,16 @@ export const FreedomsV3: React.FC = () => {
       <FreedomPanel index={3} title="Bridge" subtitle="to other ecosystems" appearAt={1.8}>
         <div style={{ position: "relative", width: 460, height: 300 }}>
           <svg width={460} height={300} style={{ position: "absolute", inset: 0 }}>
-            {[{ cx: 95, cy: 110 }, { cx: 365, cy: 190 }].map((c, ci) => (
+            {[{ cx: 95, cy: 110 }, { cx: 365, cy: 190 }].map((c2, ci) => (
               <g key={ci}>
-                <ellipse cx={c.cx} cy={c.cy} rx={88} ry={64} fill="none" stroke="#ddd6fe" strokeWidth="2.5" />
+                <ellipse cx={c2.cx} cy={c2.cy} rx={88} ry={64} fill="none" stroke="#ddd6fe" strokeWidth="2.5" />
                 {Array.from({ length: 4 }, (_, i) => {
                   const a = (i / 4) * Math.PI * 2 + 0.5;
                   return (
                     <circle
                       key={i}
-                      cx={c.cx + 52 * Math.cos(a)}
-                      cy={c.cy + 36 * Math.sin(a)}
+                      cx={c2.cx + 52 * Math.cos(a)}
+                      cy={c2.cy + 36 * Math.sin(a)}
                       r={11}
                       fill="#f5f3ff"
                       stroke={theme.violet}
@@ -727,14 +782,7 @@ export const FreedomsV3: React.FC = () => {
               pathLength={1}
             />
           </svg>
-          <div
-            style={{
-              position: "absolute",
-              left: 230 - 26,
-              top: 152 - 26,
-              transform: `scale(${pop(frame, fps, 3.2)})`,
-            }}
-          >
+          <div style={{ position: "absolute", left: 230 - 26, top: 152 - 26, transform: `scale(${pop(frame, fps, 3.2)})` }}>
             <VeranaMark size={52} />
           </div>
         </div>

@@ -60,7 +60,8 @@ export type Visual =
   | { kind: "foundations-v3" } // intro v3 copies of the v2 scenes
   | { kind: "silos-v3" }
   | { kind: "ecosystem-search-v3" }
-  | { kind: "freedoms-v3" }
+  | { kind: "build-eco-v3" }
+  | { kind: "build-service-v3" }
   | { kind: "verana-close-v3" }
   | { kind: "trust-lists-v3" } // N-8a: official trust lists vs the private gap
   | {

@@ -29,8 +29,9 @@ import {
 } from "./components/IntroV2Scenes";
 import {
   EcosystemSearchV3,
+  BuildEcoV3,
   FoundationsV3,
-  FreedomsV3,
+  ServiceV3,
   SilosV3,
   TrustListsV3,
   VeranaCloseV3,
@@ -112,8 +113,10 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <SilosV3 />;
     case "ecosystem-search-v3":
       return <EcosystemSearchV3 />;
-    case "freedoms-v3":
-      return <FreedomsV3 />;
+    case "build-eco-v3":
+      return <BuildEcoV3 />;
+    case "build-service-v3":
+      return <ServiceV3 />;
     case "verana-close-v3":
       return <VeranaCloseV3 />;
     case "trust-lists-v3":

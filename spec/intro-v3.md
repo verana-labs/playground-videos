@@ -2,7 +2,7 @@
 
 # INTRO v3 (v2 + monetization and privacy-preserving)
 
-## INTRO v3, shot by shot (0:00 to 1:51)
+## INTRO v3, shot by shot (0:00 to 2:02)
 
 A separate video merging two contributed framings: the credibility ladder (W3C standards + eIDAS legal frame as foundations) and the question-arc structure. Independent files; INTRO v1 stays locked. Question scenes N-3 to N-6 reuse v1's visuals by kind. Audio: `music/intro3` + `vo/intro3` (per-scene clips N-0.mp3 ... N-10.mp3).
 
@@ -18,6 +18,7 @@ A separate video merging two contributed framings: the credibility ladder (W3C s
 | N-7 | 0:53–0:59 | The search lens over ecosystem nodes, with a person and their AI agent searching side by side | And finally: how do you, or your AI agent, find a trusted service? |
 | N-8a | 0:59–1:18 | The official trust lists as cards (EU Trusted Lists · eIDAS, Adobe AATL, the browser root programs, ICAO PKD, GLEIF), each tagged OFFICIAL; then a dashed scope boundary, and below it gray private-ecosystem clusters, uncovered | Official trust lists exist: the EU Trusted Lists, Adobe's approved list, the browser root programs, ICAO's passport directory, GLEIF's legal entity identifiers. Governments and big organizations manage them. But most private ecosystems fall outside: they need an independent solution to bridge the gap. |
 | N-8b | 1:18–1:26 | The reveal: the verana.io lockup on the light stage | Verana is that bridge. Independent, at scale, and across ecosystems. |
-| N-9 | 1:26–1:38 | The freedoms triptych: 1 Build (your ecosystem card) · 2 Choose (wallet-provider tiles, privacy preserved) · 3 Bridge (two ecosystem clusters linked through the Verana mark) | Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems. |
-| N-10 | 1:38–1:51 | The finale: lockup to center, https://verana.io, the sovereign tagline | In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io. |
+| N-9a | 1:26–1:36 | For ecosystem builders: the governance card alone, center stage (Your Ecosystem: governance framework, schemas, accredited issuers and verifiers, your rules · your business model) | Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. |
+| N-9b | 1:36–1:49 | For service builders, a triptych: 1 Join (ecosystems on Verana, or other trust lists) · 2 Choose (your personal wallet, privacy preserved) · 3 Bridge (two ecosystem clusters linked through the Verana mark) | Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems. |
+| N-10 | 1:49–2:02 | The finale: lockup to center, https://verana.io, the sovereign tagline | In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io. |
 

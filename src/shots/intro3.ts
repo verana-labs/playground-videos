@@ -116,18 +116,30 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     tone: "light",
   },
   {
-    id: "N-9",
+    id: "N-9a",
     start: 86,
-    end: 98,
+    end: 96,
+    lines: [
+      "Build your own sovereign ecosystem, freely.",
+      "Your rules, your business model.",
+    ],
+    vo: "Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model.",
+    visual: { kind: "build-eco-v3" },
+    tone: "light",
+  },
+  {
+    id: "N-9b",
+    start: 96,
+    end: 109,
     lines: [],
-    vo: "Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.",
-    visual: { kind: "freedoms-v3" },
+    vo: "Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.",
+    visual: { kind: "build-service-v3" },
     tone: "light",
   },
   {
     id: "N-10",
-    start: 98,
-    end: 111,
+    start: 109,
+    end: 122,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -135,4 +147,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 111;
+export const INTRO3_END = 122;

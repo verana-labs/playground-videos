@@ -43,8 +43,11 @@ Official trust lists exist: the EU Trusted Lists, Adobe's approved list, the bro
 ## N-8b.mp3  (8s)
 Verana is that bridge. Independent, at scale, and across ecosystems.
 
-## N-9.mp3  (12s)
-Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model. Choose any wallet provider. And bridge to other ecosystems.
+## N-9a.mp3  (10s)
+Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model.
+
+## N-9b.mp3  (13s)
+Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.
 
 ## N-10.mp3  (13s)
 In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.
