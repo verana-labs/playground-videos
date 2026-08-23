@@ -35,10 +35,10 @@ Mutual authentication. How do services and AI agents from different countries id
 And finally, discovery. How do we search the graph of trusted services?
 
 ## N-8b.mp3  (8s)
-Verana is that bridge. Independent, at scale, and across ecosystems.
+Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, owned by no one.
 
-## N-9a.mp3  (10s)
-Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model.
+## N-9a.mp3  (13s)
+Build your own sovereign ecosystem trust registry. Publish your Ecosystem Governance Framework, your credential schemas, business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.
 
 ## N-9b.mp3  (13s)
 Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.

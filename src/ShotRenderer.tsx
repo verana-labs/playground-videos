@@ -29,6 +29,7 @@ import {
 } from "./components/IntroV2Scenes";
 import {
   EcosystemSearchV3,
+  BuildEcoTreeV3,
   BuildEcoV3,
   CreateEcoQV3,
   CrossBorderQV3,
@@ -144,6 +145,8 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <EcosystemSearchV3 />;
     case "build-eco-v3":
       return <BuildEcoV3 />;
+    case "build-eco-tree-v3":
+      return <BuildEcoTreeV3 />;
     case "build-service-v3":
       return <ServiceV3 />;
     case "verana-close-v3":

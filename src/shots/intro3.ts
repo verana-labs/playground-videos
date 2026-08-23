@@ -88,27 +88,27 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     id: "N-8b",
     start: 72,
     end: 80,
-    lines: ["Verana is that bridge.", "Independent, at scale, and across ecosystems."],
-    vo: "Verana is that bridge. Independent, at scale, and across ecosystems.",
+    lines: ["Verana answers all of this.", "Open, neutral, owned by no one."],
+    vo: "Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, owned by no one.",
     visual: { kind: "brand-reveal" },
     tone: "light",
   },
   {
     id: "N-9a",
     start: 80,
-    end: 90,
+    end: 93,
     lines: [
-      "Build your own sovereign ecosystem, freely.",
-      "Your rules, your business model.",
+      "Build your own sovereign ecosystem trust registry.",
+      "Your ecosystem exists, and is discoverable.",
     ],
-    vo: "Build your own sovereign ecosystem, freely, on Verana's public, privacy-preserving infrastructure: your rules, your business model.",
-    visual: { kind: "build-eco-v3" },
+    vo: "Build your own sovereign ecosystem trust registry. Publish your Ecosystem Governance Framework, your credential schemas, business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.",
+    visual: { kind: "build-eco-tree-v3" },
     tone: "light",
   },
   {
     id: "N-9b",
-    start: 90,
-    end: 103,
+    start: 93,
+    end: 106,
     lines: [],
     vo: "Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.",
     visual: { kind: "build-service-v3" },
@@ -116,8 +116,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 103,
-    end: 120,
+    start: 106,
+    end: 123,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -125,4 +125,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 120;
+export const INTRO3_END = 123;

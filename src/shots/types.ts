@@ -73,7 +73,8 @@ export type Visual =
     } // N-5/N-6: the v1 capture plus the person/agent/service chip row
   | { kind: "silos-v3" }
   | { kind: "ecosystem-search-v3" }
-  | { kind: "build-eco-v3" }
+  | { kind: "build-eco-v3" } // (unused) the governance card alone
+  | { kind: "build-eco-tree-v3" } // N-9a: root + artifacts + participant tree
   | { kind: "build-service-v3" }
   | { kind: "verana-close-v3" }
   | { kind: "trust-lists-v3" } // N-8a: official trust lists vs the private gap
