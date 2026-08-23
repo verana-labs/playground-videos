@@ -20,7 +20,7 @@ Verana. The open trust infrastructure for the verifiable internet.
 Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
 ## N-2.mp3  (10s)
-The next challenges: interconnect ecosystems. Cross-border scalability, interoperability, and monetization.
+The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Interoperate. Monetize.
 
 ## N-3.mp3  (6s)
 How can you identify a service, or an AI agent? And who really controls it?
