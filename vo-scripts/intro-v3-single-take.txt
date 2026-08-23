@@ -6,27 +6,23 @@ Verifiable credentials are becoming a reality. The foundations are laid: issuer,
 
 <break time="1.5s" />
 
-The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Interoperate. Monetize.
+The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Authenticate mutually. And discover trusted services.
 
 <break time="1.5s" />
 
-How can you identify a service, or an AI agent? And who really controls it?
+Scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
 
 <break time="1.5s" />
 
-And how do AI agents, and services, identify themselves? To people, to services, to each other.
+Scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
 
 <break time="1.5s" />
 
-And when a person, an AI agent, or a service receives a credential: is it real? Is the issuer accredited?
+Mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
 
 <break time="1.5s" />
 
-And when a service, or a person, asks for your ID: is it even allowed to ask?
-
-<break time="1.5s" />
-
-And finally: how do you, or your AI agent, find a trusted service?
+And finally, discovery. How do we search the graph of trusted services?
 
 <break time="1.5s" />
 

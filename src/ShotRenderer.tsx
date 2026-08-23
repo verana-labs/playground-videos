@@ -30,8 +30,11 @@ import {
 import {
   EcosystemSearchV3,
   BuildEcoV3,
+  CreateEcoQV3,
+  CrossBorderQV3,
   FoundationsV3,
   IdentifyV3,
+  MutualAuthV3,
   QrScanPartiesV3,
   SectorsV3,
   SelfIdentifyV3,
@@ -117,6 +120,12 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <SectorsV3 />;
     case "identify-v3":
       return <IdentifyV3 />;
+    case "create-eco-q-v3":
+      return <CreateEcoQV3 />;
+    case "cross-border-q-v3":
+      return <CrossBorderQV3 />;
+    case "mutual-auth-v3":
+      return <MutualAuthV3 />;
     case "self-identify-v3":
       return <SelfIdentifyV3 />;
     case "qr-scan-parties-v3":

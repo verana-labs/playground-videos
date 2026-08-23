@@ -20,22 +20,19 @@ Verana. The open trust infrastructure for the verifiable internet.
 Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
 ## N-2.mp3  (10s)
-The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Interoperate. Monetize.
+The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Authenticate mutually. And discover trusted services.
 
-## N-3.mp3  (6s)
-How can you identify a service, or an AI agent? And who really controls it?
+## N-3.mp3  (14s)
+Scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
 
-## N-4.mp3  (7s)
-And how do AI agents, and services, identify themselves? To people, to services, to each other.
+## N-4.mp3  (8s)
+Scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
 
-## N-5.mp3  (6s)
-And when a person, an AI agent, or a service receives a credential: is it real? Is the issuer accredited?
+## N-5.mp3  (9s)
+Mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
 
-## N-6.mp3  (6s)
-And when a service, or a person, asks for your ID: is it even allowed to ask?
-
-## N-7.mp3  (6s)
-And finally: how do you, or your AI agent, find a trusted service?
+## N-6.mp3  (7s)
+And finally, discovery. How do we search the graph of trusted services?
 
 ## N-8a.mp3  (10s)
 Official trust lists exist. But a solution is needed to scale, monetize and address the private ecosystems.

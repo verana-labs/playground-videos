@@ -552,6 +552,34 @@ export const SectorsV3: React.FC = () => {
 };
 
 // ------------------------------------------------------ N-3 / N-4 / N-5 / N-6
+const ChallengeChip: React.FC<{ n: number; label: string }> = ({ n, label }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = pop(frame, fps, 0.3);
+  return (
+    <div style={{ position: "absolute", top: 64, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+      <span
+        style={{
+          fontFamily: theme.mono,
+          fontSize: 19,
+          letterSpacing: 2,
+          color: "#94a3b8",
+          background: "rgba(11,18,32,0.9)",
+          border: "1.5px solid #334155",
+          borderRadius: 999,
+          padding: "9px 24px",
+          textTransform: "uppercase",
+          opacity: s,
+          transform: `scale(${s})`,
+        }}
+      >
+        <span style={{ color: theme.amber, marginRight: 12 }}>challenge {n}</span>
+        {label}
+      </span>
+    </div>
+  );
+};
+
 // The reworked question arc: entity + controller identification (N-3),
 // entities identifying themselves pairwise (N-4), and the v1 captures with a
 // person / AI agent / service chip row (N-5, N-6).
@@ -810,8 +838,35 @@ export const SilosV3: React.FC = () => {
     { a: 7, b: 4, at: 7.5 },
     { a: 7, b: 3, at: 7.9 },
   ];
+  const CHALLENGES = ["create", "cross-border", "mutual authentication", "discover"];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
+      <div style={{ position: "absolute", top: 58, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center" }}>
+        {CHALLENGES.map((c, i) => {
+          const s = pop(frame, fps, 7.0 + i * 0.35);
+          return (
+            <span
+              key={c}
+              style={{
+                fontFamily: theme.mono,
+                fontSize: 17,
+                letterSpacing: 1.5,
+                color: "#94a3b8",
+                background: "rgba(11,18,32,0.9)",
+                border: "1.5px solid #334155",
+                borderRadius: 999,
+                padding: "8px 20px",
+                textTransform: "uppercase",
+                opacity: s,
+                transform: `scale(${s})`,
+              }}
+            >
+              <span style={{ color: theme.amber, marginRight: 10 }}>{i + 1}</span>
+              {c}
+            </span>
+          );
+        })}
+      </div>
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
         {links.map((l, i) => {
           const A = clusters[l.a];
@@ -887,6 +942,244 @@ export const SilosV3: React.FC = () => {
   );
 };
 
+// ---------------------------------------------------------------- N-3
+/** Challenge 1, create: a new ecosystem island assembles in dashed,
+ *  not-yet-real styling; capability chips snap on, then dashed links reach
+ *  out toward discoverable / interconnectable / joinable. */
+export const CreateEcoQV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const hubIn = pop(frame, fps, 0.9);
+  const CHIPS = [
+    { label: "trust registry", x: 665, y: 330, at: 1.8 },
+    { label: "credential schemas", x: 1090, y: 330, at: 2.9 },
+    { label: "accreditation lists", x: 640, y: 555, at: 4.0 },
+    { label: "business model", x: 1105, y: 555, at: 5.1 },
+  ];
+  const OUT = [
+    { label: "discoverable", tx: 300, ty: 210, at: 6.8 },
+    { label: "interconnectable", tx: 1620, ty: 210, at: 7.9 },
+    { label: "joinable", tx: 960, ty: 165, at: 9.0 },
+  ];
+  const HUB = { x: 960, y: 450 };
+  return (
+    <AbsoluteFill style={{ background: theme.night }}>
+      <ChallengeChip n={1} label="create" />
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        <ellipse cx={HUB.x} cy={HUB.y} rx={330} ry={200} fill="none" stroke="#475569" strokeWidth={2.5} strokeDasharray="8 8" opacity={hubIn} />
+        {OUT.map((o, i) => {
+          const drawn = interpolate(t, [o.at, o.at + 0.7], [0, 1], clamp);
+          const len = Math.hypot(o.tx - HUB.x, o.ty - (HUB.y - 200));
+          return (
+            <line
+              key={i}
+              x1={HUB.x}
+              y1={HUB.y - 200}
+              x2={o.tx}
+              y2={o.ty}
+              stroke={theme.indigo}
+              strokeWidth={2.5}
+              strokeDasharray="9 9"
+              opacity={0.8 * drawn}
+              strokeDashoffset={len * (1 - drawn)}
+            />
+          );
+        })}
+      </svg>
+      <div style={{ position: "absolute", left: HUB.x - 65, top: HUB.y - 65, opacity: hubIn, transform: `scale(${hubIn})` }}>
+        <div style={{ ...NIGHT_CARD, width: 130, height: 130, borderRadius: "50%", borderStyle: "dashed", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <span style={{ fontSize: 52, color: theme.amber, fontWeight: 800 }}>?</span>
+        </div>
+      </div>
+      {CHIPS.map((c) => {
+        const s = pop(frame, fps, c.at);
+        return (
+          <span
+            key={c.label}
+            style={{
+              position: "absolute",
+              left: c.x - 100,
+              top: c.y,
+              fontFamily: theme.mono,
+              fontSize: 20,
+              color: "#cbd5e1",
+              background: "rgba(11,18,32,0.92)",
+              border: "1.5px dashed #475569",
+              borderRadius: 999,
+              padding: "9px 22px",
+              opacity: s,
+              transform: `scale(${s})`,
+            }}
+          >
+            {c.label}
+          </span>
+        );
+      })}
+      {OUT.map((o) => {
+        const s = pop(frame, fps, o.at + 0.5);
+        return (
+          <span
+            key={o.label}
+            style={{
+              position: "absolute",
+              left: o.tx - 105,
+              top: o.ty - 22,
+              fontFamily: theme.mono,
+              fontSize: 19,
+              color: theme.amber,
+              background: "rgba(11,18,32,0.92)",
+              border: "1.5px solid #475569",
+              borderRadius: 999,
+              padding: "7px 20px",
+              opacity: s,
+              transform: `scale(${s})`,
+            }}
+          >
+            {o.label}?
+          </span>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// ---------------------------------------------------------------- N-4
+/** Challenge 2, cross-border: the established mesh on the left, new
+ *  flag-tagged ecosystems on the right, arrows stopped at the border. */
+export const CrossBorderQV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const borderIn = pop(frame, fps, 0.4);
+  const island = (cx: number, cy: number, delay: number, dashed: boolean, flag?: string, tag?: string) => {
+    const s = pop(frame, fps, delay);
+    const nodes = Array.from({ length: 5 }, (_, i) => {
+      const a = (i / 5) * Math.PI * 2;
+      return { x: cx + 80 * Math.cos(a), y: cy + 52 * Math.sin(a) };
+    });
+    return (
+      <div style={{ position: "absolute", inset: 0, opacity: s }}>
+        <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
+          <ellipse cx={cx} cy={cy} rx={125} ry={88} fill="none" stroke={dashed ? "#475569" : "#334155"} strokeWidth={2} strokeDasharray={dashed ? "6 6" : undefined} />
+          {nodes.map((n, i) => (
+            <line key={i} x1={cx} y1={cy} x2={n.x} y2={n.y} stroke="#1e293b" strokeWidth={2} />
+          ))}
+        </svg>
+        {[{ x: cx, y: cy }, ...nodes].map((n, i) => (
+          <div key={i} style={{ position: "absolute", left: n.x - (i === 0 ? 15 : 9), top: n.y - (i === 0 ? 15 : 9), width: i === 0 ? 30 : 18, height: i === 0 ? 30 : 18, borderRadius: "50%", background: i === 0 ? "#334155" : "#1f2937", border: `2px solid ${i === 0 ? "#64748b" : "#475569"}` }} />
+        ))}
+        {flag ? (
+          <span style={{ position: "absolute", left: cx - 27, top: cy - 145, fontSize: 30, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "4px 10px" }}>{flag}</span>
+        ) : null}
+        {tag ? (
+          <span style={{ position: "absolute", left: cx - 62, top: cy + 100, fontFamily: theme.mono, fontSize: 16, color: "#94a3b8", background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 999, padding: "5px 14px" }}>{tag}</span>
+        ) : null}
+      </div>
+    );
+  };
+  const arrows = [
+    { y: 300, at: 3.2 },
+    { y: 480, at: 3.9 },
+    { y: 645, at: 4.6 },
+  ];
+  return (
+    <AbsoluteFill style={{ background: theme.night }}>
+      <ChallengeChip n={2} label="cross-border" />
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        <line x1={960} y1={150} x2={960} y2={790} stroke="#64748b" strokeWidth={3} strokeDasharray="12 10" opacity={borderIn} />
+        {arrows.map((a, i) => {
+          const drawn = interpolate(t, [a.at, a.at + 0.6], [0, 1], clamp);
+          return (
+            <g key={i} opacity={drawn}>
+              <line x1={1210} y1={a.y} x2={1210 - 200 * drawn} y2={a.y} stroke={theme.indigo} strokeWidth={2.5} strokeDasharray="8 8" />
+              <path d={`M ${1210 - 200 * drawn} ${a.y - 8} l -14 8 l 14 8 z`} fill={theme.indigo} />
+            </g>
+          );
+        })}
+        <line x1={400} y1={300} x2={650} y2={620} stroke={theme.indigo} strokeWidth={2.5} opacity={0.8 * interpolate(t, [1.2, 1.8], [0, 1], clamp)} />
+      </svg>
+      {island(400, 300, 0.6, false)}
+      {island(650, 620, 0.9, false)}
+      {island(1330, 300, 1.6, true, "🇯🇵")}
+      {island(1650, 490, 2.0, true, "🇵🇪")}
+      {island(1330, 645, 2.4, true, undefined, "any sector")}
+      {arrows.map((a, i) => {
+        const s = pop(frame, fps, a.at + 0.6);
+        return (
+          <span key={i} style={{ position: "absolute", left: 935, top: a.y - 26, fontSize: 30, color: theme.amber, fontWeight: 800, background: theme.night, padding: "0 6px", opacity: s, transform: `scale(${s})` }}>
+            ?
+          </span>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// ---------------------------------------------------------------- N-5
+/** Challenge 3, mutual authentication: a service + agent pair per country,
+ *  pinging who are you? / can I trust you? across the divide. */
+export const MutualAuthV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const node = (x: number, y: number, kind: "agent" | "service", delay: number) => {
+    const s = pop(frame, fps, delay);
+    return (
+      <div style={{ position: "absolute", left: x - 60, top: y - 60, opacity: s, transform: `scale(${s})` }}>
+        <div style={{ ...NIGHT_CARD, width: 120, height: 120, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <PartyIcon kind={kind} size={54} color="#cbd5e1" />
+        </div>
+      </div>
+    );
+  };
+  const ping = (x1: number, x2: number, y: number, label: string, at: number, period: number) => {
+    const cycle = (t - at + period * 10) % period;
+    const p = interpolate(cycle, [0, 1.6], [0.1, 0.9], clamp);
+    const fade = t >= at ? Math.max(0, Math.sin((cycle / 1.6) * Math.PI)) : 0;
+    const x = x1 + (x2 - x1) * p;
+    return (
+      <span
+        style={{
+          position: "absolute",
+          left: x - 92,
+          top: y - 21,
+          fontFamily: theme.mono,
+          fontSize: 19,
+          color: theme.amber,
+          background: "rgba(11,18,32,0.94)",
+          border: "1.5px solid #475569",
+          borderRadius: 999,
+          padding: "6px 18px",
+          opacity: fade,
+        }}
+      >
+        {label}
+      </span>
+    );
+  };
+  return (
+    <AbsoluteFill style={{ background: theme.night }}>
+      <ChallengeChip n={3} label="mutual authentication" />
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        <line x1={560} y1={350} x2={1360} y2={350} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.1)} />
+        <line x1={560} y1={620} x2={1360} y2={620} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.3)} />
+      </svg>
+      <span style={{ position: "absolute", left: 385, top: 210, fontSize: 34, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.4) }}>🇫🇷</span>
+      {node(450, 350, "service", 0.5)}
+      {node(450, 620, "agent", 0.7)}
+      <span style={{ position: "absolute", left: 1455, top: 210, fontSize: 34, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.6) }}>🇯🇵</span>
+      {node(1470, 350, "service", 0.8)}
+      {node(1470, 620, "agent", 1.0)}
+      {ping(560, 1360, 350, "who are you?", 1.6, 3.4)}
+      {ping(1360, 560, 620, "can I trust you?", 3.3, 3.4)}
+    </AbsoluteFill>
+  );
+};
+
 // ---------------------------------------------------------------- N-7
 export const EcosystemSearchV3: React.FC = () => {
   const frame = useCurrentFrame();
@@ -904,6 +1197,7 @@ export const EcosystemSearchV3: React.FC = () => {
   const st = { fill: "none", stroke: "#e2e8f0", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
   return (
     <AbsoluteFill style={{ background: theme.night }}>
+      <ChallengeChip n={4} label="discover" />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
         {nodes.map((n, i) => (
           <line

@@ -59,8 +59,11 @@ export type Visual =
   | { kind: "verana-close" } // N-10: verana.io finale (intro v2)
   | { kind: "foundations-v3" } // intro v3 copies of the v2 scenes
   | { kind: "sectors-v3" } // (unused) the beyond-human-identity sector map
-  | { kind: "identify-v3" } // N-3: entity + controller identification
-  | { kind: "self-identify-v3" } // N-4: the party triangle, who are you?
+  | { kind: "identify-v3" } // (unused) entity + controller identification
+  | { kind: "self-identify-v3" } // (unused) the party triangle, who are you?
+  | { kind: "create-eco-q-v3" } // N-3: challenge 1, create ecosystems at will
+  | { kind: "cross-border-q-v3" } // N-4: challenge 2, onboard across borders
+  | { kind: "mutual-auth-v3" } // N-5: challenge 3, mutual authentication
   | {
       kind: "qr-scan-parties-v3";
       asset: string;
