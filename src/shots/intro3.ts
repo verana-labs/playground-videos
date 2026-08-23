@@ -31,10 +31,10 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     end: 34,
     lines: [
       "The next challenges: interconnect ecosystems.",
-      "Create at will. Scale cross-border.",
+      "Create at will, and monetize. Scale cross-border.",
       "Mutual authentication. Discovery.",
     ],
-    vo: "The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Authenticate mutually. And discover trusted services.",
+    vo: "The next challenges: interconnect ecosystems. Create new ones at will and monetize. Scale cross-border. Authenticate mutually. And discover trusted services.",
     visual: { kind: "silos-v3" },
     tone: "dark",
   },

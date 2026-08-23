@@ -6,7 +6,7 @@ Verifiable credentials are becoming a reality. The foundations are laid: issuer,
 
 <break time="1.5s" />
 
-The next challenges: interconnect ecosystems. Create new ones at will. Scale cross-border. Authenticate mutually. And discover trusted services.
+The next challenges: interconnect ecosystems. Create new ones at will and monetize. Scale cross-border. Authenticate mutually. And discover trusted services.
 
 <break time="1.5s" />
 
