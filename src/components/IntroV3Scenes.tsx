@@ -10,6 +10,7 @@ import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { theme } from "../theme";
 import { AssetImg, useAsset } from "../lib/assets";
+import { QrScanToPhone } from "./QrScan";
 import { VeranaIoLogo, VeranaMark } from "./VeranaLogo";
 
 const pop = (frame: number, fps: number, d: number) =>
@@ -545,6 +546,234 @@ export const SectorsV3: React.FC = () => {
         >
           all verifiable credentials · production, 2026
         </span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ------------------------------------------------------ N-3 / N-4 / N-5 / N-6
+// The reworked question arc: entity + controller identification (N-3),
+// entities identifying themselves pairwise (N-4), and the v1 captures with a
+// person / AI agent / service chip row (N-5, N-6).
+
+const PartyIcon: React.FC<{ kind: "person" | "agent" | "service"; size?: number; color?: string }> = ({
+  kind,
+  size = 34,
+  color = "#94a3b8",
+}) => {
+  const st = { fill: "none", stroke: color, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden>
+      {kind === "person" ? (
+        <>
+          <circle cx="12" cy="8" r="4" {...st} />
+          <path d="M5 21 a7 6 0 0 1 14 0" {...st} />
+        </>
+      ) : kind === "agent" ? (
+        <>
+          <rect x="5" y="8" width="14" height="10" rx="2" {...st} />
+          <path d="M12 4 v4 M9.5 12.5 h.01 M14.5 12.5 h.01 M9 15.5 h6" {...st} />
+        </>
+      ) : (
+        <>
+          <rect x="3" y="4" width="18" height="14" rx="2" {...st} />
+          <path d="M3 8 h18 M7 21 h10" {...st} />
+        </>
+      )}
+    </svg>
+  );
+};
+
+const NIGHT_CARD: React.CSSProperties = {
+  background: "#0b1220",
+  border: "1.5px solid #334155",
+  borderRadius: 16,
+  fontFamily: theme.font,
+};
+
+/** N-3: you, facing a service and an AI agent whose identities cycle; the
+ *  dim controller card materializes behind both. */
+export const IdentifyV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const cycle = Math.floor(t / 0.55);
+  const flicker = 0.55 + 0.45 * Math.abs(Math.sin((t / 0.55) * Math.PI));
+  const SERVICES = ["support-acme.com", "Aurora Bank", "quickpay.io"];
+  const AGENTS = ["Nova Assistant", "agent-7f3", "ShopBot"];
+  const ctrl = interpolate(t, [3.4, 4.0], [0, 1], clamp);
+  const youIn = pop(frame, fps, 0.35);
+  const rows = [
+    { kind: "service" as const, label: SERVICES[cycle % 3], top: 250, at: 0.7 },
+    { kind: "agent" as const, label: AGENTS[(cycle + 1) % 3], top: 520, at: 1.0 },
+  ];
+  return (
+    <AbsoluteFill style={{ background: theme.night }}>
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        {/* your gaze */}
+        <line x1={540} y1={455} x2={930} y2={320} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 0.9)} />
+        <line x1={540} y1={505} x2={930} y2={590} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.2)} />
+        {/* toward the unknown controller */}
+        <line x1={1420} y1={315} x2={1560} y2={430} stroke="#334155" strokeWidth={2} strokeDasharray="4 7" opacity={ctrl} />
+        <line x1={1420} y1={585} x2={1560} y2={470} stroke="#334155" strokeWidth={2} strokeDasharray="4 7" opacity={ctrl} />
+      </svg>
+      {/* you */}
+      <div style={{ position: "absolute", left: 360, top: 400, opacity: youIn, transform: `scale(${youIn})`, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        <div style={{ ...NIGHT_CARD, width: 130, height: 130, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <PartyIcon kind="person" size={62} color="#cbd5e1" />
+        </div>
+        <span style={{ fontFamily: theme.font, fontSize: 20, color: "#94a3b8", fontWeight: 600 }}>you</span>
+      </div>
+      {/* the two entities, identities cycling */}
+      {rows.map((r) => {
+        const s = pop(frame, fps, r.at);
+        return (
+          <div key={r.kind} style={{ position: "absolute", left: 940, top: r.top, width: 470, opacity: s, transform: `scale(${s})` }}>
+            <div style={{ ...NIGHT_CARD, padding: "20px 24px", display: "flex", alignItems: "center", gap: 16 }}>
+              <PartyIcon kind={r.kind} size={44} color="#cbd5e1" />
+              <div>
+                <div style={{ fontSize: 16, color: "#64748b", fontFamily: theme.mono, textTransform: "uppercase", letterSpacing: 1.5 }}>
+                  {r.kind === "service" ? "service" : "AI agent"}
+                </div>
+                <div style={{ fontSize: 26, fontWeight: 700, color: "#e2e8f0", opacity: flicker, fontFamily: theme.mono }}>
+                  {r.label}
+                </div>
+              </div>
+              <span style={{ marginLeft: "auto", fontSize: 34, color: theme.amber, fontWeight: 800, opacity: flicker }}>?</span>
+            </div>
+          </div>
+        );
+      })}
+      {/* the controller behind both */}
+      <div style={{ position: "absolute", left: 1555, top: 385, width: 280, opacity: ctrl, transform: `translateX(${(1 - ctrl) * 30}px)` }}>
+        <div style={{ ...NIGHT_CARD, borderStyle: "dashed", padding: "18px 22px", display: "flex", alignItems: "center", gap: 14 }}>
+          <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
+            <path d="M4 21 V5.5 L13 3 v18 M13 9 l7 2 v10 M2.5 21 h19" fill="none" stroke="#64748b" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: "#94a3b8" }}>controller?</div>
+            <div style={{ fontSize: 15.5, color: "#64748b" }}>who is behind it</div>
+          </div>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** N-4: the party triangle, "who are you?" traveling each pairwise edge. */
+export const SelfIdentifyV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const NODES = [
+    { kind: "person" as const, label: "person", x: 560, y: 270, at: 0.4 },
+    { kind: "agent" as const, label: "AI agent", x: 1360, y: 270, at: 0.6 },
+    { kind: "service" as const, label: "service", x: 960, y: 660, at: 0.8 },
+  ];
+  const EDGES = [
+    { a: 0, b: 1, at: 1.3 },
+    { a: 1, b: 2, at: 2.5 },
+    { a: 2, b: 0, at: 3.7 },
+  ];
+  return (
+    <AbsoluteFill style={{ background: theme.night }}>
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        {EDGES.map((e, i) => (
+          <line
+            key={i}
+            x1={NODES[e.a].x}
+            y1={NODES[e.a].y}
+            x2={NODES[e.b].x}
+            y2={NODES[e.b].y}
+            stroke="#334155"
+            strokeWidth={2}
+            strokeDasharray="7 7"
+            opacity={pop(frame, fps, e.at - 0.2)}
+          />
+        ))}
+      </svg>
+      {NODES.map((n) => {
+        const s = pop(frame, fps, n.at);
+        return (
+          <div key={n.kind} style={{ position: "absolute", left: n.x - 65, top: n.y - 65, opacity: s, transform: `scale(${s})`, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+            <div style={{ ...NIGHT_CARD, width: 130, height: 130, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <PartyIcon kind={n.kind} size={60} color="#cbd5e1" />
+            </div>
+            <span style={{ fontFamily: theme.font, fontSize: 20, color: "#94a3b8", fontWeight: 600 }}>{n.label}</span>
+          </div>
+        );
+      })}
+      {/* the traveling question */}
+      {EDGES.map((e, i) => {
+        const p = interpolate((t - e.at) % 3.6, [0, 1.4], [0.12, 0.88], clamp);
+        const alive = t >= e.at;
+        const fade = alive ? Math.min(1, Math.max(0, Math.sin((((t - e.at) % 3.6) / 1.4) * Math.PI) * 1.6)) : 0;
+        const x = NODES[e.a].x + (NODES[e.b].x - NODES[e.a].x) * p;
+        const y = NODES[e.a].y + (NODES[e.b].y - NODES[e.a].y) * p;
+        return (
+          <span
+            key={i}
+            style={{
+              position: "absolute",
+              left: x - 86,
+              top: y - 22,
+              fontFamily: theme.mono,
+              fontSize: 19,
+              color: theme.amber,
+              background: "rgba(11,18,32,0.92)",
+              border: "1.5px solid #475569",
+              borderRadius: 999,
+              padding: "6px 18px",
+              opacity: fade,
+            }}
+          >
+            who are you?
+          </span>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+/** N-5 / N-6: the v1 capture scene plus the generalized-party chip row. */
+export const QrScanPartiesV3: React.FC<{
+  asset: string;
+  qrLabel: string;
+  caption?: string;
+  phoneSide: "right" | "left";
+  vertical: boolean;
+}> = ({ asset, qrLabel, caption, phoneSide, vertical }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = pop(frame, fps, 1.4);
+  const side: React.CSSProperties = phoneSide === "right" ? { left: 90 } : { right: 90 };
+  return (
+    <AbsoluteFill>
+      <QrScanToPhone asset={asset} qrLabel={qrLabel} caption={caption} phoneSide={phoneSide} vertical={vertical} />
+      <div style={{ position: "absolute", top: 78, ...side, display: "flex", gap: 12, opacity: s, transform: `translateY(${(1 - s) * -14}px)` }}>
+        {(["person", "agent", "service"] as const).map((k) => (
+          <span
+            key={k}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 9,
+              fontFamily: theme.font,
+              fontSize: 17,
+              fontWeight: 600,
+              color: "#cbd5e1",
+              background: "rgba(11,18,32,0.88)",
+              border: "1.5px solid #334155",
+              borderRadius: 999,
+              padding: "7px 16px",
+            }}
+          >
+            <PartyIcon kind={k} size={22} />
+            {k === "person" ? "person" : k === "agent" ? "AI agent" : "service"}
+          </span>
+        ))}
       </div>
     </AbsoluteFill>
   );

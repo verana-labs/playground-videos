@@ -58,7 +58,16 @@ export type Visual =
   | { kind: "freedoms" } // N-9: Build · Choose · Bridge (intro v2)
   | { kind: "verana-close" } // N-10: verana.io finale (intro v2)
   | { kind: "foundations-v3" } // intro v3 copies of the v2 scenes
-  | { kind: "sectors-v3" } // N-1b: the beyond-human-identity sector map
+  | { kind: "sectors-v3" } // (unused) the beyond-human-identity sector map
+  | { kind: "identify-v3" } // N-3: entity + controller identification
+  | { kind: "self-identify-v3" } // N-4: the party triangle, who are you?
+  | {
+      kind: "qr-scan-parties-v3";
+      asset: string;
+      qrLabel: string;
+      caption?: string;
+      phoneSide: "right" | "left";
+    } // N-5/N-6: the v1 capture plus the person/agent/service chip row
   | { kind: "silos-v3" }
   | { kind: "ecosystem-search-v3" }
   | { kind: "build-eco-v3" }

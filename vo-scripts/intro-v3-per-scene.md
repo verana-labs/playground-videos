@@ -23,16 +23,16 @@ Verifiable credentials are becoming a reality. The foundations are laid: issuer,
 These technologies have proven their worth. The next challenges: scalability, interoperability, and monetization.
 
 ## N-3.mp3  (6s)
-Have you ever wondered... who is really behind this service?
+How can you identify a service, or an AI agent? And who really controls it?
 
 ## N-4.mp3  (7s)
-And behind this AI agent?
+And how do AI agents, and services, identify themselves? To people, to services, to each other.
 
 ## N-5.mp3  (6s)
-And when you receive a credential... is it real? Is the issuer accredited?
+And when a person, an AI agent, or a service receives a credential: is it real? Is the issuer accredited?
 
 ## N-6.mp3  (6s)
-And when a service asks for your ID: is it even allowed to ask?
+And when a service, or a person, asks for your ID: is it even allowed to ask?
 
 ## N-7.mp3  (6s)
 And finally: how do you, or your AI agent, find a trusted service?

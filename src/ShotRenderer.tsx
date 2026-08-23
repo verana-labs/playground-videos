@@ -31,7 +31,10 @@ import {
   EcosystemSearchV3,
   BuildEcoV3,
   FoundationsV3,
+  IdentifyV3,
+  QrScanPartiesV3,
   SectorsV3,
+  SelfIdentifyV3,
   ServiceV3,
   SilosV3,
   TrustListsV3,
@@ -112,6 +115,20 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <FoundationsV3 />;
     case "sectors-v3":
       return <SectorsV3 />;
+    case "identify-v3":
+      return <IdentifyV3 />;
+    case "self-identify-v3":
+      return <SelfIdentifyV3 />;
+    case "qr-scan-parties-v3":
+      return (
+        <QrScanPartiesV3
+          asset={v.asset}
+          qrLabel={v.qrLabel}
+          caption={v.caption}
+          phoneSide={v.phoneSide}
+          vertical={format === "vertical"}
+        />
+      );
     case "silos-v3":
       return <SilosV3 />;
     case "ecosystem-search-v3":

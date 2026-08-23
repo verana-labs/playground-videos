@@ -10,19 +10,19 @@ These technologies have proven their worth. The next challenges: scalability, in
 
 <break time="1.5s" />
 
-Have you ever wondered... who is really behind this service?
+How can you identify a service, or an AI agent? And who really controls it?
 
 <break time="1.5s" />
 
-And behind this AI agent?
+And how do AI agents, and services, identify themselves? To people, to services, to each other.
 
 <break time="1.5s" />
 
-And when you receive a credential... is it real? Is the issuer accredited?
+And when a person, an AI agent, or a service receives a credential: is it real? Is the issuer accredited?
 
 <break time="1.5s" />
 
-And when a service asks for your ID: is it even allowed to ask?
+And when a service, or a person, asks for your ID: is it even allowed to ask?
 
 <break time="1.5s" />
 
