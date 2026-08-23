@@ -783,17 +783,57 @@ export const QrScanPartiesV3: React.FC<{
 export const SilosV3: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  // Isolated ecosystem islands on the night stage: solid within, no links
-  // between.
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  // Isolated ecosystem islands on the night stage; then interconnections
+  // draw between them, and new islands appear and join the mesh.
   const clusters = [
     { x: 360, y: 320, n: 5, delay: 0.5 },
     { x: 960, y: 240, n: 6, delay: 0.8 },
     { x: 1560, y: 330, n: 5, delay: 1.1 },
     { x: 620, y: 640, n: 6, delay: 1.4 },
     { x: 1330, y: 650, n: 5, delay: 1.7 },
+    // the newcomers, appearing once the mesh starts to form
+    { x: 180, y: 560, n: 4, delay: 4.8, fresh: true },
+    { x: 1745, y: 585, n: 4, delay: 5.6, fresh: true },
+    { x: 965, y: 505, n: 4, delay: 6.4, fresh: true },
+  ];
+  // Interconnections between island hubs (cross-border links).
+  const links = [
+    { a: 0, b: 1, at: 3.4 },
+    { a: 1, b: 2, at: 3.8 },
+    { a: 3, b: 4, at: 4.2 },
+    { a: 0, b: 3, at: 4.5 },
+    { a: 5, b: 0, at: 5.5 },
+    { a: 6, b: 2, at: 6.3 },
+    { a: 7, b: 1, at: 7.1 },
+    { a: 7, b: 4, at: 7.5 },
+    { a: 7, b: 3, at: 7.9 },
   ];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        {links.map((l, i) => {
+          const A = clusters[l.a];
+          const B = clusters[l.b];
+          const len = Math.hypot(B.x - A.x, B.y - A.y);
+          const drawn = interpolate(t, [l.at, l.at + 0.8], [0, 1], clamp);
+          return (
+            <line
+              key={i}
+              x1={A.x}
+              y1={A.y}
+              x2={B.x}
+              y2={B.y}
+              stroke={theme.indigo}
+              strokeWidth={2.5}
+              opacity={0.85 * drawn}
+              strokeDasharray={len}
+              strokeDashoffset={len * (1 - drawn)}
+            />
+          );
+        })}
+      </svg>
       {clusters.map((c, ci) => {
         const s = pop(frame, fps, c.delay);
         const nodes = Array.from({ length: c.n }, (_, i) => {
@@ -809,7 +849,7 @@ export const SilosV3: React.FC = () => {
                 rx={150}
                 ry={105}
                 fill="none"
-                stroke="#334155"
+                stroke={c.fresh ? "#475569" : "#334155"}
                 strokeWidth="2"
                 strokeDasharray="6 6"
               />

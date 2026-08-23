@@ -6,7 +6,7 @@ Verifiable credentials are becoming a reality. The foundations are laid: issuer,
 
 <break time="1.5s" />
 
-These technologies have proven their worth. The next challenges: scalability, interoperability, and monetization.
+The next challenges: interconnect ecosystems. Cross-border scalability, interoperability, and monetization.
 
 <break time="1.5s" />
 
