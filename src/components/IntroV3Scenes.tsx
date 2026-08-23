@@ -121,11 +121,11 @@ const StarsSeal: React.FC<{ size?: number }> = ({ size = 74 }) => (
   </svg>
 );
 
-// N-1 runs in three beats (spec/intro-v3.md, sources in
-// spec/enabled-countries.md): (1) the standards ecosystem, org logos over the
-// verifiable-credentials trust triangle; (2) eIDAS 2.0, the 27 member-state
-// flags ringing the EU flag, EEA + CH + UA + UK on an outer orbit; (3) beyond
-// Europe, the wallets enabled by end of 2026.
+// N-1 (merged with the former N-1b): Verifiable Credentials are becoming a
+// reality. Beat A: the trust triangle under the standards bodies' logo tiles
+// (W3C, OWF, ToIP, DIF, ISO/IEC 18013-5). Beat B: the stage splits and nine
+// implementation/framework logos pop in (eIDAS 2.0, Google AP2, GLEIF,
+// Microsoft Entra, Open Badges, Digi Yatra, ICAO, Catena-X, C2PA).
 
 /** Centered scene title (N-1 / N-1b): mono kicker over a bold headline. */
 const SceneTitle: React.FC<{ kicker: string; title: string }> = ({ kicker, title }) => {
@@ -214,39 +214,46 @@ const TriangleNode: React.FC<{ label: string; s: number }> = ({ label, s }) => (
   </div>
 );
 
-/** The EU flag, drawn: the blue field and the circle of twelve stars. */
-const EuFlag: React.FC<{ width?: number }> = ({ width = 180 }) => (
-  <svg width={width} height={(width * 2) / 3} viewBox="0 0 90 60" aria-hidden>
-    <rect width="90" height="60" rx="4" fill="#003399" />
-    {Array.from({ length: 12 }, (_, i) => {
-      const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
-      return (
-        <text
-          key={i}
-          x={45 + 17 * Math.cos(a)}
-          y={30 + 17 * Math.sin(a) + 3}
-          textAnchor="middle"
-          fontSize={9}
-          fill="#facc15"
-        >
-          {"★"}
-        </text>
-      );
-    })}
-  </svg>
-);
+/** Implementation/framework tile: the logo alone on a white card. */
+const ImplTile: React.FC<{ id: string; fallback: string; s: number }> = ({ id, fallback, s }) => {
+  const src = useAsset(id);
+  return (
+    <div
+      style={{
+        width: 172,
+        height: 172,
+        borderRadius: 22,
+        background: theme.card,
+        border: "1.5px solid #e2e8f0",
+        boxShadow: "0 10px 26px rgba(15,23,42,0.08)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        fontFamily: theme.font,
+        opacity: s,
+        transform: `scale(${s})`,
+      }}
+    >
+      {src ? (
+        <AssetImg id={id} cover={false} style={{ padding: 26 }} />
+      ) : (
+        <span style={{ fontSize: 19, fontWeight: 800, color: theme.violet, textAlign: "center" }}>{fallback}</span>
+      )}
+    </div>
+  );
+};
 
-const EU_FLAGS = ["🇦🇹", "🇧🇪", "🇧🇬", "🇭🇷", "🇨🇾", "🇨🇿", "🇩🇰", "🇪🇪", "🇫🇮", "🇫🇷", "🇩🇪", "🇬🇷", "🇭🇺", "🇮🇪", "🇮🇹", "🇱🇻", "🇱🇹", "🇱🇺", "🇲🇹", "🇳🇱", "🇵🇱", "🇵🇹", "🇷🇴", "🇸🇰", "🇸🇮", "🇪🇸", "🇸🇪"];
-const ORBIT_FLAGS = ["🇳🇴", "🇮🇸", "🇱🇮", "🇨🇭", "🇺🇦", "🇬🇧"];
-const WORLD = [
-  { f: "🇧🇹", label: "Bhutan" },
-  { f: "🇯🇵", label: "Japan" },
-  { f: "🇰🇷", label: "South Korea" },
-  { f: "🇵🇪", label: "Peru" },
-  { f: "🇺🇸", label: "21+ US states" },
-  { f: "🇨🇦", label: "British Columbia" },
-  { f: "🇦🇷", label: "Buenos Aires" },
-  { f: "🇦🇺", label: "Queensland" },
+const IMPLEMENTATIONS = [
+  { id: "wallet-logos/eudi", fallback: "eIDAS 2.0" },
+  { id: "standards-logos/ap2", fallback: "Google AP2" },
+  { id: "standards-logos/gleif", fallback: "GLEIF" },
+  { id: "standards-logos/entra", fallback: "Microsoft Entra" },
+  { id: "standards-logos/openbadges", fallback: "Open Badges" },
+  { id: "standards-logos/digiyatra", fallback: "Digi Yatra" },
+  { id: "standards-logos/icao", fallback: "ICAO" },
+  { id: "standards-logos/catenax", fallback: "Catena-X" },
+  { id: "standards-logos/c2pa", fallback: "C2PA" },
 ];
 
 export const FoundationsV3: React.FC = () => {
@@ -255,16 +262,13 @@ export const FoundationsV3: React.FC = () => {
   const t = frame / fps;
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const ease = (x: number) => 1 - Math.pow(1 - x, 3);
-  // Beat 2 push: the standards group compresses to the left half.
-  const shift = ease(interpolate(t, [4.5, 5.4], [0, 1], clamp));
+  // Beat B push: the standards group compresses to the left half.
+  const shift = ease(interpolate(t, [8.0, 8.9], [0, 1], clamp));
   // Animated edge draw for the trust triangle.
   const draw = (d: number, len: number) => ({
     strokeDasharray: len,
     strokeDashoffset: len * (1 - interpolate(t, [d, d + 0.7], [0, 1], clamp)),
   });
-  const RING = { x: 1390, y: 462 };
-  const bandIn = ease(interpolate(t, [9.2, 9.9], [0, 1], clamp));
-  const statIn = pop(frame, fps, 11.6);
   const edgeLabel: React.CSSProperties = {
     position: "absolute",
     fontFamily: theme.mono,
@@ -277,8 +281,8 @@ export const FoundationsV3: React.FC = () => {
   };
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
-      <SceneTitle kicker="the foundations" title="Government ID" />
-      {/* ---- beat 1: the standards ecosystem, then docked left ---- */}
+      <SceneTitle kicker="the foundations" title="Verifiable Credentials" />
+      {/* ---- beat A: the standards ecosystem, then docked left ---- */}
       <div
         style={{
           position: "absolute",
@@ -356,172 +360,30 @@ export const FoundationsV3: React.FC = () => {
         </div>
       </div>
 
-      {/* ---- beat 2: eIDAS 2.0, the flag ring ---- */}
-      {t >= 4.5 ? (
-        <>
+      {/* ---- beat B: implementations and frameworks, logos only ---- */}
+      {t >= 8.0 ? (
+        <div style={{ position: "absolute", left: 1106, top: 196, width: 568 }}>
           <div
             style={{
-              position: "absolute",
-              left: RING.x - 105,
-              top: RING.y - 112,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 10,
-              opacity: pop(frame, fps, 4.8),
-              transform: `scale(${pop(frame, fps, 4.8)})`,
+              fontFamily: theme.mono,
+              fontSize: 16,
+              letterSpacing: 2.5,
+              color: theme.faint,
+              textTransform: "uppercase",
+              textAlign: "center",
+              marginBottom: 22,
+              opacity: interpolate(t, [8.3, 8.7], [0, 1], clamp),
             }}
           >
-            <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 14px 36px rgba(15,23,42,0.18)", display: "flex" }}>
-              <EuFlag width={210} />
-            </div>
-            <span
-              style={{
-                fontSize: 24,
-                fontWeight: 800,
-                color: "#1d4ed8",
-                background: "#eff6ff",
-                border: "1.5px solid #bfdbfe",
-                borderRadius: 999,
-                padding: "4px 20px",
-              }}
-            >
-              eIDAS 2.0
-            </span>
-            <span style={{ fontSize: 16.5, fontWeight: 600, color: theme.muted, opacity: interpolate(t, [8.7, 9.1], [0, 1], clamp) }}>
-              27 member states · 24 Dec 2026
-            </span>
+            implementations and frameworks
           </div>
-          {EU_FLAGS.map((f, i) => {
-            const a = (i / EU_FLAGS.length) * Math.PI * 2 - Math.PI / 2;
-            const s = pop(frame, fps, 5.25 + i * 0.115);
-            return (
-              <span
-                key={f}
-                style={{
-                  position: "absolute",
-                  left: RING.x + 268 * Math.cos(a) - 27,
-                  top: RING.y + 268 * Math.sin(a) - 27,
-                  width: 54,
-                  height: 54,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 30,
-                  background: theme.card,
-                  border: "1.5px solid #bfdbfe",
-                  borderRadius: 14,
-                  boxShadow: "0 8px 20px rgba(15,23,42,0.10)",
-                  transform: `scale(${s})`,
-                }}
-              >
-                {f}
-              </span>
-            );
-          })}
-          {ORBIT_FLAGS.map((f, i) => {
-            const a = (i / ORBIT_FLAGS.length) * Math.PI * 2 - Math.PI / 2 + Math.PI / 6;
-            const s = pop(frame, fps, 8.15 + i * 0.1);
-            return (
-              <span
-                key={f}
-                style={{
-                  position: "absolute",
-                  left: RING.x + 348 * Math.cos(a) - 24,
-                  top: RING.y + 348 * Math.sin(a) - 24,
-                  width: 48,
-                  height: 48,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 26,
-                  background: theme.surface,
-                  border: "1.5px dashed #cbd5e1",
-                  borderRadius: 12,
-                  transform: `scale(${s})`,
-                }}
-              >
-                {f}
-              </span>
-            );
-          })}
-        </>
-      ) : null}
-
-      {/* ---- beat 3: beyond Europe ---- */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: 224,
-          background: theme.card,
-          borderTop: "1.5px solid #e2e8f0",
-          boxShadow: "0 -18px 44px rgba(15,23,42,0.08)",
-          padding: "24px 60px 0",
-          transform: `translateY(${(1 - bandIn) * 250}px)`,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div style={{ width: 172, flexShrink: 0 }}>
-            <div style={{ fontFamily: theme.mono, fontSize: 15, letterSpacing: 2, color: theme.faint, textTransform: "uppercase" }}>
-              and beyond
-            </div>
-            <div style={{ fontSize: 24, fontWeight: 800, color: theme.ink }}>Europe</div>
-          </div>
-          {[
-            { id: "standards-logos/mosip", label: "MOSIP" },
-            { id: "wallet-logos/inji", label: "Inji" },
-          ].map((l, i) => (
-            <div key={l.id} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, transform: `scale(${pop(frame, fps, 9.6 + i * 0.15)})` }}>
-              <div
-                style={{
-                  width: 78,
-                  height: 78,
-                  borderRadius: 17,
-                  background: theme.surface,
-                  border: "1.5px solid #e2e8f0",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  overflow: "hidden",
-                }}
-              >
-                <AssetImg id={l.id} cover={false} style={{ padding: 10 }} />
-              </div>
-              <span style={{ fontSize: 14.5, fontWeight: 600, color: theme.muted }}>{l.label}</span>
-            </div>
-          ))}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, maxWidth: 900, marginLeft: 14 }}>
-            {WORLD.map((c, i) => (
-              <span
-                key={c.label}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 10,
-                  fontSize: 19,
-                  fontWeight: 600,
-                  color: theme.ink,
-                  background: theme.surface,
-                  border: "1.5px solid #e2e8f0",
-                  borderRadius: 999,
-                  padding: "8px 18px",
-                  transform: `scale(${pop(frame, fps, 9.9 + i * 0.14)})`,
-                }}
-              >
-                <span style={{ fontSize: 24 }}>{c.f}</span>
-                {c.label}
-              </span>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 172px)", gap: 26, justifyContent: "center" }}>
+            {IMPLEMENTATIONS.map((l, i) => (
+              <ImplTile key={l.id} id={l.id} fallback={l.fallback} s={pop(frame, fps, 8.6 + i * 0.4)} />
             ))}
           </div>
-          <div style={{ marginLeft: "auto", textAlign: "right", flexShrink: 0, opacity: statIn, transform: `translateY(${(1 - statIn) * 20}px)` }}>
-            <div style={{ fontSize: 34, fontWeight: 800, color: theme.violet }}>35+ countries</div>
-            <div style={{ fontSize: 19, color: theme.muted, fontWeight: 600 }}>~800 million people · by end of 2026</div>
-          </div>
         </div>
-      </div>
+      ) : null}
     </AbsoluteFill>
   );
 };
