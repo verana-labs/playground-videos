@@ -26,10 +26,6 @@ And finally, discovery. How do we search the graph of trusted services?
 
 <break time="1.5s" />
 
-Official trust lists exist. But a solution is needed to scale, monetize and address the private ecosystems.
-
-<break time="1.5s" />
-
 Verana is that bridge. Independent, at scale, and across ecosystems.
 
 <break time="1.5s" />

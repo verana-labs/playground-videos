@@ -34,9 +34,6 @@ Mutual authentication. How do services and AI agents from different countries id
 ## N-6.mp3  (7s)
 And finally, discovery. How do we search the graph of trusted services?
 
-## N-8a.mp3  (10s)
-Official trust lists exist. But a solution is needed to scale, monetize and address the private ecosystems.
-
 ## N-8b.mp3  (8s)
 Verana is that bridge. Independent, at scale, and across ecosystems.
 

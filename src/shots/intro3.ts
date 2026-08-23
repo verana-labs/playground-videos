@@ -85,21 +85,9 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     tone: "dark",
   },
   {
-    id: "N-8a",
-    start: 72,
-    end: 82,
-    lines: [
-      "Official trust lists exist.",
-      "A solution is needed to scale, monetize, and address private ecosystems.",
-    ],
-    vo: "Official trust lists exist. But a solution is needed to scale, monetize and address the private ecosystems.",
-    visual: { kind: "trust-lists-v3" },
-    tone: "light",
-  },
-  {
     id: "N-8b",
-    start: 82,
-    end: 90,
+    start: 72,
+    end: 80,
     lines: ["Verana is that bridge.", "Independent, at scale, and across ecosystems."],
     vo: "Verana is that bridge. Independent, at scale, and across ecosystems.",
     visual: { kind: "brand-reveal" },
@@ -107,8 +95,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9a",
-    start: 90,
-    end: 100,
+    start: 80,
+    end: 90,
     lines: [
       "Build your own sovereign ecosystem, freely.",
       "Your rules, your business model.",
@@ -119,8 +107,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9b",
-    start: 100,
-    end: 113,
+    start: 90,
+    end: 103,
     lines: [],
     vo: "Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.",
     visual: { kind: "build-service-v3" },
@@ -128,8 +116,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 113,
-    end: 130,
+    start: 103,
+    end: 120,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -137,4 +125,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 130;
+export const INTRO3_END = 120;
