@@ -19,9 +19,9 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     end: 24,
     lines: [
       "Verifiable Credentials are becoming a reality.",
-      "Standards are set. Implementations ship at scale.",
+      "Each ecosystem addresses its own problem.",
     ],
-    vo: "Verifiable credentials are becoming a reality. The trust triangle, issuer, holder, verifier, is now standardized: W3C, OpenWallet Foundation, Trust over IP, DIF, ISO. And implementations ship at scale: eIDAS 2.0 in Europe, Google's agent payments, GLEIF, Microsoft Entra, Open Badges, Digi Yatra, ICAO, Catena-X, C2PA.",
+    vo: "Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one standardized trust triangle. And implementations are arriving: government identity, agent payments, legal entities, employment, diplomas, travel, supply chains, content. Each ecosystem, addressing its own problem.",
     visual: { kind: "foundations-v3" },
     tone: "light",
   },
