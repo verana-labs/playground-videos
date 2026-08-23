@@ -19,9 +19,9 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     end: 24,
     lines: [
       "Verifiable Credentials are becoming a reality.",
-      "Each ecosystem addresses its own problem.",
+      "Each ecosystem, bringing value to the entire digital economy.",
     ],
-    vo: "Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one standardized trust triangle. And implementations are arriving: government identity, agent payments, legal entities, employment, diplomas, travel, supply chains, content. Each ecosystem, addressing its own problem.",
+    vo: "Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.",
     visual: { kind: "foundations-v3" },
     tone: "light",
   },

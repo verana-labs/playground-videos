@@ -17,7 +17,7 @@ regenerate that clip alone with "e-idas".
 Verana. The open trust infrastructure for the verifiable internet.
 
 ## N-1.mp3  (18s)
-Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one standardized trust triangle. And implementations are arriving: government identity, agent payments, legal entities, employment, diplomas, travel, supply chains, content. Each ecosystem, addressing its own problem.
+Verifiable credentials are becoming a reality. The foundations are laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
 ## N-2.mp3  (10s)
 These technologies have proven their worth. The next challenges: scalability, interoperability, and monetization.
