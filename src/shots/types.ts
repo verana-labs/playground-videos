@@ -58,6 +58,7 @@ export type Visual =
   | { kind: "freedoms" } // N-9: Build · Choose · Bridge (intro v2)
   | { kind: "verana-close" } // N-10: verana.io finale (intro v2)
   | { kind: "foundations-v3" } // intro v3 copies of the v2 scenes
+  | { kind: "sectors-v3" } // N-1b: the beyond-human-identity sector map
   | { kind: "silos-v3" }
   | { kind: "ecosystem-search-v3" }
   | { kind: "build-eco-v3" }

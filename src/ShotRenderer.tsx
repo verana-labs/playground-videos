@@ -31,6 +31,7 @@ import {
   EcosystemSearchV3,
   BuildEcoV3,
   FoundationsV3,
+  SectorsV3,
   ServiceV3,
   SilosV3,
   TrustListsV3,
@@ -109,6 +110,8 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <VeranaClose />;
     case "foundations-v3":
       return <FoundationsV3 />;
+    case "sectors-v3":
+      return <SectorsV3 />;
     case "silos-v3":
       return <SilosV3 />;
     case "ecosystem-search-v3":

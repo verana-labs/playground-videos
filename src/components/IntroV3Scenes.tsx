@@ -127,6 +127,32 @@ const StarsSeal: React.FC<{ size?: number }> = ({ size = 74 }) => (
 // flags ringing the EU flag, EEA + CH + UA + UK on an outer orbit; (3) beyond
 // Europe, the wallets enabled by end of 2026.
 
+/** Centered scene title (N-1 / N-1b): mono kicker over a bold headline. */
+const SceneTitle: React.FC<{ kicker: string; title: string }> = ({ kicker, title }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = pop(frame, fps, 0.15);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 30,
+        left: 0,
+        right: 0,
+        textAlign: "center",
+        fontFamily: theme.font,
+        opacity: s,
+        transform: `translateY(${(1 - s) * -16}px)`,
+      }}
+    >
+      <div style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 3, color: theme.faint, textTransform: "uppercase" }}>
+        {kicker}
+      </div>
+      <div style={{ fontSize: 46, fontWeight: 800, color: theme.ink }}>{title}</div>
+    </div>
+  );
+};
+
 const LogoTile: React.FC<{ id: string; label: string; s: number; size?: number }> = ({
   id,
   label,
@@ -251,11 +277,12 @@ export const FoundationsV3: React.FC = () => {
   };
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
+      <SceneTitle kicker="the foundations" title="Government ID" />
       {/* ---- beat 1: the standards ecosystem, then docked left ---- */}
       <div
         style={{
           position: "absolute",
-          top: 96,
+          top: 170,
           left: "50%",
           width: 1240,
           transform: `translateX(calc(-50% + ${-shift * 450}px)) scale(${1 - shift * 0.36})`,
@@ -274,11 +301,11 @@ export const FoundationsV3: React.FC = () => {
           ))}
         </div>
         {/* the verifiable-credentials trust triangle */}
-        <div style={{ position: "relative", width: 1040, height: 452, margin: "38px auto 0" }}>
+        <div style={{ position: "relative", width: 1040, height: 410, margin: "30px auto 0" }}>
           <svg
             width={1040}
-            height={452}
-            viewBox="0 0 1040 452"
+            height={410}
+            viewBox="0 0 1040 410"
             style={{ position: "absolute", inset: 0 }}
             aria-hidden
           >
@@ -288,9 +315,9 @@ export const FoundationsV3: React.FC = () => {
               </marker>
             </defs>
             {/* issues: Issuer -> Holder */}
-            <line x1={215} y1={112} x2={455} y2={330} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.3, 330)} />
+            <line x1={215} y1={112} x2={455} y2={294} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.3, 330)} />
             {/* presents: Holder -> Verifier */}
-            <line x1={585} y1={330} x2={825} y2={112} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.9, 330)} />
+            <line x1={585} y1={294} x2={825} y2={112} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.9, 330)} />
             {/* trusts?: Verifier -> Issuer, the edge Verana serves */}
             <line x1={790} y1={62} x2={250} y2={62} stroke={theme.faint} strokeWidth={3} strokeDasharray="10 8" markerEnd="url(#tri-arrow)" opacity={interpolate(t, [3.5, 4.0], [0, 1], clamp)} />
           </svg>
@@ -300,14 +327,14 @@ export const FoundationsV3: React.FC = () => {
           <div style={{ position: "absolute", left: 765, top: 32 }}>
             <TriangleNode label="Verifier" s={pop(frame, fps, 2.1)} />
           </div>
-          <div style={{ position: "absolute", left: 415, top: 316 }}>
+          <div style={{ position: "absolute", left: 415, top: 280 }}>
             <TriangleNode label="Holder" s={pop(frame, fps, 1.9)} />
           </div>
-          <div style={{ ...edgeLabel, left: 240, top: 208, opacity: interpolate(t, [2.6, 2.9], [0, 1], clamp) }}>issues</div>
-          <div style={{ ...edgeLabel, left: 690, top: 208, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>presents</div>
+          <div style={{ ...edgeLabel, left: 240, top: 190, opacity: interpolate(t, [2.6, 2.9], [0, 1], clamp) }}>issues</div>
+          <div style={{ ...edgeLabel, left: 690, top: 190, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>presents</div>
           <div style={{ ...edgeLabel, left: 468, top: 20, color: theme.muted, background: "#f8fafc", border: "1.5px solid #e2e8f0", opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>trusts?</div>
           {/* credential formats, snapping onto the credential */}
-          <div style={{ position: "absolute", left: 0, right: 0, top: 402, display: "flex", gap: 14, justifyContent: "center" }}>
+          <div style={{ position: "absolute", left: 0, right: 0, top: 366, display: "flex", gap: 14, justifyContent: "center" }}>
             {["SD-JWT VC", "mdoc"].map((c, i) => (
               <span
                 key={c}
@@ -494,6 +521,168 @@ export const FoundationsV3: React.FC = () => {
             <div style={{ fontSize: 19, color: theme.muted, fontWeight: 600 }}>~800 million people · by end of 2026</div>
           </div>
         </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ---------------------------------------------------------------- N-1b
+// The sector map of spec/beyond-human-identity.md: nine sectors already
+// using verifiable credentials in production beyond citizen identity.
+const SECTOR_ICON: Record<string, React.ReactNode> = (() => {
+  const st = { fill: "none", stroke: theme.violet, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  return {
+    agent: (
+      <>
+        <rect x="5" y="8" width="14" height="10" rx="2" {...st} />
+        <path d="M12 4 v4 M9.5 12.5 h.01 M14.5 12.5 h.01 M9 15.5 h6" {...st} />
+      </>
+    ),
+    badge: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" {...st} />
+        <circle cx="8" cy="11" r="2" {...st} />
+        <path d="M6 16 a2.5 2 0 0 1 4 0 M13 9 h5 M13 13 h5" {...st} />
+      </>
+    ),
+    cap: (
+      <>
+        <path d="M12 4 L22 9 L12 14 L2 9 Z" {...st} />
+        <path d="M6.5 11.5 v3.8 c0 1.6 11 1.6 11 0 v-3.8" {...st} />
+      </>
+    ),
+    building: <path d="M4 21 V5.5 L13 3 v18 M13 9 l7 2 v10 M2.5 21 h19" {...st} />,
+    cross: (
+      <>
+        <circle cx="12" cy="12" r="9" {...st} />
+        <path d="M12 8 v8 M8 12 h8" {...st} />
+      </>
+    ),
+    plane: <path d="M21.5 3.5 L2.5 10 L10.5 13.5 L14 21.5 Z M10.5 13.5 L21.5 3.5" {...st} />,
+    chain: (
+      <>
+        <rect x="3" y="13" width="7" height="7" rx="1" {...st} />
+        <rect x="14" y="13" width="7" height="7" rx="1" {...st} />
+        <rect x="8.5" y="3" width="7" height="7" rx="1" {...st} />
+        <path d="M10 13 l1 -3 M14 13 l-1 -3 M10 16.5 h4" {...st} />
+      </>
+    ),
+    shield: (
+      <>
+        <path d="M12 3 L20 6 v6 c0 4.8 -3.6 7.8 -8 9 c-4.4 -1.2 -8 -4.2 -8 -9 V6 Z" {...st} />
+        <text x="12" y="14.6" textAnchor="middle" fontSize="7" fontWeight="700" fill={theme.violet} stroke="none">
+          18+
+        </text>
+      </>
+    ),
+    camera: (
+      <>
+        <rect x="3" y="7" width="18" height="13" rx="2" {...st} />
+        <circle cx="12" cy="13.5" r="4" {...st} />
+        <path d="M8.5 7 L10 4.5 h4 L15.5 7" {...st} />
+      </>
+    ),
+  };
+})();
+
+const SECTORS = [
+  { icon: "agent", title: "Agentic commerce", who: "Google AP2 · FIDO · Mastercard, Visa" },
+  { icon: "badge", title: "Workforce", who: "Microsoft Entra · LinkedIn" },
+  { icon: "cap", title: "Education", who: "Open Badges 3.0 · MIT DCC · EBSI" },
+  { icon: "building", title: "Organizations", who: "GLEIF vLEI · eIDAS business wallets" },
+  { icon: "cross", title: "Healthcare", who: "SMART Health Cards" },
+  { icon: "plane", title: "Travel", who: "Digi Yatra · ICAO DTC · IATA One ID" },
+  { icon: "chain", title: "Supply chain", who: "Catena-X · TradeTrust · GS1" },
+  { icon: "shield", title: "Age assurance", who: "Google Wallet ZK · EU mini-wallet" },
+  { icon: "camera", title: "Content authenticity", who: "C2PA · Adobe, Leica, TikTok" },
+];
+
+export const SectorsV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const ribbon = pop(frame, fps, 10.2);
+  return (
+    <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
+      <SceneTitle kicker="in production today" title="Beyond human identity" />
+      <div
+        style={{
+          position: "absolute",
+          top: 230,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 430px)", gap: 30 }}>
+          {SECTORS.map((sec, i) => {
+            const s = pop(frame, fps, 1.6 + i * 0.85);
+            return (
+              <div
+                key={sec.title}
+                style={{
+                  background: theme.card,
+                  border: "1.5px solid #e2e8f0",
+                  borderRadius: 18,
+                  boxShadow: "0 10px 26px rgba(15,23,42,0.08)",
+                  padding: "20px 22px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 16,
+                  opacity: s,
+                  transform: `scale(${s})`,
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-flex",
+                    width: 62,
+                    height: 62,
+                    borderRadius: 15,
+                    background: "#f5f3ff",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  <svg width={34} height={34} viewBox="0 0 24 24" aria-hidden>
+                    {SECTOR_ICON[sec.icon]}
+                  </svg>
+                </span>
+                <div>
+                  <div style={{ fontSize: 25, fontWeight: 700, color: theme.ink }}>{sec.title}</div>
+                  <div style={{ fontSize: 16.5, color: theme.muted, marginTop: 2 }}>{sec.who}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 800,
+          display: "flex",
+          justifyContent: "center",
+          opacity: ribbon,
+          transform: `translateY(${(1 - ribbon) * 24}px)`,
+        }}
+      >
+        <span
+          style={{
+            fontSize: 24,
+            fontWeight: 700,
+            color: "#6d28d9",
+            background: "#f5f3ff",
+            border: "1.5px solid #ddd6fe",
+            borderRadius: 999,
+            padding: "12px 34px",
+          }}
+        >
+          all verifiable credentials · production, 2026
+        </span>
       </div>
     </AbsoluteFill>
   );

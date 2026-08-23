@@ -19,6 +19,9 @@ Verana. The open trust infrastructure for the verifiable internet.
 ## N-1.mp3  (18s)
 Decentralized digital identity is becoming a reality: eIDAS 2.0 in Europe, and the W3C standards ecosystem. We build on both.
 
+## N-1b.mp3  (14s)
+And credentials go beyond government ID. AI agents authorized to pay. Employment and diplomas. Legal entities and health records. Travel and supply chains. Age checks and content authenticity. All on the same standards, in production today.
+
 ## N-2.mp3  (10s)
 These technologies have proven their worth. The next challenges: scalability, interoperability, and monetization.
 
