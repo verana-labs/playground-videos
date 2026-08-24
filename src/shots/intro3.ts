@@ -28,7 +28,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   {
     id: "N-2",
     start: 24,
-    end: 34,
+    end: 37,
     lines: [
       "The next challenges: interconnect ecosystems.",
       "Create at will, and monetize. Scale cross-border.",
@@ -40,8 +40,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-3",
-    start: 34,
-    end: 48,
+    start: 37,
+    end: 54,
     lines: [
       "Scale: create new ecosystems at will.",
       "Schemas, accreditation lists, business models...",
@@ -53,8 +53,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-4",
-    start: 48,
-    end: 56,
+    start: 54,
+    end: 62,
     lines: [
       "Scale cross-border.",
       "How to recognize and onboard ecosystems from any country, any sector?",
@@ -65,8 +65,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-5",
-    start: 56,
-    end: 65,
+    start: 62,
+    end: 71,
     lines: [
       "Mutual authentication.",
       "Can services and AI agents from different countries identify and trust each other?",
@@ -77,8 +77,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-6",
-    start: 65,
-    end: 72,
+    start: 71,
+    end: 77,
     lines: ["And finally: discovery.", "How do we search the graph of trusted services?"],
     vo: "And finally, discovery. How do we search the graph of trusted services?",
     visual: { kind: "ecosystem-search-v3" },
@@ -86,8 +86,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-8b",
-    start: 72,
-    end: 80,
+    start: 77,
+    end: 89,
     lines: ["Verana answers all of this.", "Open, neutral, owned by no one."],
     vo: "Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, owned by no one.",
     visual: { kind: "brand-reveal" },
@@ -95,8 +95,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9a",
-    start: 80,
-    end: 93,
+    start: 89,
+    end: 105,
     lines: [
       "Build your own sovereign ecosystem trust registry.",
       "Your ecosystem exists, and is discoverable.",
@@ -107,8 +107,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9b",
-    start: 93,
-    end: 110,
+    start: 105,
+    end: 126,
     lines: [
       "Deploy your services and AI agents.",
       "Attach credentials: become visible in the Trust Graph.",
@@ -120,8 +120,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9c",
-    start: 110,
-    end: 121,
+    start: 126,
+    end: 141,
     lines: [
       "You are now part of the Trust Graph.",
       "Be found. Mutually authenticate. Connect.",
@@ -132,8 +132,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9d",
-    start: 121,
-    end: 135,
+    start: 141,
+    end: 161,
     lines: [
       "Open specs. Open source. Non-profit, community managed.",
       "Join the Foundation, free. Join or create working groups.",
@@ -144,8 +144,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 135,
-    end: 152,
+    start: 161,
+    end: 176,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Try it yourself, on the public playground. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -153,4 +153,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 152;
+export const INTRO3_END = 176;
