@@ -2149,8 +2149,8 @@ export const AnswersV3: React.FC = () => {
       ),
     },
     {
-      title: "Verifiable identity",
-      sub: "deploy services and AI agents; issue and verify credentials, wallet to wallet",
+      title: "Verifiable services",
+      sub: "deploy services and AI agents; issue and verify credentials from any ecosystem you are interested in",
       at: 4.1,
       icon: (
         <>

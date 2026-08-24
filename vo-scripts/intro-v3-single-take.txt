@@ -26,7 +26,7 @@ Challenge four, and finally: discovery. How do we search the graph of trusted se
 
 <break time="1.5s" />
 
-Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, cross-border, owned by no one.
+Verana answers all of this. Sovereign ecosystems, verifiable services, one public Trust Graph. Open, neutral, cross-border, owned by no one.
 
 <break time="1.5s" />
 
