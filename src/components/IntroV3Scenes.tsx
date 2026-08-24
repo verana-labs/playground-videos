@@ -1680,15 +1680,18 @@ export const BuildEcoTreeV3: React.FC = () => {
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const draw = (d: number) => interpolate(t, [d, d + 0.5], [0, 1], clamp);
   const rootIn = pop(frame, fps, 0.5);
-  const anchorIn = pop(frame, fps, 1.3);
+  // Attention pulse: a quick swell + glow as the narration names the element.
+  const pulseK = (at: number) => interpolate(t, [at, at + 0.25, at + 0.9], [0, 1, 0], clamp);
+  // Word-synced beats, measured from the take-6 clip.
   const ARTIFACTS = [
-    { label: "governance framework", at: 2.7 },
-    { label: "credential schemas", at: 3.5 },
-    { label: "business model", at: 4.3 },
+    { label: "governance framework", at: 9.9 },
+    { label: "credential schemas", at: 11.6 },
+    { label: "business model", at: 12.9 },
   ];
-  const ringIn = interpolate(t, [9.8, 10.5], [0, 1], clamp);
-  const lensIn = pop(frame, fps, 10.2);
-  const badgeIn = pop(frame, fps, 11.0);
+  const rootPulse = pulseK(7.5);
+  const ringIn = interpolate(t, [18.6, 19.3], [0, 1], clamp);
+  const lensIn = pop(frame, fps, 19.0);
+  const badgeIn = pop(frame, fps, 19.4);
   // The tree column.
   const TX = 1310;
   const tier = (y: number) => y;
@@ -1696,60 +1699,39 @@ export const BuildEcoTreeV3: React.FC = () => {
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       <SceneTitle kicker="for ecosystem builders" title="Build your ecosystem" />
       {/* ---- left: the root card, its anchor, its artifacts ---- */}
-      <div style={{ position: "absolute", left: 480 - 190, top: 230, width: 380, opacity: rootIn, transform: `scale(${rootIn})` }}>
+      <div style={{ position: "absolute", left: 480 - 190, top: 230, width: 380, opacity: rootIn, transform: `scale(${rootIn * (1 + 0.08 * rootPulse)})` }}>
         <div
           style={{
             background: "#f5f3ff",
             border: `2.5px solid ${theme.violet}`,
             borderRadius: 18,
-            boxShadow: "0 14px 36px rgba(15,23,42,0.12)",
-            padding: "20px 24px",
+            boxShadow: `0 14px 36px rgba(15,23,42,0.12), 0 0 0 ${12 * rootPulse}px rgba(124,58,237,0.16)`,
+            padding: "22px 24px",
             textAlign: "center",
           }}
         >
-          <div style={{ fontFamily: theme.mono, fontSize: 14, letterSpacing: 2, color: theme.violet }}>T0 · ROOT</div>
-          <div style={{ fontSize: 30, fontWeight: 800, color: theme.ink, marginTop: 4 }}>Your Ecosystem</div>
+          <div style={{ fontSize: 31, fontWeight: 800, color: theme.ink }}>Your Ecosystem</div>
         </div>
       </div>
-      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={480} y1={348} x2={480} y2={398} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="6 6" opacity={anchorIn} />
-        {ARTIFACTS.map((a, i) => (
-          <line key={a.label} x1={480} y1={438} x2={480} y2={438 + 36 + i * 78 - 36} stroke="#ddd6fe" strokeWidth={0} />
-        ))}
-      </svg>
-      <div style={{ position: "absolute", left: 480 - 260, top: 402, width: 520, textAlign: "center", whiteSpace: "nowrap", opacity: anchorIn, transform: `translateY(${(1 - anchorIn) * -10}px)` }}>
-        <span
-          style={{
-            fontFamily: theme.mono,
-            fontSize: 15,
-            letterSpacing: 1,
-            color: "#6d28d9",
-            background: "#f5f3ff",
-            border: "1.5px solid #ddd6fe",
-            borderRadius: 999,
-            padding: "8px 18px",
-          }}
-        >
-          anchored on the Verifiable Public Registry
-        </span>
-      </div>
-      <div style={{ position: "absolute", left: 480 - 165, top: 490, width: 330, display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ position: "absolute", left: 480 - 165, top: 410, width: 330, display: "flex", flexDirection: "column", gap: 18 }}>
         {ARTIFACTS.map((a) => {
           const s = pop(frame, fps, a.at);
+          const k = pulseK(a.at + 0.1);
           return (
             <span
               key={a.label}
               style={{
                 fontFamily: theme.mono,
-                fontSize: 19,
+                fontSize: 20,
                 color: "#6d28d9",
                 background: "#f5f3ff",
                 border: "1.5px solid #ddd6fe",
                 borderRadius: 999,
-                padding: "11px 20px",
+                padding: "12px 20px",
                 textAlign: "center",
                 opacity: s,
-                transform: `scale(${s})`,
+                transform: `scale(${s * (1 + 0.1 * k)})`,
+                boxShadow: `0 0 0 ${10 * k}px rgba(124,58,237,0.16)`,
               }}
             >
               {a.label}
@@ -1757,42 +1739,27 @@ export const BuildEcoTreeV3: React.FC = () => {
           );
         })}
       </div>
-      {/* published tick: each artifact hangs off the root */}
-      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        {ARTIFACTS.map((a, i) => (
-          <line
-            key={a.label}
-            x1={480}
-            y1={412}
-            x2={480}
-            y2={452 + i * 78 + 24}
-            stroke="#ddd6fe"
-            strokeWidth={2}
-            opacity={0.0}
-          />
-        ))}
-      </svg>
 
       {/* ---- onboarding edge from the root card into the tree ---- */}
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={672} y1={288} x2={TX - 122} y2={288} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="7 7" opacity={draw(5.6)} />
+        <line x1={672} y1={288} x2={TX - 122} y2={288} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="7 7" opacity={draw(14.4)} />
         {/* accredits: root -> grantors */}
-        <line x1={TX} y1={330} x2={TX - 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(6.4)} />
-        <line x1={TX} y1={330} x2={TX + 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(6.4)} />
+        <line x1={TX} y1={330} x2={TX - 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(15.3)} />
+        <line x1={TX} y1={330} x2={TX + 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(15.3)} />
         {/* grantors -> issuers/verifiers */}
-        <line x1={TX - 180} y1={514} x2={TX - 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(7.2)} />
-        <line x1={TX + 180} y1={514} x2={TX + 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(7.2)} />
+        <line x1={TX - 180} y1={514} x2={TX - 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(16.1)} />
+        <line x1={TX + 180} y1={514} x2={TX + 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(16.1)} />
         {/* issuers issue to / verifiers verify holders */}
-        <line x1={TX - 180} y1={684} x2={TX - 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(8.0)} />
-        <line x1={TX + 180} y1={684} x2={TX + 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(8.0)} />
+        <line x1={TX - 180} y1={684} x2={TX - 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(16.9)} />
+        <line x1={TX + 180} y1={684} x2={TX + 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(16.9)} />
         {/* the discoverable ring */}
         <ellipse cx={TX} cy={560} rx={365} ry={365} fill="none" stroke={theme.green} strokeWidth={3} strokeDasharray="10 8" opacity={ringIn} />
       </svg>
       {/* tier labels */}
       {[
-        { label: "T1 · GRANTORS", y: 458, at: 6.4 },
-        { label: "T2 · ISSUERS + VERIFIERS", y: 628, at: 7.2 },
-        { label: "T3 · HOLDERS", y: 792, at: 8.0 },
+        { label: "T1 · GRANTORS", y: 458, at: 15.3 },
+        { label: "T2 · ISSUERS + VERIFIERS", y: 628, at: 16.1 },
+        { label: "T3 · HOLDERS", y: 792, at: 16.9 },
       ].map((l) => (
         <span
           key={l.label}
@@ -1812,24 +1779,24 @@ export const BuildEcoTreeV3: React.FC = () => {
       ))}
       {/* tree nodes */}
       <div style={{ position: "absolute", left: TX - 120, top: 252 }}>
-        <TreeCard title="Ecosystem" sub="root of trust" s={pop(frame, fps, 5.9)} width={240} accent />
+        <TreeCard title="Ecosystem" sub="root of trust" s={pop(frame, fps, 14.7)} width={240} accent />
       </div>
       <div style={{ position: "absolute", left: TX - 180 - 110, top: 440 }}>
-        <TreeCard title="Issuer Grantor" sub="accredits issuers" s={pop(frame, fps, 6.6)} width={220} />
+        <TreeCard title="Issuer Grantor" sub="accredits issuers" s={pop(frame, fps, 15.5)} width={220} />
       </div>
       <div style={{ position: "absolute", left: TX + 180 - 110, top: 440 }}>
-        <TreeCard title="Verifier Grantor" sub="accredits verifiers" s={pop(frame, fps, 6.7)} width={220} />
+        <TreeCard title="Verifier Grantor" sub="accredits verifiers" s={pop(frame, fps, 15.6)} width={220} />
       </div>
       <div style={{ position: "absolute", left: TX - 180 - 110, top: 608 }}>
-        <TreeCard title="Issuers" sub="issue credentials" s={pop(frame, fps, 7.4)} width={220} />
+        <TreeCard title="Issuers" sub="issue credentials" s={pop(frame, fps, 16.3)} width={220} />
       </div>
       <div style={{ position: "absolute", left: TX + 180 - 110, top: 608 }}>
-        <TreeCard title="Verifiers" sub="request proofs" s={pop(frame, fps, 7.5)} width={220} />
+        <TreeCard title="Verifiers" sub="request proofs" s={pop(frame, fps, 16.4)} width={220} />
       </div>
       {/* holders: person · service · AI agent */}
       <div style={{ position: "absolute", left: TX - 132, top: 772, display: "flex", gap: 24 }}>
         {(["person", "service", "agent"] as const).map((k, i) => {
-          const s = pop(frame, fps, 8.2 + i * 0.15);
+          const s = pop(frame, fps, 17.1 + i * 0.15);
           return (
             <div
               key={k}
@@ -1852,7 +1819,7 @@ export const BuildEcoTreeV3: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ position: "absolute", left: TX - 190, top: 856, width: 380, textAlign: "center", fontSize: 15.5, color: theme.muted, fontWeight: 600, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
+      <div style={{ position: "absolute", left: TX - 190, top: 856, width: 380, textAlign: "center", fontSize: 15.5, color: theme.muted, fontWeight: 600, opacity: interpolate(t, [17.5, 17.9], [0, 1], clamp) }}>
         holders · human · service · AI agent
       </div>
       {/* ---- beat 4: found by the lens ---- */}
