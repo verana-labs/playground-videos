@@ -2099,7 +2099,31 @@ export const FoundationV3: React.FC = () => {
   const joinIn = pop(frame, fps, 5.6);
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
-      <SceneTitle kicker="built in the open" title="The Verana Foundation" />
+      {/* the official foundation logo (veranafoundation.org) beside the title */}
+      <div
+        style={{
+          position: "absolute",
+          top: 26,
+          left: 0,
+          right: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 6,
+          opacity: pop(frame, fps, 0.15),
+          transform: `translateY(${(1 - (pop(frame, fps, 0.15) as number)) * -16}px)`,
+        }}
+      >
+        <div style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 3, color: theme.faint, textTransform: "uppercase" }}>
+          built in the open
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div style={{ width: 66, height: 64, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <AssetImg id="standards-logos/foundation" cover={false} />
+          </div>
+          <div style={{ fontSize: 46, fontWeight: 800, color: theme.ink }}>The Verana Foundation</div>
+        </div>
+      </div>
       <div style={{ position: "absolute", top: 220, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
         {PILLARS.map((c) => {
           const s = pop(frame, fps, c.at);
