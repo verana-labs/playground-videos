@@ -23,16 +23,16 @@ Verifiable credentials are becoming a reality. The foundations are laid: issuer,
 The challenges of interconnecting ecosystems. One: create new ecosystems at will, and monetize them. Two: scale across borders. Three: authenticate mutually. And four: discovery: find trusted services, anywhere.
 
 ## N-3.mp3  (17s)
-Scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
+Challenge one: scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
 
 ## N-4.mp3  (8s)
-Scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
+Challenge two: scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
 
 ## N-5.mp3  (9s)
-Mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
+Challenge three: mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
 
 ## N-6.mp3  (6s)
-And finally, discovery. How do we search the graph of trusted services?
+Challenge four, and finally: discovery. How do we search the graph of trusted services?
 
 ## N-8b.mp3  (12s)
 Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, owned by no one.

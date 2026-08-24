@@ -10,19 +10,19 @@ The challenges of interconnecting ecosystems. One: create new ecosystems at will
 
 <break time="1.5s" />
 
-Scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
+Challenge one: scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
 
 <break time="1.5s" />
 
-Scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
+Challenge two: scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
 
 <break time="1.5s" />
 
-Mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
+Challenge three: mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
 
 <break time="1.5s" />
 
-And finally, discovery. How do we search the graph of trusted services?
+Challenge four, and finally: discovery. How do we search the graph of trusted services?
 
 <break time="1.5s" />
 
