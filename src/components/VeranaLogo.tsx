@@ -44,8 +44,12 @@ export const VeranaLogo: React.FC<{
   </div>
 );
 
-/** The verana.io lockup: gradient tile + white V, "Verana" in black. */
-export const VeranaIoLogo: React.FC<{ size?: number }> = ({ size = 120 }) => (
+/** The verana.io lockup: gradient tile + white V, "Verana" in black
+ *  (or near-white via tone="dark", for night-stage banners). */
+export const VeranaIoLogo: React.FC<{ size?: number; tone?: "light" | "dark" }> = ({
+  size = 120,
+  tone = "light",
+}) => (
   <div style={{ display: "flex", alignItems: "center", gap: size * 0.3 }}>
     <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
       <defs>
@@ -60,7 +64,7 @@ export const VeranaIoLogo: React.FC<{ size?: number }> = ({ size = 120 }) => (
         <path d={V_INNER} />
       </g>
     </svg>
-    <span style={wordmarkStyle(size * 0.62, "#0b0b12")}>Verana</span>
+    <span style={wordmarkStyle(size * 0.62, tone === "dark" ? "#f8fafc" : "#0b0b12")}>Verana</span>
   </div>
 );
 

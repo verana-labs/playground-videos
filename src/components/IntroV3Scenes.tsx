@@ -2112,7 +2112,10 @@ export const FoundationV3: React.FC = () => {
           <div style={{ width: 66, height: 64, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <AssetImg id="standards-logos/foundation" cover={false} />
           </div>
-          <div style={{ fontSize: 46, fontWeight: 800, color: theme.ink }}>The Verana Foundation</div>
+          {/* the site wordmark, exact: Inter 600, tight tracking, Foundation in purple */}
+          <div style={{ fontFamily: theme.font, fontSize: 50, fontWeight: 600, letterSpacing: "-0.02em", color: "#111111", whiteSpace: "nowrap" }}>
+            Verana<span style={{ color: "#763ef0" }}>Foundation</span>
+          </div>
         </div>
         <div style={{ fontFamily: theme.mono, fontSize: 21, color: theme.muted, letterSpacing: 0.5 }}>
           https://veranafoundation.org

@@ -21,7 +21,7 @@ import { VESTA_HANDOFF, VESTA_SHOTS } from "./shots/vesta";
 import { VERANDIA_HANDOFF, VERANDIA_SHOTS } from "./shots/verandia";
 import { outroShots, VERANDIA_URL, VESTA_URL } from "./shots/outro";
 import { ACT_START, HANDOFF_START } from "./shots/timeline";
-import { PlaygroundBanner, VeranaLogo } from "./components/VeranaLogo";
+import { PlaygroundBanner, VeranaIoLogo } from "./components/VeranaLogo";
 import { theme } from "./theme";
 
 export type VideoProps = { manifest: AssetManifest };
@@ -219,7 +219,7 @@ const IntroV3Banner: React.FC = () => {
   const dark = (shot.tone ?? "dark") === "dark";
   return (
     <div style={{ position: "absolute", top: 44, right: 64, opacity: dark ? 0.85 : 0.95 }}>
-      <VeranaLogo size={40} tone={dark ? "dark" : "light"} />
+      <VeranaIoLogo size={54} tone={dark ? "dark" : "light"} />
     </div>
   );
 };
