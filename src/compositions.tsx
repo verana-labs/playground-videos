@@ -17,6 +17,7 @@ import { Shot, shotsEnd, validateShots } from "./shots/types";
 import { INTRO_SHOTS } from "./shots/intro";
 import { INTRO2_SHOTS } from "./shots/intro2";
 import { INTRO3_SHOTS } from "./shots/intro3";
+import { INTRO4_SHOTS } from "./shots/intro4";
 import { VESTA_HANDOFF, VESTA_SHOTS } from "./shots/vesta";
 import { VERANDIA_HANDOFF, VERANDIA_SHOTS } from "./shots/verandia";
 import { outroShots, VERANDIA_URL, VESTA_URL } from "./shots/outro";
@@ -223,6 +224,35 @@ const IntroV3Banner: React.FC = () => {
     </div>
   );
 };
+
+/** INTRO v4 brand mark: always the dark lockup (the film is site-dark). */
+const IntroV4Banner: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const shot = INTRO4_SHOTS.find((s) => t >= s.start && t < s.end);
+  if (!shot) return null;
+  if (["brand-open-v4", "verana-close-v4"].includes(shot.visual.kind)) return null;
+  return (
+    <div style={{ position: "absolute", top: 44, right: 64, opacity: 0.92 }}>
+      <VeranaIoLogo size={54} tone="dark" />
+    </div>
+  );
+};
+
+export const IntroV4: React.FC<VideoProps> = ({ manifest }) => (
+  <AbsoluteFill>
+    <Stage
+      manifest={manifest}
+      shots={INTRO4_SHOTS}
+      format="wide"
+      bannerFrom={Infinity}
+      musicId="music/intro3"
+      voId="vo/intro3"
+    />
+    <IntroV4Banner />
+  </AbsoluteFill>
+);
 
 export const IntroV3: React.FC<VideoProps> = ({ manifest }) => (
   <AbsoluteFill>

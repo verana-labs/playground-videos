@@ -90,7 +90,21 @@ export type Visual =
   | { kind: "captures"; items: { asset: string; label: string }[] } // V-4, V-5
   | { kind: "directory"; queries: { q: string; a: string }[] } // V-6
   | { kind: "roster" } // O-1
-  | { kind: "url-card"; url: string; tagline: string }; // O-2
+  | { kind: "url-card"; url: string; tagline: string } // O-2
+  // INTRO v4: the v3 scenes restyled to the verana.io design system.
+  | { kind: "brand-open-v4" }
+  | { kind: "foundations-v4" }
+  | { kind: "silos-v4" }
+  | { kind: "create-eco-q-v4" }
+  | { kind: "cross-border-q-v4" }
+  | { kind: "mutual-auth-v4" }
+  | { kind: "ecosystem-search-v4" }
+  | { kind: "answers-v4" }
+  | { kind: "build-eco-tree-v4" }
+  | { kind: "build-service-v4" }
+  | { kind: "connect-v4" }
+  | { kind: "foundation-v4" }
+  | { kind: "verana-close-v4" };
 
 export type Shot = {
   id: string;

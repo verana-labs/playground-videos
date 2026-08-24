@@ -47,6 +47,21 @@ import {
   TrustListsV3,
   VeranaCloseV3,
 } from "./components/IntroV3Scenes";
+import {
+  AnswersV4,
+  BrandOpenV4,
+  BuildEcoTreeV4,
+  ConnectV4,
+  CreateEcoQV4,
+  CrossBorderQV4,
+  EcosystemSearchV4,
+  FoundationsV4,
+  FoundationV4,
+  MutualAuthV4,
+  ServiceV4,
+  SilosV4,
+  VeranaCloseV4,
+} from "./components/IntroV4Scenes";
 import { HandoffCard, StandardsStrip, UrlCard, WalletRoster } from "./components/Cards";
 import { CaptureSequence, DirectoryTeaser, ImageScene } from "./components/Scenes";
 import { theme } from "./theme";
@@ -162,6 +177,32 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <VeranaCloseV3 />;
     case "trust-lists-v3":
       return <TrustListsV3 />;
+    case "brand-open-v4":
+      return <BrandOpenV4 />;
+    case "foundations-v4":
+      return <FoundationsV4 />;
+    case "silos-v4":
+      return <SilosV4 />;
+    case "create-eco-q-v4":
+      return <CreateEcoQV4 />;
+    case "cross-border-q-v4":
+      return <CrossBorderQV4 />;
+    case "mutual-auth-v4":
+      return <MutualAuthV4 />;
+    case "ecosystem-search-v4":
+      return <EcosystemSearchV4 />;
+    case "answers-v4":
+      return <AnswersV4 />;
+    case "build-eco-tree-v4":
+      return <BuildEcoTreeV4 />;
+    case "build-service-v4":
+      return <ServiceV4 />;
+    case "connect-v4":
+      return <ConnectV4 />;
+    case "foundation-v4":
+      return <FoundationV4 />;
+    case "verana-close-v4":
+      return <VeranaCloseV4 />;
     case "image-scene":
       return <ImageScene items={v.items} tint={v.tint} />;
     case "build":

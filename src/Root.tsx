@@ -4,6 +4,7 @@ import {
   IntroOnly,
   IntroV2,
   IntroV3,
+  IntroV4,
   VerandiaFull,
   VERANDIA_DURATION,
   VestaSolo,
@@ -18,6 +19,7 @@ import {
 import { INTRO_END } from "./shots/intro";
 import { INTRO2_END } from "./shots/intro2";
 import { INTRO3_END } from "./shots/intro3";
+import { INTRO4_END } from "./shots/intro4";
 import { fetchManifest } from "./lib/assets";
 
 const FPS = 30;
@@ -90,6 +92,17 @@ export const RemotionRoot: React.FC = () => (
       id="IntroV3"
       component={IntroV3}
       durationInFrames={INTRO3_END * FPS}
+      fps={FPS}
+      width={1920}
+      height={1080}
+      defaultProps={{ manifest: {} }}
+      calculateMetadata={withManifest}
+    />
+    {/* INTRO v4: v3 on the verana.io design system */}
+    <Composition
+      id="IntroV4"
+      component={IntroV4}
+      durationInFrames={INTRO4_END * FPS}
       fps={FPS}
       width={1920}
       height={1080}
