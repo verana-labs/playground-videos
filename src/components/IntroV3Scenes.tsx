@@ -2234,7 +2234,7 @@ export const AnswersV3: React.FC = () => {
             padding: "14px 38px",
           }}
         >
-          open · neutral · owned by no one
+          open · neutral · cross-border · owned by no one
         </span>
       </div>
     </AbsoluteFill>

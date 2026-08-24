@@ -72,7 +72,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     start: 88,
     end: 100,
     lines: [],
-    vo: "Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, owned by no one.",
+    vo: "Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, cross-border, owned by no one.",
     visual: { kind: "answers-v3" },
     tone: "light",
   },
