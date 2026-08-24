@@ -856,10 +856,10 @@ export const SilosV3: React.FC = () => {
   ];
   // Each badge lands as the narration names its challenge.
   const CHALLENGES = [
-    { n: 1, label: "create and monetize", at: 3.1 },
-    { n: 2, label: "cross-border", at: 7.6 },
-    { n: 3, label: "mutual authentication", at: 10.3 },
-    { n: 4, label: "discovery", at: 13.0 },
+    { n: 1, label: "create and monetize", at: 3.9 },
+    { n: 2, label: "cross-border", at: 9.2 },
+    { n: 3, label: "mutual authentication", at: 12.2 },
+    { n: 4, label: "discovery", at: 15.2 },
   ];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
@@ -2138,7 +2138,7 @@ export const AnswersV3: React.FC = () => {
     {
       title: "Sovereign ecosystems",
       sub: "build your own trust registry: your rules, your schemas, your business model",
-      at: 2.5,
+      at: 3.9,
       icon: (
         <>
           <rect x="9" y="3" width="6" height="5" rx="1" {...st} />
@@ -2151,7 +2151,7 @@ export const AnswersV3: React.FC = () => {
     {
       title: "Verifiable services",
       sub: "deploy services and AI agents; issue and verify credentials from any ecosystem you are interested in",
-      at: 4.1,
+      at: 5.4,
       icon: (
         <>
           <rect x="3" y="5" width="18" height="14" rx="2" {...st} />
@@ -2163,7 +2163,7 @@ export const AnswersV3: React.FC = () => {
     {
       title: "One public Trust Graph",
       sub: "be found, mutually authenticate, and connect: trust before the first message",
-      at: 5.8,
+      at: 7.1,
       icon: (
         <>
           <circle cx="6" cy="6" r="2.5" {...st} />
@@ -2174,7 +2174,7 @@ export const AnswersV3: React.FC = () => {
       ),
     },
   ];
-  const ethos = pop(frame, fps, 7.6);
+  const ethos = pop(frame, fps, 9.1);
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       <SceneTitle kicker="the answer" title="Verana answers all of this" />
