@@ -1005,7 +1005,7 @@ export const CreateEcoQV3: React.FC = () => {
   const HUB = { x: 960, y: 600 };
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <SceneTitle tone="dark" accent kicker="challenge 1" title="Create ecosystems at will" />
+      <SceneTitle tone="dark" accent kicker="challenge 1" title="Scale, by creating ecosystems at will" />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
         <ellipse cx={HUB.x} cy={HUB.y} rx={360} ry={215} fill="none" stroke="#475569" strokeWidth={2.5} strokeDasharray="8 8" opacity={hubIn} />
         {OUT.map((o, i) => {
