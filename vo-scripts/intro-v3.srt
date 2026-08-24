@@ -1,172 +1,192 @@
 1
-00:00:00,000 --> 00:00:00,536
+00:00:00,000 --> 00:00:00,503
 Verana.
 
 2
-00:00:00,536 --> 00:00:04,980
+00:00:00,503 --> 00:00:04,670
 The open trust infrastructure for the verifiable internet.
 
 3
-00:00:06,000 --> 00:00:09,318
-Verifiable credentials are becoming a reality.
+00:00:06,000 --> 00:00:07,695
+First, the foundations.
 
 4
-00:00:09,318 --> 00:00:14,440
-The foundations are laid: issuer, holder, verifier, one trust triangle.
+00:00:07,695 --> 00:00:11,085
+Verifiable credentials are becoming a reality.
 
 5
-00:00:14,440 --> 00:00:23,240
-And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
+00:00:11,085 --> 00:00:16,170
+The groundwork is laid: issuer, holder, verifier, one trust triangle.
 
 6
-00:00:24,000 --> 00:00:27,750
-The next challenges: interconnect ecosystems.
+00:00:16,170 --> 00:00:25,160
+And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
 7
-00:00:27,750 --> 00:00:30,833
-Create new ones at will and monetize.
+00:00:26,000 --> 00:00:31,816
+Let's have a look at the challenges of interconnecting ecosystems.
 
 8
-00:00:30,833 --> 00:00:32,417
-Scale cross-border.
+00:00:31,816 --> 00:00:36,574
+One: create new ecosystems at will, and monetize them.
 
 9
-00:00:32,417 --> 00:00:34,250
-Authenticate mutually.
+00:00:36,574 --> 00:00:38,865
+Two: scale across borders.
 
 10
-00:00:34,250 --> 00:00:36,750
-And discover trusted services.
+00:00:38,865 --> 00:00:41,420
+Three: authenticate mutually.
 
 11
-00:00:37,000 --> 00:00:39,197
-Scale, by creating ecosystems.
+00:00:41,420 --> 00:00:46,090
+And four: discovery: find trusted services, anywhere.
 
 12
-00:00:39,197 --> 00:00:53,110
-How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
+00:00:47,000 --> 00:00:51,272
+Let's dig into challenge one: scale, by creating ecosystems.
 
 13
-00:00:54,000 --> 00:00:55,625
-Scale, cross-border.
+00:00:51,272 --> 00:01:04,800
+How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
 
 14
-00:00:55,625 --> 00:01:01,800
-How do we recognize and onboard ecosystems from any country, and any sector?
+00:01:05,000 --> 00:01:08,389
+Next, challenge two: scale, cross-border.
 
 15
-00:01:02,000 --> 00:01:03,553
-Mutual authentication.
+00:01:08,389 --> 00:01:14,670
+How do we recognize and onboard ecosystems from any country, and any sector?
 
 16
-00:01:03,553 --> 00:01:10,400
-How do services and AI agents from different countries identify each other, and trust each other?
+00:01:15,000 --> 00:01:18,327
+Then, challenge three: mutual authentication.
 
 17
-00:01:11,000 --> 00:01:12,883
-And finally, discovery.
+00:01:18,327 --> 00:01:25,500
+How do services and AI agents from different countries identify each other, and trust each other?
 
 18
-00:01:12,883 --> 00:01:16,730
-How do we search the graph of trusted services?
+00:01:26,000 --> 00:01:29,057
+And finally, challenge four: discovery.
 
 19
-00:01:17,000 --> 00:01:19,439
-Verana answers all of this.
+00:01:29,057 --> 00:01:32,740
+How do we search the graph of trusted services?
 
 20
-00:01:19,439 --> 00:01:25,400
-Sovereign ecosystems, verifiable identity, one public Trust Graph.
+00:01:33,000 --> 00:01:34,226
+The good news?
 
 21
-00:01:25,400 --> 00:01:28,200
-Open, neutral, owned by no one.
+00:01:34,226 --> 00:01:36,590
+Verana answers all of this.
 
 22
-00:01:29,000 --> 00:01:32,614
-Build your own sovereign ecosystem trust registry.
+00:01:36,590 --> 00:01:42,370
+Sovereign ecosystems, verifiable services, one public Trust Graph.
 
 23
-00:01:32,614 --> 00:01:38,830
-Publish your Ecosystem Governance Framework, your credential schemas, business models.
+00:01:42,370 --> 00:01:46,310
+Open, neutral, cross-border, owned by no one.
 
 24
-00:01:38,830 --> 00:01:41,432
-Onboard your ecosystem participants.
+00:01:47,000 --> 00:01:48,005
+So let's build.
 
 25
-00:01:41,432 --> 00:01:44,540
-Your ecosystem exists, and is discoverable.
+00:01:48,005 --> 00:01:53,636
+Setting up your own sovereign ecosystem trust registry in Verana is straightforward.
 
 26
-00:01:45,000 --> 00:01:47,773
-Then deploy your services and AI agents.
+00:01:53,636 --> 00:02:02,215
+Start by creating your trust registry, publish your Ecosystem Governance Framework, your credential schemas and business models.
 
 27
-00:01:47,773 --> 00:01:49,714
-Choose your business wallet.
+00:02:02,215 --> 00:02:04,628
+Onboard your ecosystem participants.
 
 28
-00:01:49,714 --> 00:01:53,250
-Join ecosystems, on Verana or on other trust lists.
+00:02:04,628 --> 00:02:07,510
+Your ecosystem exists, and is discoverable.
 
 29
-00:01:53,250 --> 00:01:58,934
-Attach their credentials to your services: you are now visible in the Trust Graph.
+00:02:08,000 --> 00:02:10,985
+Then deploy your services and AI agents.
 
 30
-00:01:58,934 --> 00:02:05,520
-And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.
+00:02:10,985 --> 00:02:13,075
+Choose your business wallet.
 
 31
-00:02:06,000 --> 00:02:08,698
-You are now part of the Trust Graph.
+00:02:13,075 --> 00:02:16,881
+Join ecosystems, on Verana or on other trust lists.
 
 32
-00:02:08,698 --> 00:02:16,942
-Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect.
+00:02:16,881 --> 00:02:23,000
+Attach their credentials to your services: you are now visible in the Trust Graph.
 
 33
-00:02:16,942 --> 00:02:20,240
-Trust, established before the first message.
+00:02:23,000 --> 00:02:30,090
+And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.
 
 34
-00:02:21,000 --> 00:02:26,470
-Behind Verana: open specifications, built exclusively on open standards.
+00:02:31,000 --> 00:02:32,768
+And here is the result.
 
 35
-00:02:26,470 --> 00:02:28,066
-Open-source software.
+00:02:32,768 --> 00:02:35,534
+You are now part of the Trust Graph.
 
 36
-00:02:28,066 --> 00:02:32,169
-And a non-profit foundation, managed by its community.
+00:02:35,534 --> 00:02:43,988
+Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect.
 
 37
-00:02:32,169 --> 00:02:33,612
-Want to contribute?
+00:02:43,988 --> 00:02:47,370
+Trust, established before the first message.
 
 38
-00:02:33,612 --> 00:02:37,335
-Join the Foundation: it is free for contributors.
+00:02:48,000 --> 00:02:49,136
+One more thing.
 
 39
-00:02:37,335 --> 00:02:40,450
-Join a working group, or create your own.
+00:02:49,136 --> 00:02:54,591
+Behind Verana: open specifications, built exclusively on open standards.
 
 40
-00:02:41,000 --> 00:02:44,476
-In essence: Verana enables trust to scale.
+00:02:54,591 --> 00:02:56,182
+Open-source software.
 
 41
-00:02:44,476 --> 00:02:49,855
-Not just within one ecosystem: across the entire digital economy.
+00:02:56,182 --> 00:03:00,273
+And a non-profit foundation, managed by its community.
 
 42
-00:02:49,855 --> 00:02:53,331
-Try it yourself, on the public playground.
+00:03:00,273 --> 00:03:01,712
+Want to contribute?
 
 43
-00:02:53,331 --> 00:02:54,490
+00:03:01,712 --> 00:03:05,424
+Join the Foundation: it is free for contributors.
+
+44
+00:03:05,424 --> 00:03:08,530
+Join a working group, or create your own.
+
+45
+00:03:09,000 --> 00:03:12,540
+In essence: Verana enables trust to scale.
+
+46
+00:03:12,540 --> 00:03:18,018
+Not just within one ecosystem: across the entire digital economy.
+
+47
+00:03:18,018 --> 00:03:21,558
+Try it yourself, on the public playground.
+
+48
+00:03:21,558 --> 00:03:22,738
 Verana dot io.
 
