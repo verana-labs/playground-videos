@@ -21,7 +21,7 @@ import { VESTA_HANDOFF, VESTA_SHOTS } from "./shots/vesta";
 import { VERANDIA_HANDOFF, VERANDIA_SHOTS } from "./shots/verandia";
 import { outroShots, VERANDIA_URL, VESTA_URL } from "./shots/outro";
 import { ACT_START, HANDOFF_START } from "./shots/timeline";
-import { PlaygroundBanner } from "./components/VeranaLogo";
+import { PlaygroundBanner, VeranaLogo } from "./components/VeranaLogo";
 import { theme } from "./theme";
 
 export type VideoProps = { manifest: AssetManifest };
@@ -207,15 +207,35 @@ export const IntroV2: React.FC<VideoProps> = ({ manifest }) => (
 );
 
 /** INTRO v3: starts as a copy of v2, iterate freely. */
+/** Persistent brand mark for INTRO v3: top-right, stage-aware, hidden on
+ *  the shots whose subject IS the brand (open, reveal, close). */
+const IntroV3Banner: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const shot = INTRO3_SHOTS.find((s) => t >= s.start && t < s.end);
+  if (!shot) return null;
+  if (["brand-open", "brand-reveal", "verana-close-v3"].includes(shot.visual.kind)) return null;
+  const dark = (shot.tone ?? "dark") === "dark";
+  return (
+    <div style={{ position: "absolute", top: 44, right: 64, opacity: dark ? 0.85 : 0.95 }}>
+      <VeranaLogo size={40} tone={dark ? "dark" : "light"} />
+    </div>
+  );
+};
+
 export const IntroV3: React.FC<VideoProps> = ({ manifest }) => (
-  <Stage
-    manifest={manifest}
-    shots={INTRO3_SHOTS}
-    format="wide"
-    bannerFrom={Infinity}
-    musicId="music/intro3"
-    voId="vo/intro3"
-  />
+  <AbsoluteFill>
+    <Stage
+      manifest={manifest}
+      shots={INTRO3_SHOTS}
+      format="wide"
+      bannerFrom={Infinity}
+      musicId="music/intro3"
+      voId="vo/intro3"
+    />
+    <IntroV3Banner />
+  </AbsoluteFill>
 );
 
 /** The distribution cut: the Vesta use case on its own, no intro. */

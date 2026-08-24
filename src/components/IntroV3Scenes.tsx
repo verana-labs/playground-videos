@@ -129,11 +129,18 @@ const StarsSeal: React.FC<{ size?: number }> = ({ size = 74 }) => (
 // implementation/framework logos pop in (eIDAS 2.0, Google AP2, GLEIF,
 // Microsoft Entra, Open Badges, Digi Yatra, ICAO, Catena-X, C2PA).
 
-/** Centered scene title (N-1 / N-1b): mono kicker over a bold headline. */
-const SceneTitle: React.FC<{ kicker: string; title: string }> = ({ kicker, title }) => {
+/** The one scene-title grammar, both stages: mono kicker over a bold
+ *  headline. `accent` renders the kicker in amber (the challenge scenes). */
+const SceneTitle: React.FC<{ kicker: string; title: string; tone?: "light" | "dark"; accent?: boolean }> = ({
+  kicker,
+  title,
+  tone = "light",
+  accent,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = pop(frame, fps, 0.15);
+  const dark = tone === "dark";
   return (
     <div
       style={{
@@ -147,10 +154,18 @@ const SceneTitle: React.FC<{ kicker: string; title: string }> = ({ kicker, title
         transform: `translateY(${(1 - s) * -16}px)`,
       }}
     >
-      <div style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 3, color: theme.faint, textTransform: "uppercase" }}>
+      <div
+        style={{
+          fontFamily: theme.mono,
+          fontSize: 17,
+          letterSpacing: 3,
+          color: accent ? theme.amber : dark ? "#64748b" : theme.faint,
+          textTransform: "uppercase",
+        }}
+      >
         {kicker}
       </div>
-      <div style={{ fontSize: 46, fontWeight: 800, color: theme.ink }}>{title}</div>
+      <div style={{ fontSize: 46, fontWeight: 800, color: dark ? "#e2e8f0" : theme.ink, marginTop: 2 }}>{title}</div>
     </div>
   );
 };
@@ -291,7 +306,7 @@ export const FoundationsV3: React.FC = () => {
           top: 170,
           left: "50%",
           width: 1240,
-          transform: `translateX(calc(-50% + ${-shift * 450}px)) scale(${1 - shift * 0.36})`,
+          transform: `translateX(calc(-50% + ${-shift * 450}px)) translateY(${shift * 80}px) scale(${1 - shift * 0.36})`,
           transformOrigin: "top center",
         }}
       >
@@ -307,11 +322,11 @@ export const FoundationsV3: React.FC = () => {
           ))}
         </div>
         {/* the verifiable-credentials trust triangle */}
-        <div style={{ position: "relative", width: 1040, height: 410, margin: "30px auto 0" }}>
+        <div style={{ position: "relative", width: 1040, height: 470, margin: "34px auto 0" }}>
           <svg
             width={1040}
-            height={410}
-            viewBox="0 0 1040 410"
+            height={470}
+            viewBox="0 0 1040 470"
             style={{ position: "absolute", inset: 0 }}
             aria-hidden
           >
@@ -321,9 +336,9 @@ export const FoundationsV3: React.FC = () => {
               </marker>
             </defs>
             {/* issues: Issuer -> Holder */}
-            <line x1={215} y1={112} x2={455} y2={294} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.3, 330)} />
+            <line x1={215} y1={112} x2={455} y2={344} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.3, 330)} />
             {/* presents: Holder -> Verifier */}
-            <line x1={585} y1={294} x2={825} y2={112} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.9, 330)} />
+            <line x1={585} y1={344} x2={825} y2={112} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.9, 330)} />
             {/* trusts?: Verifier -> Issuer, the edge Verana serves */}
             <line x1={790} y1={62} x2={250} y2={62} stroke={theme.faint} strokeWidth={3} strokeDasharray="10 8" markerEnd="url(#tri-arrow)" opacity={interpolate(t, [3.5, 4.0], [0, 1], clamp)} />
           </svg>
@@ -333,14 +348,14 @@ export const FoundationsV3: React.FC = () => {
           <div style={{ position: "absolute", left: 765, top: 32 }}>
             <TriangleNode label="Verifier" s={pop(frame, fps, 2.1)} />
           </div>
-          <div style={{ position: "absolute", left: 415, top: 280 }}>
+          <div style={{ position: "absolute", left: 415, top: 330 }}>
             <TriangleNode label="Holder" s={pop(frame, fps, 1.9)} />
           </div>
-          <div style={{ ...edgeLabel, left: 240, top: 190, opacity: interpolate(t, [2.6, 2.9], [0, 1], clamp) }}>issues</div>
-          <div style={{ ...edgeLabel, left: 690, top: 190, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>presents</div>
+          <div style={{ ...edgeLabel, left: 240, top: 215, opacity: interpolate(t, [2.6, 2.9], [0, 1], clamp) }}>issues</div>
+          <div style={{ ...edgeLabel, left: 690, top: 215, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>presents</div>
           <div style={{ ...edgeLabel, left: 468, top: 20, color: theme.muted, background: "#f8fafc", border: "1.5px solid #e2e8f0", opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>trusts?</div>
           {/* credential formats, snapping onto the credential */}
-          <div style={{ position: "absolute", left: 0, right: 0, top: 366, display: "flex", gap: 14, justifyContent: "center" }}>
+          <div style={{ position: "absolute", left: 0, right: 0, top: 418, display: "flex", gap: 14, justifyContent: "center" }}>
             {["SD-JWT VC", "mdoc"].map((c, i) => (
               <span
                 key={c}
@@ -364,7 +379,7 @@ export const FoundationsV3: React.FC = () => {
 
       {/* ---- beat B: implementations and frameworks, logos only ---- */}
       {t >= 8.0 ? (
-        <div style={{ position: "absolute", left: 1106, top: 196, width: 568 }}>
+        <div style={{ position: "absolute", left: 1106, top: 232, width: 568 }}>
           <div
             style={{
               fontFamily: theme.mono,
@@ -553,33 +568,6 @@ export const SectorsV3: React.FC = () => {
 };
 
 // ------------------------------------------------------ N-3 / N-4 / N-5 / N-6
-const ChallengeChip: React.FC<{ n: number; label: string }> = ({ n, label }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const s = pop(frame, fps, 0.3);
-  return (
-    <div style={{ position: "absolute", top: 64, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-      <span
-        style={{
-          fontFamily: theme.mono,
-          fontSize: 19,
-          letterSpacing: 2,
-          color: "#94a3b8",
-          background: "rgba(11,18,32,0.9)",
-          border: "1.5px solid #334155",
-          borderRadius: 999,
-          padding: "9px 24px",
-          textTransform: "uppercase",
-          opacity: s,
-          transform: `scale(${s})`,
-        }}
-      >
-        <span style={{ color: theme.amber, marginRight: 12 }}>challenge {n}</span>
-        {label}
-      </span>
-    </div>
-  );
-};
 
 // The reworked question arc: entity + controller identification (N-3),
 // entities identifying themselves pairwise (N-4), and the v1 captures with a
@@ -817,15 +805,15 @@ export const SilosV3: React.FC = () => {
   // Isolated ecosystem islands on the night stage; then interconnections
   // draw between them, and new islands appear and join the mesh.
   const clusters = [
-    { x: 360, y: 320, n: 5, delay: 0.5 },
-    { x: 960, y: 240, n: 6, delay: 0.8 },
-    { x: 1560, y: 330, n: 5, delay: 1.1 },
-    { x: 620, y: 640, n: 6, delay: 1.4 },
-    { x: 1330, y: 650, n: 5, delay: 1.7 },
+    { x: 360, y: 430, n: 5, delay: 0.5 },
+    { x: 960, y: 350, n: 6, delay: 0.8 },
+    { x: 1560, y: 440, n: 5, delay: 1.1 },
+    { x: 620, y: 750, n: 6, delay: 1.4 },
+    { x: 1330, y: 760, n: 5, delay: 1.7 },
     // the newcomers, appearing once the mesh starts to form
-    { x: 180, y: 560, n: 4, delay: 4.8, fresh: true },
-    { x: 1745, y: 585, n: 4, delay: 5.6, fresh: true },
-    { x: 965, y: 505, n: 4, delay: 6.4, fresh: true },
+    { x: 180, y: 670, n: 4, delay: 4.8, fresh: true },
+    { x: 1745, y: 695, n: 4, delay: 5.6, fresh: true },
+    { x: 965, y: 615, n: 4, delay: 6.4, fresh: true },
   ];
   // Interconnections between island hubs (cross-border links).
   const links = [
@@ -842,7 +830,8 @@ export const SilosV3: React.FC = () => {
   const CHALLENGES = ["create", "cross-border", "mutual authentication", "discover"];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <div style={{ position: "absolute", top: 58, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center" }}>
+      <SceneTitle tone="dark" kicker="the next challenges" title="Interconnect ecosystems" />
+      <div style={{ position: "absolute", top: 934, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center" }}>
         {CHALLENGES.map((c, i) => {
           const s = pop(frame, fps, 7.0 + i * 0.35);
           return (
@@ -954,30 +943,30 @@ export const CreateEcoQV3: React.FC = () => {
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const hubIn = pop(frame, fps, 0.9);
   const CHIPS = [
-    { label: "trust registry", x: 665, y: 330, at: 1.8 },
-    { label: "credential schemas", x: 1090, y: 330, at: 2.9 },
-    { label: "accreditation lists", x: 640, y: 555, at: 4.0 },
-    { label: "business model", x: 1105, y: 555, at: 5.1 },
+    { label: "trust registry", x: 640, y: 470, at: 1.8 },
+    { label: "credential schemas", x: 1140, y: 470, at: 2.9 },
+    { label: "accreditation lists", x: 640, y: 730, at: 4.0 },
+    { label: "business model", x: 1140, y: 730, at: 5.1 },
   ];
   const OUT = [
-    { label: "discoverable", tx: 300, ty: 210, at: 6.8 },
-    { label: "interconnectable", tx: 1620, ty: 210, at: 7.9 },
-    { label: "joinable", tx: 960, ty: 165, at: 9.0 },
+    { label: "discoverable", tx: 300, ty: 300, at: 6.8 },
+    { label: "interconnectable", tx: 1620, ty: 300, at: 7.9 },
+    { label: "joinable", tx: 960, ty: 250, at: 9.0 },
   ];
-  const HUB = { x: 960, y: 450 };
+  const HUB = { x: 960, y: 600 };
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <ChallengeChip n={1} label="create" />
+      <SceneTitle tone="dark" accent kicker="challenge 1" title="Create ecosystems at will" />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <ellipse cx={HUB.x} cy={HUB.y} rx={330} ry={200} fill="none" stroke="#475569" strokeWidth={2.5} strokeDasharray="8 8" opacity={hubIn} />
+        <ellipse cx={HUB.x} cy={HUB.y} rx={360} ry={215} fill="none" stroke="#475569" strokeWidth={2.5} strokeDasharray="8 8" opacity={hubIn} />
         {OUT.map((o, i) => {
           const drawn = interpolate(t, [o.at, o.at + 0.7], [0, 1], clamp);
-          const len = Math.hypot(o.tx - HUB.x, o.ty - (HUB.y - 200));
+          const len = Math.hypot(o.tx - HUB.x, o.ty - (HUB.y - 215));
           return (
             <line
               key={i}
               x1={HUB.x}
-              y1={HUB.y - 200}
+              y1={HUB.y - 215}
               x2={o.tx}
               y2={o.ty}
               stroke={theme.indigo}
@@ -1082,15 +1071,15 @@ export const CrossBorderQV3: React.FC = () => {
     );
   };
   const arrows = [
-    { y: 300, at: 3.2 },
-    { y: 480, at: 3.9 },
-    { y: 645, at: 4.6 },
+    { y: 360, at: 3.2 },
+    { y: 570, at: 3.9 },
+    { y: 800, at: 4.6 },
   ];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <ChallengeChip n={2} label="cross-border" />
+      <SceneTitle tone="dark" accent kicker="challenge 2" title="Scale cross-border" />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={960} y1={150} x2={960} y2={790} stroke="#64748b" strokeWidth={3} strokeDasharray="12 10" opacity={borderIn} />
+        <line x1={960} y1={180} x2={960} y2={960} stroke="#64748b" strokeWidth={3} strokeDasharray="12 10" opacity={borderIn} />
         {arrows.map((a, i) => {
           const drawn = interpolate(t, [a.at, a.at + 0.6], [0, 1], clamp);
           return (
@@ -1100,13 +1089,13 @@ export const CrossBorderQV3: React.FC = () => {
             </g>
           );
         })}
-        <line x1={400} y1={300} x2={650} y2={620} stroke={theme.indigo} strokeWidth={2.5} opacity={0.8 * interpolate(t, [1.2, 1.8], [0, 1], clamp)} />
+        <line x1={400} y1={360} x2={650} y2={720} stroke={theme.indigo} strokeWidth={2.5} opacity={0.8 * interpolate(t, [1.2, 1.8], [0, 1], clamp)} />
       </svg>
-      {island(400, 300, 0.6, false)}
-      {island(650, 620, 0.9, false)}
-      {island(1330, 300, 1.6, true, "🇯🇵")}
-      {island(1650, 490, 2.0, true, "🇵🇪")}
-      {island(1330, 645, 2.4, true, undefined, "any sector")}
+      {island(400, 360, 0.6, false)}
+      {island(650, 720, 0.9, false)}
+      {island(1330, 360, 1.6, true, "🇯🇵")}
+      {island(1650, 570, 2.0, true, "🇵🇪")}
+      {island(1330, 800, 2.4, true, undefined, "any sector")}
       {arrows.map((a, i) => {
         const s = pop(frame, fps, a.at + 0.6);
         return (
@@ -1164,19 +1153,19 @@ export const MutualAuthV3: React.FC = () => {
   };
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <ChallengeChip n={3} label="mutual authentication" />
+      <SceneTitle tone="dark" accent kicker="challenge 3" title="Mutual authentication" />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={560} y1={350} x2={1360} y2={350} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.1)} />
-        <line x1={560} y1={620} x2={1360} y2={620} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.3)} />
+        <line x1={560} y1={430} x2={1360} y2={430} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.1)} />
+        <line x1={560} y1={730} x2={1360} y2={730} stroke="#334155" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.3)} />
       </svg>
-      <span style={{ position: "absolute", left: 385, top: 210, fontSize: 34, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.4) }}>🇫🇷</span>
-      {node(450, 350, "service", 0.5)}
-      {node(450, 620, "agent", 0.7)}
-      <span style={{ position: "absolute", left: 1455, top: 210, fontSize: 34, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.6) }}>🇯🇵</span>
-      {node(1470, 350, "service", 0.8)}
-      {node(1470, 620, "agent", 1.0)}
-      {ping(560, 1360, 350, "who are you?", 1.6, 3.4)}
-      {ping(1360, 560, 620, "can I trust you?", 3.3, 3.4)}
+      <span style={{ position: "absolute", left: 385, top: 290, fontSize: 34, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.4) }}>🇫🇷</span>
+      {node(450, 430, "service", 0.5)}
+      {node(450, 730, "agent", 0.7)}
+      <span style={{ position: "absolute", left: 1455, top: 290, fontSize: 34, background: "rgba(11,18,32,0.9)", border: "1.5px solid #475569", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.6) }}>🇯🇵</span>
+      {node(1470, 430, "service", 0.8)}
+      {node(1470, 730, "agent", 1.0)}
+      {ping(560, 1360, 430, "who are you?", 1.6, 3.4)}
+      {ping(1360, 560, 730, "can I trust you?", 3.3, 3.4)}
     </AbsoluteFill>
   );
 };
@@ -1189,22 +1178,22 @@ export const EcosystemSearchV3: React.FC = () => {
   const lensIn = pop(frame, fps, 0.3);
   const pairIn = pop(frame, fps, 0.6);
   const nodes = [
-    { x: 620, y: 250, delay: 0.7 },
-    { x: 1320, y: 230, found: true, delay: 0.9 },
-    { x: 520, y: 560, found: true, delay: 1.1 },
-    { x: 1440, y: 560, delay: 1.3 },
-    { x: 1100, y: 720, delay: 1.5 },
+    { x: 620, y: 320, delay: 0.7 },
+    { x: 1320, y: 300, found: true, delay: 0.9 },
+    { x: 520, y: 640, found: true, delay: 1.1 },
+    { x: 1440, y: 640, delay: 1.3 },
+    { x: 1100, y: 800, delay: 1.5 },
   ];
   const st = { fill: "none", stroke: "#e2e8f0", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <ChallengeChip n={4} label="discover" />
+      <SceneTitle tone="dark" accent kicker="challenge 4" title="Discover trusted services" />
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
         {nodes.map((n, i) => (
           <line
             key={i}
             x1={960}
-            y1={430}
+            y1={510}
             x2={n.x}
             y2={n.y}
             stroke="#1e293b"
@@ -1245,7 +1234,7 @@ export const EcosystemSearchV3: React.FC = () => {
         style={{
           position: "absolute",
           left: 250,
-          top: 720,
+          top: 800,
           display: "flex",
           gap: 20,
           alignItems: "center",
@@ -1295,7 +1284,7 @@ export const EcosystemSearchV3: React.FC = () => {
           <svg key={d} width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
             <circle
               cx={960}
-              cy={430}
+              cy={510}
               r={90 + cycle * 150}
               fill="none"
               stroke={theme.violet}
@@ -1305,7 +1294,7 @@ export const EcosystemSearchV3: React.FC = () => {
           </svg>
         );
       })}
-      <div style={{ position: "absolute", left: 960 - 80, top: 430 - 80, transform: `scale(${lensIn})` }}>
+      <div style={{ position: "absolute", left: 960 - 80, top: 510 - 80, transform: `scale(${lensIn})` }}>
         <div
           style={{
             width: 160,
@@ -1507,7 +1496,7 @@ const FreedomPanel: React.FC<{
           borderRadius: 20,
           boxShadow: "0 24px 60px rgba(15,23,42,0.12)",
           padding: 26,
-          height: 430,
+          height: 470,
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
@@ -1621,7 +1610,7 @@ export const BuildEcoTreeV3: React.FC = () => {
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       <SceneTitle kicker="for ecosystem builders" title="Build your ecosystem" />
       {/* ---- left: the root card, its anchor, its artifacts ---- */}
-      <div style={{ position: "absolute", left: 480 - 190, top: 200, width: 380, opacity: rootIn, transform: `scale(${rootIn})` }}>
+      <div style={{ position: "absolute", left: 480 - 190, top: 230, width: 380, opacity: rootIn, transform: `scale(${rootIn})` }}>
         <div
           style={{
             background: "#f5f3ff",
@@ -1637,20 +1626,20 @@ export const BuildEcoTreeV3: React.FC = () => {
         </div>
       </div>
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={480} y1={318} x2={480} y2={368} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="6 6" opacity={anchorIn} />
+        <line x1={480} y1={348} x2={480} y2={398} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="6 6" opacity={anchorIn} />
         {ARTIFACTS.map((a, i) => (
           <line key={a.label} x1={480} y1={438} x2={480} y2={438 + 36 + i * 78 - 36} stroke="#ddd6fe" strokeWidth={0} />
         ))}
       </svg>
-      <div style={{ position: "absolute", left: 480 - 260, top: 372, width: 520, textAlign: "center", whiteSpace: "nowrap", opacity: anchorIn, transform: `translateY(${(1 - anchorIn) * -10}px)` }}>
+      <div style={{ position: "absolute", left: 480 - 260, top: 402, width: 520, textAlign: "center", whiteSpace: "nowrap", opacity: anchorIn, transform: `translateY(${(1 - anchorIn) * -10}px)` }}>
         <span
           style={{
             fontFamily: theme.mono,
             fontSize: 15,
             letterSpacing: 1,
-            color: "#1d4ed8",
-            background: "#eff6ff",
-            border: "1.5px solid #bfdbfe",
+            color: "#6d28d9",
+            background: "#f5f3ff",
+            border: "1.5px solid #ddd6fe",
             borderRadius: 999,
             padding: "8px 18px",
           }}
@@ -1658,7 +1647,7 @@ export const BuildEcoTreeV3: React.FC = () => {
           anchored on the Verifiable Public Registry
         </span>
       </div>
-      <div style={{ position: "absolute", left: 480 - 165, top: 452, width: 330, display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ position: "absolute", left: 480 - 165, top: 490, width: 330, display: "flex", flexDirection: "column", gap: 16 }}>
         {ARTIFACTS.map((a) => {
           const s = pop(frame, fps, a.at);
           return (
@@ -1700,24 +1689,24 @@ export const BuildEcoTreeV3: React.FC = () => {
 
       {/* ---- onboarding edge from the root card into the tree ---- */}
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={672} y1={258} x2={TX - 122} y2={258} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="7 7" opacity={draw(5.6)} />
+        <line x1={672} y1={288} x2={TX - 122} y2={288} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="7 7" opacity={draw(5.6)} />
         {/* accredits: root -> grantors */}
-        <line x1={TX} y1={300} x2={TX - 180} y2={396} stroke={theme.violet} strokeWidth={2.5} opacity={draw(6.4)} />
-        <line x1={TX} y1={300} x2={TX + 180} y2={396} stroke={theme.violet} strokeWidth={2.5} opacity={draw(6.4)} />
+        <line x1={TX} y1={330} x2={TX - 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(6.4)} />
+        <line x1={TX} y1={330} x2={TX + 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(6.4)} />
         {/* grantors -> issuers/verifiers */}
-        <line x1={TX - 180} y1={470} x2={TX - 180} y2={532} stroke={theme.violet} strokeWidth={2.5} opacity={draw(7.2)} />
-        <line x1={TX + 180} y1={470} x2={TX + 180} y2={532} stroke={theme.violet} strokeWidth={2.5} opacity={draw(7.2)} />
+        <line x1={TX - 180} y1={514} x2={TX - 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(7.2)} />
+        <line x1={TX + 180} y1={514} x2={TX + 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(7.2)} />
         {/* issuers issue to / verifiers verify holders */}
-        <line x1={TX - 180} y1={606} x2={TX - 40} y2={688} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(8.0)} />
-        <line x1={TX + 180} y1={606} x2={TX + 40} y2={688} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(8.0)} />
+        <line x1={TX - 180} y1={684} x2={TX - 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(8.0)} />
+        <line x1={TX + 180} y1={684} x2={TX + 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(8.0)} />
         {/* the discoverable ring */}
-        <ellipse cx={TX} cy={505} rx={350} ry={320} fill="none" stroke={theme.green} strokeWidth={3} strokeDasharray="10 8" opacity={ringIn} />
+        <ellipse cx={TX} cy={560} rx={365} ry={365} fill="none" stroke={theme.green} strokeWidth={3} strokeDasharray="10 8" opacity={ringIn} />
       </svg>
       {/* tier labels */}
       {[
-        { label: "T1 · GRANTORS", y: 415, at: 6.4 },
-        { label: "T2 · ISSUERS + VERIFIERS", y: 552, at: 7.2 },
-        { label: "T3 · HOLDERS", y: 700, at: 8.0 },
+        { label: "T1 · GRANTORS", y: 458, at: 6.4 },
+        { label: "T2 · ISSUERS + VERIFIERS", y: 628, at: 7.2 },
+        { label: "T3 · HOLDERS", y: 792, at: 8.0 },
       ].map((l) => (
         <span
           key={l.label}
@@ -1736,23 +1725,23 @@ export const BuildEcoTreeV3: React.FC = () => {
         </span>
       ))}
       {/* tree nodes */}
-      <div style={{ position: "absolute", left: TX - 120, top: 222 }}>
+      <div style={{ position: "absolute", left: TX - 120, top: 252 }}>
         <TreeCard title="Ecosystem" sub="root of trust" s={pop(frame, fps, 5.9)} width={240} accent />
       </div>
-      <div style={{ position: "absolute", left: TX - 180 - 110, top: 398 }}>
+      <div style={{ position: "absolute", left: TX - 180 - 110, top: 440 }}>
         <TreeCard title="Issuer Grantor" sub="accredits issuers" s={pop(frame, fps, 6.6)} width={220} />
       </div>
-      <div style={{ position: "absolute", left: TX + 180 - 110, top: 398 }}>
+      <div style={{ position: "absolute", left: TX + 180 - 110, top: 440 }}>
         <TreeCard title="Verifier Grantor" sub="accredits verifiers" s={pop(frame, fps, 6.7)} width={220} />
       </div>
-      <div style={{ position: "absolute", left: TX - 180 - 110, top: 535 }}>
+      <div style={{ position: "absolute", left: TX - 180 - 110, top: 608 }}>
         <TreeCard title="Issuers" sub="issue credentials" s={pop(frame, fps, 7.4)} width={220} />
       </div>
-      <div style={{ position: "absolute", left: TX + 180 - 110, top: 535 }}>
+      <div style={{ position: "absolute", left: TX + 180 - 110, top: 608 }}>
         <TreeCard title="Verifiers" sub="request proofs" s={pop(frame, fps, 7.5)} width={220} />
       </div>
       {/* holders: person · service · AI agent */}
-      <div style={{ position: "absolute", left: TX - 132, top: 690, display: "flex", gap: 24 }}>
+      <div style={{ position: "absolute", left: TX - 132, top: 772, display: "flex", gap: 24 }}>
         {(["person", "service", "agent"] as const).map((k, i) => {
           const s = pop(frame, fps, 8.2 + i * 0.15);
           return (
@@ -1777,17 +1766,17 @@ export const BuildEcoTreeV3: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ position: "absolute", left: TX - 190, top: 772, width: 380, textAlign: "center", fontSize: 15.5, color: theme.muted, fontWeight: 600, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
+      <div style={{ position: "absolute", left: TX - 190, top: 856, width: 380, textAlign: "center", fontSize: 15.5, color: theme.muted, fontWeight: 600, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
         holders · human · service · AI agent
       </div>
       {/* ---- beat 4: found by the lens ---- */}
-      <div style={{ position: "absolute", left: TX + 255, top: 132, opacity: lensIn, transform: `scale(${lensIn}) rotate(-12deg)` }}>
+      <div style={{ position: "absolute", left: TX + 290, top: 212, opacity: lensIn, transform: `scale(${lensIn}) rotate(-12deg)` }}>
         <svg width={74} height={74} viewBox="0 0 24 24" aria-hidden>
           <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke={theme.green} strokeWidth={2.2} />
           <path d="M15.5 15.5 L21 21" stroke={theme.green} strokeWidth={2.6} strokeLinecap="round" />
         </svg>
       </div>
-      <div style={{ position: "absolute", left: TX - 105, top: 128, opacity: badgeIn, transform: `scale(${badgeIn})` }}>
+      <div style={{ position: "absolute", left: TX - 105, top: 952, opacity: badgeIn, transform: `scale(${badgeIn})` }}>
         <span
           style={{
             fontSize: 22,
@@ -1897,8 +1886,10 @@ export const ServiceV3: React.FC = () => {
         gap: 30,
         alignItems: "center",
         justifyContent: "center",
+        paddingTop: 116,
       }}
     >
+      <SceneTitle kicker="for service builders" title="Deploy your services" />
       <FreedomPanel index={1} title="Deploy" subtitle="your services and AI agents" appearAt={0.4} width={W}>
         <div style={{ display: "flex", gap: 30, marginBottom: 26 }}>
           {iconCircle("service", 104, 0.9)}
@@ -2127,7 +2118,7 @@ export const FoundationV3: React.FC = () => {
           https://veranafoundation.org
         </div>
       </div>
-      <div style={{ position: "absolute", top: 220, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
+      <div style={{ position: "absolute", top: 250, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
         {PILLARS.map((c) => {
           const s = pop(frame, fps, c.at);
           return (
@@ -2157,7 +2148,7 @@ export const FoundationV3: React.FC = () => {
         })}
       </div>
       {/* the invitation */}
-      <div style={{ position: "absolute", top: 560, left: 0, right: 0, textAlign: "center", opacity: joinIn, transform: `translateY(${(1 - joinIn) * 30}px)` }}>
+      <div style={{ position: "absolute", top: 645, left: 0, right: 0, textAlign: "center", opacity: joinIn, transform: `translateY(${(1 - joinIn) * 30}px)` }}>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 16, fontSize: 30, fontWeight: 800, color: "#fff", background: theme.gradient, borderRadius: 999, padding: "16px 42px", boxShadow: "0 18px 44px rgba(118,62,240,0.35)" }}>
           Join the Foundation
           <span style={{ fontSize: 19, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: "2px solid #10b981", borderRadius: 999, padding: "4px 16px" }}>
@@ -2165,7 +2156,7 @@ export const FoundationV3: React.FC = () => {
           </span>
         </span>
       </div>
-      <div style={{ position: "absolute", top: 672, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" }}>
+      <div style={{ position: "absolute", top: 775, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" }}>
         <span style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", opacity: interpolate(t, [6.3, 6.7], [0, 1], clamp) }}>
           working groups
         </span>
@@ -2191,7 +2182,7 @@ export const FoundationV3: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ position: "absolute", top: 752, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
+      <div style={{ position: "absolute", top: 880, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
         learn by doing · playground.testnet.verana.network · docs.verana.io
       </div>
     </AbsoluteFill>
@@ -2206,15 +2197,15 @@ export const ConnectV3: React.FC = () => {
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-  const YOU = { x: 1260, y: 430 };
+  const YOU = { x: 1260, y: 520 };
   const MESH = [
-    { x: 1030, y: 260 }, { x: 1490, y: 250 }, { x: 1650, y: 470 },
-    { x: 1470, y: 650 }, { x: 1090, y: 640 }, { x: 880, y: 430 },
+    { x: 1030, y: 350 }, { x: 1490, y: 340 }, { x: 1650, y: 560 },
+    { x: 1470, y: 740 }, { x: 1090, y: 730 }, { x: 880, y: 520 },
   ];
   const EDGES = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0]];
   const searchers = [
-    { kind: "person" as const, x: 350, y: 390, at: 1.3 },
-    { kind: "agent" as const, x: 350, y: 600, at: 1.5 },
+    { kind: "person" as const, x: 350, y: 470, at: 1.3 },
+    { kind: "agent" as const, x: 350, y: 700, at: 1.5 },
   ];
   const pathDraw = interpolate(t, [1.9, 2.9], [0, 1], clamp);
   const connected = interpolate(t, [6.3, 6.9], [0, 1], clamp);
@@ -2232,11 +2223,12 @@ export const ConnectV3: React.FC = () => {
     const vis = t >= a && t <= b + 0.15 ? 1 : 0;
     return { x: from.x + (to.x - from.x) * p, y: from.y + (to.y - from.y) * p, vis };
   };
-  const out = credPos({ x: 430, y: 400 }, YOU, 3.3, 4.3);
-  const back = credPos(YOU, { x: 430, y: 400 }, 4.5, 5.5);
-  const agentLine = { x1: 435, y1: 590, x2: YOU.x - 45, y2: YOU.y + 40 };
+  const out = credPos({ x: 430, y: 490 }, YOU, 3.3, 4.3);
+  const back = credPos(YOU, { x: 430, y: 490 }, 4.5, 5.5);
+  const agentLine = { x1: 435, y1: 690, x2: YOU.x - 45, y2: YOU.y + 40 };
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
+      <SceneTitle kicker="the result" title="Find, authenticate, connect" />
       {/* the trust graph */}
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
         {EDGES.map(([a, b], i) => (
@@ -2246,7 +2238,7 @@ export const ConnectV3: React.FC = () => {
           <line key={`s${i}`} x1={n.x} y1={n.y} x2={YOU.x} y2={YOU.y} stroke="#ede9fe" strokeWidth={2} opacity={interpolate(t, [0.9, 1.2], [0, 1], clamp)} />
         ))}
         {/* find paths */}
-        <line x1={435} y1={400} x2={YOU.x - 55} y2={YOU.y - 10} stroke={connected ? theme.green : theme.indigo} strokeWidth={3} strokeDasharray={connected > 0.5 ? undefined : "9 8"} opacity={0.9 * pathDraw} />
+        <line x1={435} y1={490} x2={YOU.x - 55} y2={YOU.y - 10} stroke={connected ? theme.green : theme.indigo} strokeWidth={3} strokeDasharray={connected > 0.5 ? undefined : "9 8"} opacity={0.9 * pathDraw} />
         <line x1={agentLine.x1} y1={agentLine.y1} x2={agentLine.x2} y2={agentLine.y2} stroke={connected > 0.5 ? theme.green : theme.indigo} strokeWidth={3} strokeDasharray={connected > 0.5 ? undefined : "9 8"} opacity={0.9 * interpolate(t, [2.2, 3.2], [0, 1], clamp)} />
       </svg>
       {MESH.map((n, i) => (
@@ -2281,9 +2273,9 @@ export const ConnectV3: React.FC = () => {
         ) : null
       )}
       {check(YOU.x - 62, YOU.y - 52, 4.4)}
-      {check(452, 362, 5.6)}
+      {check(452, 452, 5.6)}
       {/* connected */}
-      <div style={{ position: "absolute", left: 0, right: 0, top: 120, display: "flex", justifyContent: "center", opacity: connected, transform: `translateY(${(1 - connected) * 18}px)` }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 944, display: "flex", justifyContent: "center", opacity: connected, transform: `translateY(${(1 - connected) * 18}px)` }}>
         <span style={{ fontSize: 26, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: `2.5px solid ${theme.green}`, borderRadius: 999, padding: "12px 34px" }}>
           mutually authenticated · connected
         </span>
