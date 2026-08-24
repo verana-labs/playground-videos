@@ -281,11 +281,15 @@ export const FoundationsV3: React.FC = () => {
   const ease = (x: number) => 1 - Math.pow(1 - x, 3);
   // Beat B push: the standards group compresses to the left half.
   const shift = ease(interpolate(t, [8.0, 8.9], [0, 1], clamp));
-  // Animated edge draw for the trust triangle.
-  const draw = (d: number, len: number) => ({
+  // Animated edge draw for the trust triangle; the arrowhead only lands
+  // once its line is nearly there.
+  const drawP = (d: number) => interpolate(t, [d, d + 0.7], [0, 1], clamp);
+  const draw = (p: number, len: number) => ({
     strokeDasharray: len,
-    strokeDashoffset: len * (1 - interpolate(t, [d, d + 0.7], [0, 1], clamp)),
+    strokeDashoffset: len * (1 - p),
   });
+  const p1 = drawP(2.3);
+  const p2 = drawP(2.9);
   const edgeLabel: React.CSSProperties = {
     position: "absolute",
     fontFamily: theme.mono,
@@ -306,10 +310,24 @@ export const FoundationsV3: React.FC = () => {
           top: 170,
           left: "50%",
           width: 1240,
-          transform: `translateX(calc(-50% + ${-shift * 450}px)) translateY(${shift * 80}px) scale(${1 - shift * 0.36})`,
+          transform: `translateX(calc(-50% + ${-shift * 470}px)) translateY(${shift * 40}px) scale(${1 - shift * 0.26})`,
           transformOrigin: "top center",
         }}
       >
+        <div
+          style={{
+            fontFamily: theme.mono,
+            fontSize: 16,
+            letterSpacing: 2.5,
+            color: theme.faint,
+            textTransform: "uppercase",
+            textAlign: "center",
+            marginBottom: 20,
+            opacity: interpolate(t, [0.3, 0.7], [0, 1], clamp),
+          }}
+        >
+          standards and specifications
+        </div>
         <div style={{ display: "flex", gap: 22, justifyContent: "center" }}>
           {[
             { id: "standards-logos/w3c", label: "W3C", at: 0.4 },
@@ -336,11 +354,11 @@ export const FoundationsV3: React.FC = () => {
               </marker>
             </defs>
             {/* issues: Issuer -> Holder */}
-            <line x1={215} y1={112} x2={455} y2={344} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.3, 330)} />
+            <line x1={215} y1={112} x2={455} y2={344} stroke={theme.violet} strokeWidth={3} markerEnd={p1 > 0.82 ? "url(#tri-arrow)" : undefined} {...draw(p1, 330)} />
             {/* presents: Holder -> Verifier */}
-            <line x1={585} y1={344} x2={825} y2={112} stroke={theme.violet} strokeWidth={3} markerEnd="url(#tri-arrow)" {...draw(2.9, 330)} />
+            <line x1={585} y1={344} x2={825} y2={112} stroke={theme.violet} strokeWidth={3} markerEnd={p2 > 0.82 ? "url(#tri-arrow)" : undefined} {...draw(p2, 330)} />
             {/* trusts?: Verifier -> Issuer, the edge Verana serves */}
-            <line x1={790} y1={62} x2={250} y2={62} stroke={theme.faint} strokeWidth={3} strokeDasharray="10 8" markerEnd="url(#tri-arrow)" opacity={interpolate(t, [3.5, 4.0], [0, 1], clamp)} />
+            <line x1={790} y1={62} x2={250} y2={62} stroke={theme.faint} strokeWidth={3} strokeDasharray="10 8" markerEnd={t > 3.9 ? "url(#tri-arrow)" : undefined} opacity={interpolate(t, [3.5, 4.0], [0, 1], clamp)} />
           </svg>
           <div style={{ position: "absolute", left: 65, top: 32 }}>
             <TriangleNode label="Issuer" s={pop(frame, fps, 1.7)} />
@@ -354,20 +372,44 @@ export const FoundationsV3: React.FC = () => {
           <div style={{ ...edgeLabel, left: 240, top: 215, opacity: interpolate(t, [2.6, 2.9], [0, 1], clamp) }}>issues</div>
           <div style={{ ...edgeLabel, left: 690, top: 215, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>presents</div>
           <div style={{ ...edgeLabel, left: 468, top: 20, color: theme.muted, background: "#f8fafc", border: "1.5px solid #e2e8f0", opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>trusts?</div>
-          {/* credential formats, snapping onto the credential */}
-          <div style={{ position: "absolute", left: 0, right: 0, top: 418, display: "flex", gap: 14, justifyContent: "center" }}>
+          {/* credential formats + transport protocols, snapping on below */}
+          <div style={{ position: "absolute", left: 0, right: 0, top: 418, display: "flex", gap: 12, justifyContent: "center", alignItems: "center" }}>
+            <span style={{ fontFamily: theme.mono, fontSize: 14, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", marginRight: 2, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>
+              formats
+            </span>
             {["SD-JWT VC", "mdoc"].map((c, i) => (
               <span
                 key={c}
                 style={{
                   fontFamily: theme.mono,
-                  fontSize: 20,
+                  fontSize: 19,
                   color: "#1d4ed8",
                   background: "#eff6ff",
                   border: "1.5px solid #bfdbfe",
                   borderRadius: 999,
-                  padding: "5px 18px",
-                  transform: `scale(${pop(frame, fps, 3.4 + i * 0.2)})`,
+                  padding: "5px 16px",
+                  transform: `scale(${pop(frame, fps, 3.3 + i * 0.2)})`,
+                }}
+              >
+                {c}
+              </span>
+            ))}
+            <span style={{ width: 16 }} />
+            <span style={{ fontFamily: theme.mono, fontSize: 14, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", marginRight: 2, opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>
+              protocols
+            </span>
+            {["OpenID4VC", "DIDComm", "Linked-VP"].map((c, i) => (
+              <span
+                key={c}
+                style={{
+                  fontFamily: theme.mono,
+                  fontSize: 19,
+                  color: "#1d4ed8",
+                  background: "#eff6ff",
+                  border: "1.5px solid #bfdbfe",
+                  borderRadius: 999,
+                  padding: "5px 16px",
+                  transform: `scale(${pop(frame, fps, 3.8 + i * 0.2)})`,
                 }}
               >
                 {c}
@@ -394,9 +436,9 @@ export const FoundationsV3: React.FC = () => {
           >
             implementations and frameworks
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 172px)", gap: 26, justifyContent: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 178px)", gap: 22, justifyContent: "center" }}>
             {IMPLEMENTATIONS.map((l, i) => (
-              <ImplTile key={l.id} id={l.id} fallback={l.fallback} s={pop(frame, fps, 8.6 + i * 0.4)} />
+              <LogoTile key={l.id} id={l.id} label={l.fallback} size={178} s={pop(frame, fps, 8.6 + i * 0.4)} />
             ))}
           </div>
         </div>
