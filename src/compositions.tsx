@@ -233,9 +233,10 @@ const IntroV4Banner: React.FC = () => {
   const shot = INTRO4_SHOTS.find((s) => t >= s.start && t < s.end);
   if (!shot) return null;
   if (["brand-open-v4", "verana-close-v4"].includes(shot.visual.kind)) return null;
+  const dark = (shot.tone ?? "dark") === "dark";
   return (
-    <div style={{ position: "absolute", top: 44, right: 64, opacity: 0.92 }}>
-      <VeranaIoLogo size={54} tone="dark" />
+    <div style={{ position: "absolute", top: 44, right: 64, opacity: dark ? 0.85 : 0.95 }}>
+      <VeranaIoLogo size={54} tone={dark ? "dark" : "light"} />
     </div>
   );
 };
