@@ -1,192 +1,180 @@
 1
-00:00:00,000 --> 00:00:00,503
+00:00:00,000 --> 00:00:00,486
 Verana.
 
 2
-00:00:00,503 --> 00:00:04,670
+00:00:00,486 --> 00:00:04,510
 The open trust infrastructure for the verifiable internet.
 
 3
-00:00:06,000 --> 00:00:07,695
-First, the foundations.
-
-4
-00:00:07,695 --> 00:00:11,085
+00:00:06,000 --> 00:00:09,381
 Verifiable credentials are becoming a reality.
 
-5
-00:00:11,085 --> 00:00:16,170
+4
+00:00:09,381 --> 00:00:14,453
 The groundwork is laid: issuer, holder, verifier, one trust triangle.
 
-6
-00:00:16,170 --> 00:00:25,160
+5
+00:00:14,453 --> 00:00:23,420
 And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
-7
-00:00:26,000 --> 00:00:31,816
+6
+00:00:24,000 --> 00:00:29,543
 Let's have a look at the challenges of interconnecting ecosystems.
 
-8
-00:00:31,816 --> 00:00:36,574
+7
+00:00:29,543 --> 00:00:34,079
 One: create new ecosystems at will, and monetize them.
 
-9
-00:00:36,574 --> 00:00:38,865
+8
+00:00:34,079 --> 00:00:36,263
 Two: scale across borders.
 
-10
-00:00:38,865 --> 00:00:41,420
+9
+00:00:36,263 --> 00:00:38,698
 Three: authenticate mutually.
 
-11
-00:00:41,420 --> 00:00:46,090
+10
+00:00:38,698 --> 00:00:43,150
 And four: discovery: find trusted services, anywhere.
 
-12
-00:00:47,000 --> 00:00:51,272
+11
+00:00:44,000 --> 00:00:48,164
 Let's dig into challenge one: scale, by creating ecosystems.
 
-13
-00:00:51,272 --> 00:01:04,800
+12
+00:00:48,164 --> 00:01:01,350
 How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
 
-14
-00:01:05,000 --> 00:01:08,389
+13
+00:01:02,000 --> 00:01:05,217
 Next, challenge two: scale, cross-border.
 
-15
-00:01:08,389 --> 00:01:14,670
+14
+00:01:05,217 --> 00:01:11,180
 How do we recognize and onboard ecosystems from any country, and any sector?
 
-16
-00:01:15,000 --> 00:01:18,327
+15
+00:01:12,000 --> 00:01:15,372
 Then, challenge three: mutual authentication.
 
-17
-00:01:18,327 --> 00:01:25,500
+16
+00:01:15,372 --> 00:01:22,640
 How do services and AI agents from different countries identify each other, and trust each other?
 
-18
-00:01:26,000 --> 00:01:29,057
+17
+00:01:23,000 --> 00:01:26,084
 And finally, challenge four: discovery.
 
-19
-00:01:29,057 --> 00:01:32,740
+18
+00:01:26,084 --> 00:01:29,800
 How do we search the graph of trusted services?
 
-20
-00:01:33,000 --> 00:01:34,226
+19
+00:01:30,000 --> 00:01:31,239
 The good news?
 
-21
-00:01:34,226 --> 00:01:36,590
+20
+00:01:31,239 --> 00:01:33,628
 Verana answers all of this.
 
-22
-00:01:36,590 --> 00:01:42,370
+21
+00:01:33,628 --> 00:01:39,468
 Sovereign ecosystems, verifiable services, one public Trust Graph.
 
-23
-00:01:42,370 --> 00:01:46,310
+22
+00:01:39,468 --> 00:01:43,450
 Open, neutral, cross-border, owned by no one.
 
-24
-00:01:47,000 --> 00:01:48,005
+23
+00:01:44,000 --> 00:01:44,951
 So let's build.
 
-25
-00:01:48,005 --> 00:01:53,636
+24
+00:01:44,951 --> 00:01:50,280
 Setting up your own sovereign ecosystem trust registry in Verana is straightforward.
 
-26
-00:01:53,636 --> 00:02:02,215
+25
+00:01:50,280 --> 00:01:58,399
 Start by creating your trust registry, publish your Ecosystem Governance Framework, your credential schemas and business models.
 
-27
-00:02:02,215 --> 00:02:04,628
+26
+00:01:58,399 --> 00:02:00,682
 Onboard your ecosystem participants.
 
-28
-00:02:04,628 --> 00:02:07,510
+27
+00:02:00,682 --> 00:02:03,410
 Your ecosystem exists, and is discoverable.
 
-29
-00:02:08,000 --> 00:02:10,985
+28
+00:02:04,000 --> 00:02:06,718
 Then deploy your services and AI agents.
 
-30
-00:02:10,985 --> 00:02:13,075
+29
+00:02:06,718 --> 00:02:08,620
 Choose your business wallet.
 
-31
-00:02:13,075 --> 00:02:16,881
+30
+00:02:08,620 --> 00:02:12,085
 Join ecosystems, on Verana or on other trust lists.
 
-32
-00:02:16,881 --> 00:02:23,000
+31
+00:02:12,085 --> 00:02:17,656
 Attach their credentials to your services: you are now visible in the Trust Graph.
 
-33
-00:02:23,000 --> 00:02:30,090
+32
+00:02:17,656 --> 00:02:24,110
 And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.
 
-34
-00:02:31,000 --> 00:02:32,768
+33
+00:02:25,000 --> 00:02:26,619
 And here is the result.
 
-35
-00:02:32,768 --> 00:02:35,534
+34
+00:02:26,619 --> 00:02:29,152
 You are now part of the Trust Graph.
 
-36
-00:02:35,534 --> 00:02:43,988
+35
+00:02:29,152 --> 00:02:36,893
 Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect.
 
-37
-00:02:43,988 --> 00:02:47,370
+36
+00:02:36,893 --> 00:02:39,990
 Trust, established before the first message.
 
-38
-00:02:48,000 --> 00:02:49,136
+37
+00:02:41,000 --> 00:02:42,038
 One more thing.
 
+38
+00:02:42,038 --> 00:02:51,037
+Behind Verana: open specifications on open standards, open-source software, and a non-profit foundation, managed by its community.
+
 39
-00:02:49,136 --> 00:02:54,591
-Behind Verana: open specifications, built exclusively on open standards.
+00:02:51,037 --> 00:02:56,783
+Anyone can use it all for free, and extend their own products and services with it.
 
 40
-00:02:54,591 --> 00:02:56,182
-Open-source software.
+00:02:56,783 --> 00:03:00,452
+And anyone can contribute: join the Foundation, free.
 
 41
-00:02:56,182 --> 00:03:00,273
-And a non-profit foundation, managed by its community.
-
-42
-00:03:00,273 --> 00:03:01,712
-Want to contribute?
-
-43
-00:03:01,712 --> 00:03:05,424
-Join the Foundation: it is free for contributors.
-
-44
-00:03:05,424 --> 00:03:08,530
+00:03:00,452 --> 00:03:03,290
 Join a working group, or create your own.
 
-45
-00:03:09,000 --> 00:03:12,540
+42
+00:03:04,000 --> 00:03:07,514
 In essence: Verana enables trust to scale.
 
-46
-00:03:12,540 --> 00:03:18,018
+43
+00:03:07,514 --> 00:03:12,952
 Not just within one ecosystem: across the entire digital economy.
 
-47
-00:03:18,018 --> 00:03:21,558
+44
+00:03:12,952 --> 00:03:16,466
 Try it yourself, on the public playground.
 
-48
-00:03:21,558 --> 00:03:22,738
+45
+00:03:16,466 --> 00:03:17,638
 Verana dot io.
 

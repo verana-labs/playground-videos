@@ -856,10 +856,10 @@ export const SilosV3: React.FC = () => {
   ];
   // Each badge lands as the narration names its challenge.
   const CHALLENGES = [
-    { n: 1, label: "create and monetize", at: 3.9 },
-    { n: 2, label: "cross-border", at: 9.2 },
-    { n: 3, label: "mutual authentication", at: 12.2 },
-    { n: 4, label: "discovery", at: 15.2 },
+    { n: 1, label: "create and monetize", at: 2.9 },
+    { n: 2, label: "cross-border", at: 8.8 },
+    { n: 3, label: "mutual authentication", at: 11.6 },
+    { n: 4, label: "discovery", at: 14.6 },
   ];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
@@ -1684,14 +1684,14 @@ export const BuildEcoTreeV3: React.FC = () => {
   const pulseK = (at: number) => interpolate(t, [at, at + 0.25, at + 0.9], [0, 1, 0], clamp);
   // Word-synced beats, measured from the take-6 clip.
   const ARTIFACTS = [
-    { label: "governance framework", at: 9.9 },
-    { label: "credential schemas", at: 11.6 },
-    { label: "business model", at: 12.9 },
+    { label: "governance framework", at: 9.7 },
+    { label: "credential schemas", at: 11.3 },
+    { label: "business model", at: 12.4 },
   ];
-  const rootPulse = pulseK(7.5);
-  const ringIn = interpolate(t, [18.6, 19.3], [0, 1], clamp);
-  const lensIn = pop(frame, fps, 19.0);
-  const badgeIn = pop(frame, fps, 19.4);
+  const rootPulse = pulseK(7.7);
+  const ringIn = interpolate(t, [17.7, 18.4], [0, 1], clamp);
+  const lensIn = pop(frame, fps, 18.0);
+  const badgeIn = pop(frame, fps, 18.4);
   // The tree column.
   const TX = 1310;
   const tier = (y: number) => y;
@@ -1742,24 +1742,24 @@ export const BuildEcoTreeV3: React.FC = () => {
 
       {/* ---- onboarding edge from the root card into the tree ---- */}
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <line x1={672} y1={288} x2={TX - 122} y2={288} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="7 7" opacity={draw(14.4)} />
+        <line x1={672} y1={288} x2={TX - 122} y2={288} stroke={theme.violet} strokeWidth={2.5} strokeDasharray="7 7" opacity={draw(13.7)} />
         {/* accredits: root -> grantors */}
-        <line x1={TX} y1={330} x2={TX - 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(15.3)} />
-        <line x1={TX} y1={330} x2={TX + 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(15.3)} />
+        <line x1={TX} y1={330} x2={TX - 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(14.6)} />
+        <line x1={TX} y1={330} x2={TX + 180} y2={438} stroke={theme.violet} strokeWidth={2.5} opacity={draw(14.6)} />
         {/* grantors -> issuers/verifiers */}
-        <line x1={TX - 180} y1={514} x2={TX - 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(16.1)} />
-        <line x1={TX + 180} y1={514} x2={TX + 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(16.1)} />
+        <line x1={TX - 180} y1={514} x2={TX - 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(15.4)} />
+        <line x1={TX + 180} y1={514} x2={TX + 180} y2={606} stroke={theme.violet} strokeWidth={2.5} opacity={draw(15.4)} />
         {/* issuers issue to / verifiers verify holders */}
-        <line x1={TX - 180} y1={684} x2={TX - 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(16.9)} />
-        <line x1={TX + 180} y1={684} x2={TX + 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(16.9)} />
+        <line x1={TX - 180} y1={684} x2={TX - 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(16.2)} />
+        <line x1={TX + 180} y1={684} x2={TX + 40} y2={770} stroke="#a78bfa" strokeWidth={2.5} strokeDasharray="6 6" opacity={draw(16.2)} />
         {/* the discoverable ring */}
         <ellipse cx={TX} cy={560} rx={365} ry={365} fill="none" stroke={theme.green} strokeWidth={3} strokeDasharray="10 8" opacity={ringIn} />
       </svg>
       {/* tier labels */}
       {[
-        { label: "T1 · GRANTORS", y: 458, at: 15.3 },
-        { label: "T2 · ISSUERS + VERIFIERS", y: 628, at: 16.1 },
-        { label: "T3 · HOLDERS", y: 792, at: 16.9 },
+        { label: "T1 · GRANTORS", y: 458, at: 14.6 },
+        { label: "T2 · ISSUERS + VERIFIERS", y: 628, at: 15.4 },
+        { label: "T3 · HOLDERS", y: 792, at: 16.2 },
       ].map((l) => (
         <span
           key={l.label}
@@ -1779,24 +1779,24 @@ export const BuildEcoTreeV3: React.FC = () => {
       ))}
       {/* tree nodes */}
       <div style={{ position: "absolute", left: TX - 120, top: 252 }}>
-        <TreeCard title="Ecosystem" sub="root of trust" s={pop(frame, fps, 14.7)} width={240} accent />
+        <TreeCard title="Ecosystem" sub="root of trust" s={pop(frame, fps, 14.0)} width={240} accent />
       </div>
       <div style={{ position: "absolute", left: TX - 180 - 110, top: 440 }}>
-        <TreeCard title="Issuer Grantor" sub="accredits issuers" s={pop(frame, fps, 15.5)} width={220} />
+        <TreeCard title="Issuer Grantor" sub="accredits issuers" s={pop(frame, fps, 14.8)} width={220} />
       </div>
       <div style={{ position: "absolute", left: TX + 180 - 110, top: 440 }}>
-        <TreeCard title="Verifier Grantor" sub="accredits verifiers" s={pop(frame, fps, 15.6)} width={220} />
+        <TreeCard title="Verifier Grantor" sub="accredits verifiers" s={pop(frame, fps, 14.9)} width={220} />
       </div>
       <div style={{ position: "absolute", left: TX - 180 - 110, top: 608 }}>
-        <TreeCard title="Issuers" sub="issue credentials" s={pop(frame, fps, 16.3)} width={220} />
+        <TreeCard title="Issuers" sub="issue credentials" s={pop(frame, fps, 15.6)} width={220} />
       </div>
       <div style={{ position: "absolute", left: TX + 180 - 110, top: 608 }}>
-        <TreeCard title="Verifiers" sub="request proofs" s={pop(frame, fps, 16.4)} width={220} />
+        <TreeCard title="Verifiers" sub="request proofs" s={pop(frame, fps, 15.7)} width={220} />
       </div>
       {/* holders: person · service · AI agent */}
       <div style={{ position: "absolute", left: TX - 132, top: 772, display: "flex", gap: 24 }}>
         {(["person", "service", "agent"] as const).map((k, i) => {
-          const s = pop(frame, fps, 17.1 + i * 0.15);
+          const s = pop(frame, fps, 16.4 + i * 0.15);
           return (
             <div
               key={k}
@@ -1819,7 +1819,7 @@ export const BuildEcoTreeV3: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ position: "absolute", left: TX - 190, top: 856, width: 380, textAlign: "center", fontSize: 15.5, color: theme.muted, fontWeight: 600, opacity: interpolate(t, [17.5, 17.9], [0, 1], clamp) }}>
+      <div style={{ position: "absolute", left: TX - 190, top: 856, width: 380, textAlign: "center", fontSize: 15.5, color: theme.muted, fontWeight: 600, opacity: interpolate(t, [16.8, 17.2], [0, 1], clamp) }}>
         holders · human · service · AI agent
       </div>
       {/* ---- beat 4: found by the lens ---- */}
@@ -1953,14 +1953,14 @@ export const ServiceV3: React.FC = () => {
             border: "1.5px solid #ddd6fe",
             borderRadius: 999,
             padding: "9px 26px",
-            opacity: interpolate(t, [16.8, 17.2], [0, 1], clamp),
+            opacity: interpolate(t, [15.4, 15.8], [0, 1], clamp),
           }}
         >
           issue to any personal wallet · just integrate the Verana resolver
         </span>
         <div style={{ display: "flex", gap: 16 }}>
           {["inji", "eudi", "authbound", "paradym", "bcwallet", "wwwallet", "hologram", "sphereon", "talao", "nl-wallet"].map((id, i) => (
-            <div key={id} style={{ transform: `scale(${pop(frame, fps, 17.3 + i * 0.1)})` }}>
+            <div key={id} style={{ transform: `scale(${pop(frame, fps, 15.8 + i * 0.1)})` }}>
               <WalletTile id={id} size={64} />
             </div>
           ))}
@@ -2129,7 +2129,7 @@ export const AnswersV3: React.FC = () => {
     {
       title: "Sovereign ecosystems",
       sub: "build your own trust registry: your rules, your schemas, your business model",
-      at: 3.9,
+      at: 4.0,
       icon: (
         <>
           <rect x="9" y="3" width="6" height="5" rx="1" {...st} />
@@ -2142,7 +2142,7 @@ export const AnswersV3: React.FC = () => {
     {
       title: "Verifiable services",
       sub: "deploy services and AI agents; issue and verify credentials from any ecosystem you are interested in",
-      at: 5.4,
+      at: 5.5,
       icon: (
         <>
           <rect x="3" y="5" width="18" height="14" rx="2" {...st} />
@@ -2154,7 +2154,7 @@ export const AnswersV3: React.FC = () => {
     {
       title: "One public Trust Graph",
       sub: "be found, mutually authenticate, and connect: trust before the first message",
-      at: 7.1,
+      at: 7.4,
       icon: (
         <>
           <circle cx="6" cy="6" r="2.5" {...st} />
@@ -2165,7 +2165,7 @@ export const AnswersV3: React.FC = () => {
       ),
     },
   ];
-  const ethos = pop(frame, fps, 9.1);
+  const ethos = pop(frame, fps, 9.3);
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       <SceneTitle kicker="the answer" title="Verana answers all of this" />
@@ -2230,7 +2230,7 @@ export const FoundationV3: React.FC = () => {
     {
       title: "Open specifications",
       sub: "built exclusively on open standards · CC BY-SA 4.0",
-      at: 2.2,
+      at: 3.0,
       icon: (
         <>
           <path d="M6 3.5 h9 l4 4 V20.5 h-13 Z M15 3.5 v4 h4" {...st} />
@@ -2241,13 +2241,13 @@ export const FoundationV3: React.FC = () => {
     {
       title: "Open-source software",
       sub: "Apache 2.0 · public repos, copyright with contributors",
-      at: 4.6,
+      at: 5.9,
       icon: <path d="M9 8 L4.5 12 L9 16 M15 8 L19.5 12 L15 16" {...st} />,
     },
     {
       title: "Non-profit foundation",
       sub: "community managed · steward of the open trust layer",
-      at: 6.4,
+      at: 7.1,
       icon: (
         <>
           <circle cx="8.5" cy="9" r="3" {...st} />
@@ -2258,13 +2258,13 @@ export const FoundationV3: React.FC = () => {
     },
   ];
   const WGS = [
-    { label: "specifications", at: 16.7 },
-    { label: "software", at: 17.0 },
-    { label: "business cases", at: 17.3 },
-    { label: "your working group", at: 17.7, dashed: true },
+    { label: "specifications", at: 19.4 },
+    { label: "software", at: 19.7 },
+    { label: "business cases", at: 20.0 },
+    { label: "your working group", at: 20.4, dashed: true },
   ];
-  const useIn = pop(frame, fps, 9.5);
-  const joinIn = pop(frame, fps, 13.5);
+  const useIn = pop(frame, fps, 11.0);
+  const joinIn = pop(frame, fps, 17.2);
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       {/* the official foundation logo (veranafoundation.org) beside the title */}
@@ -2361,7 +2361,7 @@ export const FoundationV3: React.FC = () => {
         </div>
       </div>
       <div style={{ position: "absolute", top: 775, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" }}>
-        <span style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", opacity: interpolate(t, [16.4, 16.8], [0, 1], clamp) }}>
+        <span style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", opacity: interpolate(t, [19.1, 19.5], [0, 1], clamp) }}>
           working groups
         </span>
         {WGS.map((w) => {
@@ -2386,7 +2386,7 @@ export const FoundationV3: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ position: "absolute", top: 880, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [18.8, 19.2], [0, 1], clamp) }}>
+      <div style={{ position: "absolute", top: 880, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [21.0, 21.4], [0, 1], clamp) }}>
         learn by doing · playground.testnet.verana.network · docs.verana.io
       </div>
     </AbsoluteFill>

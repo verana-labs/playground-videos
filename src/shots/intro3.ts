@@ -16,7 +16,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   {
     id: "N-1",
     start: 6,
-    end: 26,
+    end: 24,
     lines: [],
     vo: "Verifiable credentials are becoming a reality. The groundwork is laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.",
     visual: { kind: "foundations-v3" },
@@ -24,8 +24,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-2",
-    start: 26,
-    end: 47,
+    start: 24,
+    end: 44,
     lines: [],
     vo: "Let's have a look at the challenges of interconnecting ecosystems. One: create new ecosystems at will, and monetize them. Two: scale across borders. Three: authenticate mutually. And four: discovery: find trusted services, anywhere.",
     visual: { kind: "silos-v3" },
@@ -33,8 +33,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-3",
-    start: 47,
-    end: 65,
+    start: 44,
+    end: 62,
     lines: [],
     vo: "Let's dig into challenge one: scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?",
     visual: { kind: "create-eco-q-v3" },
@@ -42,8 +42,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-4",
-    start: 65,
-    end: 75,
+    start: 62,
+    end: 72,
     lines: [],
     vo: "Next, challenge two: scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?",
     visual: { kind: "cross-border-q-v3" },
@@ -51,8 +51,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-5",
-    start: 75,
-    end: 86,
+    start: 72,
+    end: 83,
     lines: [],
     vo: "Then, challenge three: mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?",
     visual: { kind: "mutual-auth-v3" },
@@ -60,8 +60,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-6",
-    start: 86,
-    end: 93,
+    start: 83,
+    end: 90,
     lines: [],
     vo: "And finally, challenge four: discovery. How do we search the graph of trusted services?",
     visual: { kind: "ecosystem-search-v3" },
@@ -69,8 +69,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-8b",
-    start: 93,
-    end: 107,
+    start: 90,
+    end: 104,
     lines: [],
     vo: "The good news? Verana answers all of this. Sovereign ecosystems, verifiable services, one public Trust Graph. Open, neutral, cross-border, owned by no one.",
     visual: { kind: "answers-v3" },
@@ -78,8 +78,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9a",
-    start: 107,
-    end: 128,
+    start: 104,
+    end: 124,
     lines: [],
     vo: "So let's build. Setting up your own sovereign ecosystem trust registry in Verana is straightforward. Start by creating your trust registry, publish your Ecosystem Governance Framework, your credential schemas and business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.",
     visual: { kind: "build-eco-tree-v3" },
@@ -87,8 +87,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9b",
-    start: 128,
-    end: 151,
+    start: 124,
+    end: 145,
     lines: [],
     vo: "Then deploy your services and AI agents. Choose your business wallet. Join ecosystems, on Verana or on other trust lists. Attach their credentials to your services: you are now visible in the Trust Graph. And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.",
     visual: { kind: "build-service-v3" },
@@ -96,8 +96,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9c",
-    start: 151,
-    end: 168,
+    start: 145,
+    end: 161,
     lines: [],
     vo: "And here is the result. You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message.",
     visual: { kind: "connect-v3" },
@@ -105,8 +105,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-9d",
-    start: 168,
-    end: 189,
+    start: 161,
+    end: 184,
     lines: [],
     vo: "One more thing. Behind Verana: open specifications on open standards, open-source software, and a non-profit foundation, managed by its community. Anyone can use it all for free, and extend their own products and services with it. And anyone can contribute: join the Foundation, free. Join a working group, or create your own.",
     visual: { kind: "foundation-v3" },
@@ -114,8 +114,8 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
   {
     id: "N-10",
-    start: 189,
-    end: 204,
+    start: 184,
+    end: 199,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Try it yourself, on the public playground. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -123,4 +123,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 204;
+export const INTRO3_END = 199;
