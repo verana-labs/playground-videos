@@ -1686,7 +1686,7 @@ export const BuildEcoTreeV3: React.FC = () => {
   const ARTIFACTS = [
     { label: "governance framework", at: 9.7 },
     { label: "credential schemas", at: 11.3 },
-    { label: "business model", at: 12.4 },
+    { label: "business models", at: 12.4 },
   ];
   const rootPulse = pulseK(7.7);
   const ringIn = interpolate(t, [17.7, 18.4], [0, 1], clamp);
@@ -1738,6 +1738,31 @@ export const BuildEcoTreeV3: React.FC = () => {
             </span>
           );
         })}
+        {/* the available business models, under the chip */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 9, marginTop: 2, alignItems: "center" }}>
+          {["pay per issuance", "pay per verification", "ecosystem membership subscription"].map((m, i) => {
+            const ms = pop(frame, fps, 12.9 + i * 0.18);
+            return (
+              <span
+                key={m}
+                style={{
+                  fontFamily: theme.mono,
+                  fontSize: 15,
+                  color: theme.muted,
+                  background: theme.card,
+                  border: "1.5px solid #e2e8f0",
+                  borderRadius: 999,
+                  padding: "6px 15px",
+                  whiteSpace: "nowrap",
+                  opacity: ms,
+                  transform: `scale(${ms})`,
+                }}
+              >
+                {m}
+              </span>
+            );
+          })}
+        </div>
       </div>
 
       {/* ---- onboarding edge from the root card into the tree ---- */}
