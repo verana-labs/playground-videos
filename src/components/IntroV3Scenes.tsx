@@ -827,32 +827,39 @@ export const SilosV3: React.FC = () => {
     { a: 7, b: 4, at: 7.5 },
     { a: 7, b: 3, at: 7.9 },
   ];
-  const CHALLENGES = ["create", "cross-border", "mutual authentication", "discover"];
+  // Each badge lands as the narration names its challenge.
+  const CHALLENGES = [
+    { n: 1, label: "create and monetize", at: 3.3 },
+    { n: 2, label: "cross-border", at: 6.3 },
+    { n: 3, label: "mutual authentication", at: 8.1 },
+    { n: 4, label: "discovery", at: 9.9 },
+  ];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
-      <SceneTitle tone="dark" kicker="the next challenges" title="Interconnect ecosystems" />
-      <div style={{ position: "absolute", top: 934, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center" }}>
-        {CHALLENGES.map((c, i) => {
-          const s = pop(frame, fps, 7.0 + i * 0.35);
+      <SceneTitle tone="dark" kicker="the next step" title="Interconnect ecosystems: the challenges" />
+      <div style={{ position: "absolute", top: 912, left: 0, right: 0, display: "flex", gap: 20, justifyContent: "center" }}>
+        {CHALLENGES.map((c) => {
+          const s = pop(frame, fps, c.at);
           return (
             <span
-              key={c}
+              key={c.n}
               style={{
                 fontFamily: theme.mono,
-                fontSize: 17,
+                fontSize: 25,
                 letterSpacing: 1.5,
-                color: "#94a3b8",
-                background: "rgba(11,18,32,0.9)",
-                border: "1.5px solid #334155",
+                color: "#e2e8f0",
+                background: "rgba(11,18,32,0.95)",
+                border: "2px solid #475569",
                 borderRadius: 999,
-                padding: "8px 20px",
+                padding: "13px 30px",
                 textTransform: "uppercase",
+                boxShadow: "0 12px 34px rgba(0,0,0,0.45)",
                 opacity: s,
                 transform: `scale(${s})`,
               }}
             >
-              <span style={{ color: theme.amber, marginRight: 10 }}>{i + 1}</span>
-              {c}
+              <span style={{ color: theme.amber, marginRight: 12, fontWeight: 700 }}>{c.n}</span>
+              {c.label}
             </span>
           );
         })}
