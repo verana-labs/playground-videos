@@ -829,10 +829,10 @@ export const SilosV3: React.FC = () => {
   ];
   // Each badge lands as the narration names its challenge.
   const CHALLENGES = [
-    { n: 1, label: "create and monetize", at: 3.3 },
-    { n: 2, label: "cross-border", at: 6.3 },
-    { n: 3, label: "mutual authentication", at: 8.1 },
-    { n: 4, label: "discovery", at: 9.9 },
+    { n: 1, label: "create and monetize", at: 3.1 },
+    { n: 2, label: "cross-border", at: 7.6 },
+    { n: 3, label: "mutual authentication", at: 10.3 },
+    { n: 4, label: "discovery", at: 13.0 },
   ];
   return (
     <AbsoluteFill style={{ background: theme.night }}>
