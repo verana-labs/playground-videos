@@ -2024,6 +2024,100 @@ export const ServiceV3: React.FC = () => {
   );
 };
 
+/** N-9c: the payoff. Your service sits in the Trust Graph; a person and an
+ *  AI agent find it, mutually authenticate with credentials (green checks
+ *  both ways), and the connection goes live. */
+export const ConnectV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const YOU = { x: 1260, y: 430 };
+  const MESH = [
+    { x: 1030, y: 260 }, { x: 1490, y: 250 }, { x: 1650, y: 470 },
+    { x: 1470, y: 650 }, { x: 1090, y: 640 }, { x: 880, y: 430 },
+  ];
+  const EDGES = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0]];
+  const searchers = [
+    { kind: "person" as const, x: 350, y: 390, at: 1.3 },
+    { kind: "agent" as const, x: 350, y: 600, at: 1.5 },
+  ];
+  const pathDraw = interpolate(t, [1.9, 2.9], [0, 1], clamp);
+  const connected = interpolate(t, [6.3, 6.9], [0, 1], clamp);
+  const check = (x: number, y: number, at: number) => (
+    <div style={{ position: "absolute", left: x - 15, top: y - 15, transform: `scale(${pop(frame, fps, at)})` }}>
+      <svg width={30} height={30} viewBox="0 0 20 20" aria-hidden>
+        <circle cx="10" cy="10" r="10" fill={theme.green} />
+        <path d="M5.5 10.5 L8.5 13.5 L14.5 7" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+  // The traveling credential card: person -> you, then you -> person.
+  const credPos = (from: { x: number; y: number }, to: { x: number; y: number }, a: number, b: number) => {
+    const p = interpolate(t, [a, b], [0.08, 0.9], clamp);
+    const vis = t >= a && t <= b + 0.15 ? 1 : 0;
+    return { x: from.x + (to.x - from.x) * p, y: from.y + (to.y - from.y) * p, vis };
+  };
+  const out = credPos({ x: 430, y: 400 }, YOU, 3.3, 4.3);
+  const back = credPos(YOU, { x: 430, y: 400 }, 4.5, 5.5);
+  const agentLine = { x1: 435, y1: 590, x2: YOU.x - 45, y2: YOU.y + 40 };
+  return (
+    <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
+      {/* the trust graph */}
+      <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
+        {EDGES.map(([a, b], i) => (
+          <line key={i} x1={MESH[a].x} y1={MESH[a].y} x2={MESH[b].x} y2={MESH[b].y} stroke="#ddd6fe" strokeWidth={2.5} opacity={interpolate(t, [0.4 + i * 0.08, 0.7 + i * 0.08], [0, 1], clamp)} />
+        ))}
+        {MESH.map((n, i) => (
+          <line key={`s${i}`} x1={n.x} y1={n.y} x2={YOU.x} y2={YOU.y} stroke="#ede9fe" strokeWidth={2} opacity={interpolate(t, [0.9, 1.2], [0, 1], clamp)} />
+        ))}
+        {/* find paths */}
+        <line x1={435} y1={400} x2={YOU.x - 55} y2={YOU.y - 10} stroke={connected ? theme.green : theme.indigo} strokeWidth={3} strokeDasharray={connected > 0.5 ? undefined : "9 8"} opacity={0.9 * pathDraw} />
+        <line x1={agentLine.x1} y1={agentLine.y1} x2={agentLine.x2} y2={agentLine.y2} stroke={connected > 0.5 ? theme.green : theme.indigo} strokeWidth={3} strokeDasharray={connected > 0.5 ? undefined : "9 8"} opacity={0.9 * interpolate(t, [2.2, 3.2], [0, 1], clamp)} />
+      </svg>
+      {MESH.map((n, i) => (
+        <div key={i} style={{ position: "absolute", left: n.x - 14, top: n.y - 14, width: 28, height: 28, borderRadius: "50%", background: "#f5f3ff", border: `2px solid ${theme.violet}`, transform: `scale(${pop(frame, fps, 0.4 + i * 0.08)})` }} />
+      ))}
+      {/* your service, in the graph */}
+      <div style={{ position: "absolute", left: YOU.x - 55, top: YOU.y - 55, transform: `scale(${pop(frame, fps, 1.0)})` }}>
+        <div style={{ width: 110, height: 110, borderRadius: "50%", background: "#ecfdf5", border: `3px solid ${theme.green}`, boxShadow: "0 14px 36px rgba(16,185,129,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <PartyIcon kind="service" size={54} color={theme.greenDark} />
+        </div>
+        <div style={{ marginTop: 8, textAlign: "center", fontSize: 17, fontWeight: 700, color: theme.greenDark }}>your service</div>
+      </div>
+      {/* the searchers */}
+      {searchers.map((s) => {
+        const sc = pop(frame, fps, s.at);
+        return (
+          <div key={s.kind} style={{ position: "absolute", left: s.x - 52, top: s.y - 52, opacity: sc, transform: `scale(${sc})`, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+            <div style={{ width: 104, height: 104, borderRadius: "50%", background: theme.card, border: "2px solid #ddd6fe", boxShadow: "0 10px 26px rgba(15,23,42,0.10)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <PartyIcon kind={s.kind} size={50} color={theme.violet} />
+            </div>
+            <span style={{ fontSize: 17, fontWeight: 600, color: theme.muted }}>{s.kind === "person" ? "any person" : "any AI agent"}</span>
+          </div>
+        );
+      })}
+      {/* mutual authentication: credentials both ways, checks both ends */}
+      {[out, back].map((c, i) =>
+        c.vis ? (
+          <div key={i} style={{ position: "absolute", left: c.x - 52, top: c.y - 34, width: 104, borderRadius: 10, background: theme.card, border: `2px solid ${theme.violet}`, boxShadow: "0 10px 24px rgba(15,23,42,0.16)", padding: "6px 8px", transform: "rotate(-5deg)" }}>
+            <div style={{ height: 6, borderRadius: 3, background: theme.gradient, marginBottom: 5 }} />
+            <div style={{ fontFamily: theme.mono, fontSize: 10.5, color: theme.muted }}>credential</div>
+          </div>
+        ) : null
+      )}
+      {check(YOU.x - 62, YOU.y - 52, 4.4)}
+      {check(452, 362, 5.6)}
+      {/* connected */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 120, display: "flex", justifyContent: "center", opacity: connected, transform: `translateY(${(1 - connected) * 18}px)` }}>
+        <span style={{ fontSize: 26, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: `2.5px solid ${theme.green}`, borderRadius: 999, padding: "12px 34px" }}>
+          mutually authenticated · connected
+        </span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const VeranaCloseV3: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

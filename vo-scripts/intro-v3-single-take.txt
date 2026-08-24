@@ -38,4 +38,8 @@ Then deploy your services and AI agents. Choose your business wallet. Join ecosy
 
 <break time="1.5s" />
 
+You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message.
+
+<break time="1.5s" />
+
 In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.

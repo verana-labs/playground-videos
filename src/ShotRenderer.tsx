@@ -28,6 +28,7 @@ import {
   VeranaClose,
 } from "./components/IntroV2Scenes";
 import {
+  ConnectV3,
   EcosystemSearchV3,
   BuildEcoTreeV3,
   BuildEcoV3,
@@ -149,6 +150,8 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <BuildEcoTreeV3 />;
     case "build-service-v3":
       return <ServiceV3 />;
+    case "connect-v3":
+      return <ConnectV3 />;
     case "verana-close-v3":
       return <VeranaCloseV3 />;
     case "trust-lists-v3":

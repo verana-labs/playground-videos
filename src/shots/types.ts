@@ -76,6 +76,7 @@ export type Visual =
   | { kind: "build-eco-v3" } // (unused) the governance card alone
   | { kind: "build-eco-tree-v3" } // N-9a: root + artifacts + participant tree
   | { kind: "build-service-v3" }
+  | { kind: "connect-v3" } // N-9c: found, mutually authenticated, connected
   | { kind: "verana-close-v3" }
   | { kind: "trust-lists-v3" } // N-8a: official trust lists vs the private gap
   | {

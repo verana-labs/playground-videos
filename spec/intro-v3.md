@@ -2,7 +2,7 @@
 
 # INTRO v3 (v2 + monetization and privacy-preserving)
 
-## INTRO v3, shot by shot (0:00 to 2:07)
+## INTRO v3, shot by shot (0:00 to 2:18)
 
 A separate video merging two contributed framings: the credibility ladder (W3C standards + eIDAS legal frame as foundations) and the question-arc structure. Independent files; INTRO v1 stays locked. Question scenes N-3 to N-6 reuse v1's visuals by kind. Audio: `music/intro3` + `vo/intro3` (per-scene clips N-0.mp3 ... N-10.mp3).
 
@@ -18,5 +18,6 @@ A separate video merging two contributed framings: the credibility ladder (W3C s
 | N-8b | 1:12–1:20 | The reveal: the verana.io lockup on the light stage | Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, owned by no one. |
 | N-9a | 1:20–1:33 | Titled Build your ecosystem (kicker: for ecosystem builders), from verana.io/ecosystems simplified. Left: the Your Ecosystem T0 · ROOT card lands, anchors on the Verifiable Public Registry chip, and publishes three artifact chips (governance framework, credential schemas, business model). Right: the participant tree grows tier by tier (Ecosystem root of trust; T1 Issuer/Verifier Grantors; T2 Issuers + Verifiers; T3 holders as person · service · AI agent icons) with accreditation edges. Finale: a green dashed ring wraps the tree, the search lens lands, badge discoverable | Build your own sovereign ecosystem trust registry. Publish your Ecosystem Governance Framework, your credential schemas, business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable. |
 | N-9b | 1:33–1:50 | For service builders, four panels: 1 Deploy (service + AI agent circles over business-wallet tiles, your business wallet your choice) · 2 Join (Ecosystems on Verana, other trust lists) · 3 Attach (two ecosystem-credential cards snap onto your service; a mini trust graph lights your node green, badge visible in the Trust Graph) · 4 Issue &amp; Verify (issue / verify arrows from your service to a personal wallet, an AI agent, and a service with a wallet) | Then deploy your services and AI agents. Choose your business wallet. Join ecosystems, on Verana or on other trust lists. Attach their credentials to your services: you are now visible in the Trust Graph. And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet. |
-| N-10 | 1:50–2:07 | The finale: lockup to center, https://verana.io, the sovereign tagline | In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io. |
+| N-9c | 1:50–2:01 | The payoff: your service sits green-ringed in the Trust Graph mesh; a person and an AI agent find it (dashed paths), credentials travel both ways with green checks (mutual authentication), the paths turn solid green, badge mutually authenticated · connected | You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message. |
+| N-10 | 2:01–2:18 | The finale: lockup to center, https://verana.io, the sovereign tagline | In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io. |
 

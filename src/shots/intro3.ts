@@ -119,9 +119,21 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     tone: "light",
   },
   {
-    id: "N-10",
+    id: "N-9c",
     start: 110,
-    end: 127,
+    end: 121,
+    lines: [
+      "You are now part of the Trust Graph.",
+      "Be found. Mutually authenticate. Connect.",
+    ],
+    vo: "You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message.",
+    visual: { kind: "connect-v3" },
+    tone: "light",
+  },
+  {
+    id: "N-10",
+    start: 121,
+    end: 138,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -129,4 +141,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 127;
+export const INTRO3_END = 138;

@@ -43,5 +43,8 @@ Build your own sovereign ecosystem trust registry. Publish your Ecosystem Govern
 ## N-9b.mp3  (17s)
 Then deploy your services and AI agents. Choose your business wallet. Join ecosystems, on Verana or on other trust lists. Attach their credentials to your services: you are now visible in the Trust Graph. And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.
 
+## N-9c.mp3  (11s)
+You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message.
+
 ## N-10.mp3  (17s)
 In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.
