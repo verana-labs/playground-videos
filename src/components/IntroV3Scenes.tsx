@@ -2123,6 +2123,9 @@ export const FoundationV3: React.FC = () => {
           </div>
           <div style={{ fontSize: 46, fontWeight: 800, color: theme.ink }}>The Verana Foundation</div>
         </div>
+        <div style={{ fontFamily: theme.mono, fontSize: 21, color: theme.muted, letterSpacing: 0.5 }}>
+          https://veranafoundation.org
+        </div>
       </div>
       <div style={{ position: "absolute", top: 220, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
         {PILLARS.map((c) => {
