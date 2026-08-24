@@ -1228,18 +1228,18 @@ export const EcosystemSearchV3: React.FC = () => {
         const typed = Math.floor(interpolate(t, [0.9, 4.4], [0, PROMPT.length], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
         const cursorOn = frame % 20 < 12;
         return (
-          <div style={{ position: "absolute", top: 162, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+          <div style={{ position: "absolute", top: 830, left: 610, right: 0, display: "flex", justifyContent: "flex-start" }}>
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: 16,
-                minWidth: 980,
+                minWidth: 960,
                 background: "rgba(11,18,32,0.95)",
                 border: "1.5px solid #475569",
                 borderRadius: 999,
                 padding: "16px 28px",
-                opacity: pop(frame, fps, 0.7),
+                opacity: pop(frame, fps, 0.8),
               }}
             >
               <svg width={26} height={26} viewBox="0 0 24 24" aria-hidden>
