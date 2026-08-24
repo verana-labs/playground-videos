@@ -38,7 +38,7 @@ Challenge four, and finally: discovery. How do we search the graph of trusted se
 Verana answers all of this. Sovereign ecosystems, verifiable identity, one public Trust Graph. Open, neutral, cross-border, owned by no one.
 
 ## N-9a.mp3  (16s)
-Build your own sovereign ecosystem trust registry. Publish your Ecosystem Governance Framework, your credential schemas, business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.
+Building your own sovereign ecosystem trust registry in Verana is straightforward. Start by creating your trust registry, publish your Ecosystem Governance Framework, your credential schemas and business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.
 
 ## N-9b.mp3  (23s)
 Then deploy your services and AI agents. Choose your business wallet. Join ecosystems, on Verana or on other trust lists. Attach their credentials to your services: you are now visible in the Trust Graph. And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.

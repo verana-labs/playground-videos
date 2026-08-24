@@ -81,7 +81,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     start: 100,
     end: 116,
     lines: [],
-    vo: "Build your own sovereign ecosystem trust registry. Publish your Ecosystem Governance Framework, your credential schemas, business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.",
+    vo: "Building your own sovereign ecosystem trust registry in Verana is straightforward. Start by creating your trust registry, publish your Ecosystem Governance Framework, your credential schemas and business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.",
     visual: { kind: "build-eco-tree-v3" },
     tone: "light",
   },
