@@ -4,7 +4,7 @@
 
 ## INTRO v3, shot by shot (0:00 to 2:56)
 
-A separate video merging two contributed framings: the credibility ladder (W3C standards + eIDAS legal frame as foundations) and the question-arc structure. Independent files; INTRO v1 stays locked. Question scenes N-3 to N-6 reuse v1's visuals by kind. Audio: `music/intro3` + `vo/intro3` (per-scene clips N-0.mp3 ... N-10.mp3).
+A separate video merging two contributed framings: the credibility ladder (W3C standards + eIDAS legal frame as foundations) and the question-arc structure. Independent files; INTRO v1 stays locked. Question scenes N-3 to N-6 reuse v1's visuals by kind. Audio: `music/intro3` + `vo/intro3` (per-scene clips N-0.mp3 ... N-10.mp3). No on-screen lower-third text: narration carries the copy; subtitles ship separately (`vo-scripts/intro-v3.srt`, for YouTube).
 
 | # | Time | Visual | VO |
 | --- | --- | --- | --- |
