@@ -108,16 +108,20 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   {
     id: "N-9b",
     start: 93,
-    end: 106,
-    lines: [],
-    vo: "Then build your service: choose the ecosystems you would like to join, on Verana, or on other trust lists. Choose your personal wallet. And bridge to other ecosystems.",
+    end: 110,
+    lines: [
+      "Deploy your services and AI agents.",
+      "Attach credentials: become visible in the Trust Graph.",
+      "Issue and verify, across the ecosystems you joined.",
+    ],
+    vo: "Then deploy your services and AI agents. Choose your business wallet. Join ecosystems, on Verana or on other trust lists. Attach their credentials to your services: you are now visible in the Trust Graph. And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.",
     visual: { kind: "build-service-v3" },
     tone: "light",
   },
   {
     id: "N-10",
-    start: 106,
-    end: 123,
+    start: 110,
+    end: 127,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -125,4 +129,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 123;
+export const INTRO3_END = 127;

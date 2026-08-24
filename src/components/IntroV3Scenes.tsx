@@ -1459,15 +1459,16 @@ const FreedomPanel: React.FC<{
   title: string;
   subtitle: string;
   appearAt: number;
+  width?: number;
   children: React.ReactNode;
-}> = ({ index, title, subtitle, appearAt, children }) => {
+}> = ({ index, title, subtitle, appearAt, width = 530, children }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = pop(frame, fps, appearAt);
   return (
     <div
       style={{
-        width: 530,
+        width,
         opacity: s,
         transform: `translateY(${(1 - s) * 70}px)`,
         fontFamily: theme.font,
@@ -1493,10 +1494,10 @@ const FreedomPanel: React.FC<{
           {index}
         </div>
         <div style={{ textAlign: "left" }}>
-          <div style={{ fontFamily: theme.display, fontSize: 34, fontWeight: 700, color: theme.ink }}>
+          <div style={{ fontFamily: theme.display, fontSize: 30, fontWeight: 700, color: theme.ink }}>
             {title}
           </div>
-          <div style={{ fontSize: 21, color: theme.muted }}>{subtitle}</div>
+          <div style={{ fontSize: 18, color: theme.muted }}>{subtitle}</div>
         </div>
       </div>
       <div
@@ -1821,28 +1822,117 @@ export const BuildEcoV3: React.FC = () => {
 export const ServiceV3: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const wallets = ["inji", "eudi", "paradym", "bcwallet", "hologram", "talao"];
-  const link = interpolate(frame, [fps * 2.6, fps * 3.4], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const bizWallets = ["paradym", "sphereon", "authbound"];
+  const W = 424;
+  const iconCircle = (kind: "service" | "agent", size: number, at: number, badge?: boolean) => (
+    <div
+      style={{
+        position: "relative",
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        background: "#f5f3ff",
+        border: `2px solid ${theme.violet}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        transform: `scale(${pop(frame, fps, at)})`,
+        flexShrink: 0,
+      }}
+    >
+      <PartyIcon kind={kind} size={size * 0.52} color={theme.violet} />
+      {badge ? (
+        <span
+          style={{
+            position: "absolute",
+            right: -8,
+            bottom: -8,
+            width: 32,
+            height: 32,
+            borderRadius: 10,
+            background: theme.card,
+            border: "1.5px solid #e2e8f0",
+            boxShadow: "0 6px 14px rgba(15,23,42,0.12)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <svg width={19} height={19} viewBox="0 0 24 24" aria-hidden>
+            <rect x="3" y="6" width="18" height="13" rx="2.5" fill="none" stroke={theme.violet} strokeWidth="1.9" />
+            <path d="M15 12.5 h3" stroke={theme.violet} strokeWidth="1.9" strokeLinecap="round" />
+          </svg>
+        </span>
+      ) : null}
+    </div>
+  );
+  const credCard = (x: number, y: number, at: number) => (
+    <div
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        width: 118,
+        borderRadius: 12,
+        background: theme.card,
+        border: `2px solid ${theme.violet}`,
+        boxShadow: "0 10px 24px rgba(15,23,42,0.14)",
+        padding: "8px 10px",
+        transform: `scale(${pop(frame, fps, at)}) rotate(${x < 150 ? -6 : 6}deg)`,
+        fontFamily: theme.mono,
+      }}
+    >
+      <div style={{ height: 7, borderRadius: 4, background: theme.gradient, marginBottom: 7 }} />
+      <div style={{ fontSize: 11.5, color: theme.muted }}>ecosystem credential</div>
+    </div>
+  );
   return (
     <AbsoluteFill
       style={{
         background: theme.surface,
         flexDirection: "row",
-        gap: 48,
+        gap: 30,
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <FreedomPanel index={1} title="Join" subtitle="ecosystems, on Verana or other trust lists" appearAt={0.4}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 18, width: "100%" }}>
+      <FreedomPanel index={1} title="Deploy" subtitle="your services and AI agents" appearAt={0.4} width={W}>
+        <div style={{ display: "flex", gap: 30, marginBottom: 26 }}>
+          {iconCircle("service", 104, 0.9)}
+          {iconCircle("agent", 104, 1.1)}
+        </div>
+        <div style={{ display: "flex", gap: 13, marginBottom: 14 }}>
+          {bizWallets.map((id, i) => (
+            <div key={id} style={{ transform: `scale(${pop(frame, fps, 1.3 + i * 0.15)})` }}>
+              <WalletTile id={id} size={80} />
+            </div>
+          ))}
+        </div>
+        <span
+          style={{
+            fontFamily: theme.mono,
+            fontSize: 15,
+            color: "#6d28d9",
+            background: "#f5f3ff",
+            border: "1.5px solid #ddd6fe",
+            borderRadius: 999,
+            padding: "6px 15px",
+            opacity: interpolate(t, [1.7, 2.0], [0, 1], clamp),
+          }}
+        >
+          your business wallet, your choice
+        </span>
+      </FreedomPanel>
+
+      <FreedomPanel index={2} title="Join" subtitle="the ecosystems you care about" appearAt={1.1} width={W}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
           {[
-            { icon: <VeranaMark size={44} />, name: "Ecosystems on Verana", sub: "sovereign trust registries" },
+            { icon: <VeranaMark size={40} />, name: "Ecosystems on Verana", sub: "sovereign trust registries" },
             {
               icon: (
-                <svg width={44} height={44} viewBox="0 0 24 24" aria-hidden>
+                <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
                   <path d="M4 5.5 h16 M4 10 h16 M4 14.5 h16 M4 19 h10" stroke="#1d4ed8" strokeWidth="1.9" strokeLinecap="round" />
                 </svg>
               ),
@@ -1855,69 +1945,78 @@ export const ServiceV3: React.FC = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 16,
+                gap: 14,
                 border: "1.5px solid #e2e8f0",
                 borderRadius: 16,
-                padding: "18px 20px",
+                padding: "16px 16px",
                 fontFamily: theme.font,
               }}
             >
-              <span style={{ display: "inline-flex", width: 56, height: 56, borderRadius: 14, background: "#f8fafc", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ display: "inline-flex", width: 52, height: 52, borderRadius: 13, background: "#f8fafc", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 {e.icon}
               </span>
               <div>
-                <div style={{ fontSize: 22, fontWeight: 700, color: theme.ink }}>{e.name}</div>
-                <div style={{ fontSize: 17, color: theme.muted }}>{e.sub}</div>
+                <div style={{ fontSize: 20, fontWeight: 700, color: theme.ink }}>{e.name}</div>
+                <div style={{ fontSize: 15.5, color: theme.muted }}>{e.sub}</div>
               </div>
             </div>
           ))}
         </div>
       </FreedomPanel>
 
-      <FreedomPanel index={2} title="Choose" subtitle="your personal wallet · privacy preserved" appearAt={1.1}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center", maxWidth: 420 }}>
-          {wallets.map((id, i) => (
-            <div key={id} style={{ transform: `scale(${pop(frame, fps, 1.6 + i * 0.12)})` }}>
-              <WalletTile id={id} />
-            </div>
-          ))}
+      <FreedomPanel index={3} title="Attach" subtitle="credentials to your services" appearAt={1.8} width={W}>
+        <div style={{ position: "relative", width: 360, height: 356 }}>
+          <div style={{ position: "absolute", left: 180 - 52, top: 4 }}>{iconCircle("service", 104, 2.3)}</div>
+          {credCard(28, 78, 2.9)}
+          {credCard(214, 78, 3.2)}
+          {/* the mini trust graph, your node lit */}
+          <svg width={360} height={170} style={{ position: "absolute", left: 0, top: 168 }} aria-hidden>
+            {[
+              [70, 60, 180, 95], [180, 95, 292, 55], [180, 95, 110, 140], [180, 95, 262, 140], [70, 60, 110, 140],
+            ].map(([x1, y1, x2, y2], i) => (
+              <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#ddd6fe" strokeWidth={2.5} opacity={interpolate(t, [3.6 + i * 0.1, 3.9 + i * 0.1], [0, 1], clamp)} />
+            ))}
+            {[
+              [70, 60], [292, 55], [110, 140], [262, 140],
+            ].map(([cx, cy], i) => (
+              <circle key={i} cx={cx} cy={cy} r={13} fill="#f5f3ff" stroke={theme.violet} strokeWidth={2} opacity={interpolate(t, [3.6 + i * 0.1, 3.9 + i * 0.1], [0, 1], clamp)} />
+            ))}
+            <circle cx={180} cy={95} r={17} fill="#ecfdf5" stroke={theme.green} strokeWidth={3} opacity={interpolate(t, [4.1, 4.4], [0, 1], clamp)} />
+          </svg>
+          <div style={{ position: "absolute", left: 0, right: 0, top: 320, textAlign: "center", opacity: pop(frame, fps, 4.4) }}>
+            <span style={{ fontSize: 17, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: `2px solid ${theme.green}`, borderRadius: 999, padding: "7px 18px", fontFamily: theme.font }}>
+              visible in the Trust Graph
+            </span>
+          </div>
         </div>
       </FreedomPanel>
 
-      <FreedomPanel index={3} title="Bridge" subtitle="to other ecosystems" appearAt={1.8}>
-        <div style={{ position: "relative", width: 460, height: 300 }}>
-          <svg width={460} height={300} style={{ position: "absolute", inset: 0 }}>
-            {[{ cx: 95, cy: 110 }, { cx: 365, cy: 190 }].map((c2, ci) => (
-              <g key={ci}>
-                <ellipse cx={c2.cx} cy={c2.cy} rx={88} ry={64} fill="none" stroke="#ddd6fe" strokeWidth="2.5" />
-                {Array.from({ length: 4 }, (_, i) => {
-                  const a = (i / 4) * Math.PI * 2 + 0.5;
-                  return (
-                    <circle
-                      key={i}
-                      cx={c2.cx + 52 * Math.cos(a)}
-                      cy={c2.cy + 36 * Math.sin(a)}
-                      r={11}
-                      fill="#f5f3ff"
-                      stroke={theme.violet}
-                      strokeWidth="2"
-                    />
-                  );
-                })}
-              </g>
-            ))}
-            <path
-              d="M 168 135 C 220 150, 250 155, 292 172"
-              stroke={theme.violet}
-              strokeWidth="4"
-              fill="none"
-              strokeDasharray={1}
-              strokeDashoffset={1 - link}
-              pathLength={1}
-            />
+      <FreedomPanel index={4} title="Issue &amp; Verify" subtitle="credentials of your ecosystems" appearAt={2.5} width={W}>
+        <div style={{ position: "relative", width: 378, height: 330 }}>
+          <div style={{ position: "absolute", left: 189 - 44, top: 0 }}>{iconCircle("service", 88, 3.0)}</div>
+          <svg width={378} height={330} style={{ position: "absolute", inset: 0 }} aria-hidden>
+            <defs>
+              <marker id="iv-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                <path d="M0 0 L9 4.5 L0 9 z" fill={theme.violet} />
+              </marker>
+            </defs>
+            <line x1={155} y1={95} x2={82} y2={185} stroke={theme.violet} strokeWidth={3} markerEnd="url(#iv-arrow)" opacity={interpolate(t, [3.4, 3.8], [0, 1], clamp)} />
+            <line x1={189} y1={100} x2={189} y2={185} stroke={theme.violet} strokeWidth={3} strokeDasharray="8 7" markerEnd="url(#iv-arrow)" opacity={interpolate(t, [3.7, 4.1], [0, 1], clamp)} />
+            <line x1={223} y1={95} x2={296} y2={185} stroke={theme.violet} strokeWidth={3} markerEnd="url(#iv-arrow)" opacity={interpolate(t, [4.0, 4.4], [0, 1], clamp)} />
           </svg>
-          <div style={{ position: "absolute", left: 230 - 26, top: 152 - 26, transform: `scale(${pop(frame, fps, 3.2)})` }}>
-            <VeranaMark size={52} />
+          <span style={{ position: "absolute", left: 40, top: 108, fontFamily: theme.mono, fontSize: 15, color: theme.violet, background: "#f5f3ff", border: "1.5px solid #ddd6fe", borderRadius: 999, padding: "3px 11px", opacity: interpolate(t, [3.6, 3.9], [0, 1], clamp) }}>
+            issue
+          </span>
+          <span style={{ position: "absolute", left: 252, top: 108, fontFamily: theme.mono, fontSize: 15, color: theme.violet, background: "#f5f3ff", border: "1.5px solid #ddd6fe", borderRadius: 999, padding: "3px 11px", opacity: interpolate(t, [4.1, 4.4], [0, 1], clamp) }}>
+            verify
+          </span>
+          <div style={{ position: "absolute", left: 32, top: 196, transform: `scale(${pop(frame, fps, 3.8)})` }}>
+            <WalletTile id="eudi" size={82} />
+          </div>
+          <div style={{ position: "absolute", left: 189 - 41, top: 196 }}>{iconCircle("agent", 82, 4.1)}</div>
+          <div style={{ position: "absolute", left: 264, top: 196 }}>{iconCircle("service", 82, 4.4, true)}</div>
+          <div style={{ position: "absolute", left: -20, right: -20, top: 296, textAlign: "center", fontSize: 15, color: theme.muted, fontWeight: 600, fontFamily: theme.font, opacity: interpolate(t, [4.7, 5.1], [0, 1], clamp) }}>
+            personal wallets · AI agents · services with wallets
           </div>
         </div>
       </FreedomPanel>
@@ -1925,7 +2024,6 @@ export const ServiceV3: React.FC = () => {
   );
 };
 
-// ---------------------------------------------------------------- N-10
 export const VeranaCloseV3: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
