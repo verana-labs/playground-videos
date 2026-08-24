@@ -2024,6 +2024,124 @@ export const ServiceV3: React.FC = () => {
   );
 };
 
+/** N-9d: the Verana Foundation (veranafoundation.org): open specs on open
+ *  standards, open-source software, non-profit community stewardship, and
+ *  the invitation: join free as a contributor, join or create working groups. */
+export const FoundationV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+  const st = { fill: "none", stroke: theme.violet, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  const PILLARS = [
+    {
+      title: "Open specifications",
+      sub: "built exclusively on open standards · CC BY-SA 4.0",
+      at: 0.7,
+      icon: (
+        <>
+          <path d="M6 3.5 h9 l4 4 V20.5 h-13 Z M15 3.5 v4 h4" {...st} />
+          <path d="M9 12 h7 M9 15.5 h7" {...st} />
+        </>
+      ),
+    },
+    {
+      title: "Open-source software",
+      sub: "Apache 2.0 · public repos, copyright with contributors",
+      at: 1.1,
+      icon: <path d="M9 8 L4.5 12 L9 16 M15 8 L19.5 12 L15 16" {...st} />,
+    },
+    {
+      title: "Non-profit foundation",
+      sub: "community managed · steward of the open trust layer",
+      at: 1.5,
+      icon: (
+        <>
+          <circle cx="8.5" cy="9" r="3" {...st} />
+          <circle cx="15.5" cy="9" r="3" {...st} />
+          <path d="M3.5 19.5 a5 4.5 0 0 1 10 0 M10.5 19.5 a5 4.5 0 0 1 10 0" {...st} />
+        </>
+      ),
+    },
+  ];
+  const WGS = [
+    { label: "specifications", at: 6.6 },
+    { label: "software", at: 6.9 },
+    { label: "business cases", at: 7.2 },
+    { label: "your working group", at: 7.6, dashed: true },
+  ];
+  const joinIn = pop(frame, fps, 5.6);
+  return (
+    <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
+      <SceneTitle kicker="built in the open" title="The Verana Foundation" />
+      <div style={{ position: "absolute", top: 220, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
+        {PILLARS.map((c) => {
+          const s = pop(frame, fps, c.at);
+          return (
+            <div
+              key={c.title}
+              style={{
+                width: 470,
+                background: theme.card,
+                border: "1.5px solid #e2e8f0",
+                borderRadius: 20,
+                boxShadow: "0 14px 40px rgba(15,23,42,0.08)",
+                padding: "28px 28px 24px",
+                textAlign: "center",
+                opacity: s,
+                transform: `translateY(${(1 - s) * 50}px)`,
+              }}
+            >
+              <span style={{ display: "inline-flex", width: 76, height: 76, borderRadius: 19, background: "#f5f3ff", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                <svg width={42} height={42} viewBox="0 0 24 24" aria-hidden>
+                  {c.icon}
+                </svg>
+              </span>
+              <div style={{ fontSize: 28, fontWeight: 800, color: theme.ink }}>{c.title}</div>
+              <div style={{ fontSize: 18, color: theme.muted, marginTop: 6, lineHeight: 1.45 }}>{c.sub}</div>
+            </div>
+          );
+        })}
+      </div>
+      {/* the invitation */}
+      <div style={{ position: "absolute", top: 560, left: 0, right: 0, textAlign: "center", opacity: joinIn, transform: `translateY(${(1 - joinIn) * 30}px)` }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 16, fontSize: 30, fontWeight: 800, color: "#fff", background: theme.gradient, borderRadius: 999, padding: "16px 42px", boxShadow: "0 18px 44px rgba(118,62,240,0.35)" }}>
+          Join the Foundation
+          <span style={{ fontSize: 19, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: "2px solid #10b981", borderRadius: 999, padding: "4px 16px" }}>
+            free for contributors
+          </span>
+        </span>
+      </div>
+      <div style={{ position: "absolute", top: 672, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" }}>
+        <span style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", opacity: interpolate(t, [6.3, 6.7], [0, 1], clamp) }}>
+          working groups
+        </span>
+        {WGS.map((w) => {
+          const s = pop(frame, fps, w.at);
+          return (
+            <span
+              key={w.label}
+              style={{
+                fontFamily: theme.mono,
+                fontSize: 18,
+                color: "#6d28d9",
+                background: "#f5f3ff",
+                border: `1.5px ${w.dashed ? "dashed" : "solid"} #ddd6fe`,
+                borderRadius: 999,
+                padding: "9px 20px",
+                opacity: s,
+                transform: `scale(${s})`,
+              }}
+            >
+              {w.label}
+            </span>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 /** N-9c: the payoff. Your service sits in the Trust Graph; a person and an
  *  AI agent find it, mutually authenticate with credentials (green checks
  *  both ways), and the connection goes live. */

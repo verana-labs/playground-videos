@@ -131,9 +131,21 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     tone: "light",
   },
   {
-    id: "N-10",
+    id: "N-9d",
     start: 121,
-    end: 138,
+    end: 135,
+    lines: [
+      "Open specs. Open source. Non-profit, community managed.",
+      "Join the Foundation, free. Join or create working groups.",
+    ],
+    vo: "Behind Verana: open specifications, built exclusively on open standards. Open-source software. And a non-profit foundation, managed by its community. Want to contribute? Join the Foundation: it is free for contributors. Join a working group, or create your own.",
+    visual: { kind: "foundation-v3" },
+    tone: "light",
+  },
+  {
+    id: "N-10",
+    start: 135,
+    end: 152,
     lines: [],
     vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
     visual: { kind: "verana-close-v3" },
@@ -141,4 +153,4 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
   },
 ]);
 
-export const INTRO3_END = 138;
+export const INTRO3_END = 152;

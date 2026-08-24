@@ -30,6 +30,7 @@ import {
 import {
   ConnectV3,
   EcosystemSearchV3,
+  FoundationV3,
   BuildEcoTreeV3,
   BuildEcoV3,
   CreateEcoQV3,
@@ -152,6 +153,8 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <ServiceV3 />;
     case "connect-v3":
       return <ConnectV3 />;
+    case "foundation-v3":
+      return <FoundationV3 />;
     case "verana-close-v3":
       return <VeranaCloseV3 />;
     case "trust-lists-v3":

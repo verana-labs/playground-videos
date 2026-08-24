@@ -42,4 +42,8 @@ You are now part of the Trust Graph. Any person, service, or AI agent can find y
 
 <break time="1.5s" />
 
+Behind Verana: open specifications, built exclusively on open standards. Open-source software. And a non-profit foundation, managed by its community. Want to contribute? Join the Foundation: it is free for contributors. Join a working group, or create your own.
+
+<break time="1.5s" />
+
 In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.
