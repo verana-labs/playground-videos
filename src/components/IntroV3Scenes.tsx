@@ -1195,6 +1195,38 @@ export const EcosystemSearchV3: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: theme.night }}>
       <SceneTitle tone="dark" accent kicker="challenge 4" title="Discover trusted services" />
+      {/* the query, typed live */}
+      {(() => {
+        const PROMPT = "find agents certified ISO 24001, offering open banking, in Europe";
+        const typed = Math.floor(interpolate(t, [0.9, 4.4], [0, PROMPT.length], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+        const cursorOn = frame % 20 < 12;
+        return (
+          <div style={{ position: "absolute", top: 162, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                minWidth: 980,
+                background: "rgba(11,18,32,0.95)",
+                border: "1.5px solid #475569",
+                borderRadius: 999,
+                padding: "16px 28px",
+                opacity: pop(frame, fps, 0.7),
+              }}
+            >
+              <svg width={26} height={26} viewBox="0 0 24 24" aria-hidden>
+                <circle cx="10.5" cy="10.5" r="6.2" fill="none" stroke="#64748b" strokeWidth="2.2" />
+                <path d="M15.2 15.2 L20.5 20.5" stroke="#64748b" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+              <span style={{ fontFamily: theme.mono, fontSize: 23, color: "#e2e8f0" }}>
+                {PROMPT.slice(0, typed)}
+                <span style={{ opacity: cursorOn ? 1 : 0, color: theme.amber }}>|</span>
+              </span>
+            </div>
+          </div>
+        );
+      })()}
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }}>
         {nodes.map((n, i) => (
           <line
@@ -1225,6 +1257,26 @@ export const EcosystemSearchV3: React.FC = () => {
                 border: `2.5px solid ${n.found ? "#10b981" : "#475569"}`,
               }}
             />
+            {n.found ? (
+              <div
+                style={{
+                  position: "absolute",
+                  left: -110,
+                  top: 62,
+                  whiteSpace: "nowrap",
+                  fontFamily: theme.mono,
+                  fontSize: 16,
+                  color: "#a7f3d0",
+                  background: "rgba(11,18,32,0.95)",
+                  border: `1.5px solid ${theme.green}`,
+                  borderRadius: 999,
+                  padding: "6px 14px",
+                  transform: `scale(${pop(frame, fps, 4.6)})`,
+                }}
+              >
+                ISO 24001 · open banking · EU
+              </div>
+            ) : null}
             {n.found ? (
               <div style={{ position: "absolute", right: -7, top: -7, transform: `scale(${pop(frame, fps, n.delay + 0.5)})` }}>
                 <svg width={26} height={26} viewBox="0 0 20 20" aria-hidden>
