@@ -248,7 +248,7 @@ export const IntroV4: React.FC<VideoProps> = ({ manifest }) => (
       shots={INTRO4_SHOTS}
       format="wide"
       bannerFrom={Infinity}
-      musicId="music/intro3"
+      musicId="music/intro4"
       voId="vo/intro3"
     />
     <IntroV4Banner />
