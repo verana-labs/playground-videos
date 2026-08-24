@@ -2100,6 +2100,105 @@ const PlaygroundQr: React.FC<{ px: number }> = ({ px }) => {
   );
 };
 
+/** N-8b: the reveal as three answer cards, landing on the narrated triplet
+ *  and previewing the three build sequences that follow (N-9a / N-9b / N-9c). */
+export const AnswersV3: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  const st = { fill: "none", stroke: theme.violet, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  const CARDS = [
+    {
+      title: "Sovereign ecosystems",
+      sub: "build your own trust registry: your rules, your schemas, your business model",
+      at: 2.5,
+      icon: (
+        <>
+          <rect x="9" y="3" width="6" height="5" rx="1" {...st} />
+          <rect x="3" y="16" width="6" height="5" rx="1" {...st} />
+          <rect x="15" y="16" width="6" height="5" rx="1" {...st} />
+          <path d="M12 8 v3 M12 11 L6 16 M12 11 L18 16" {...st} />
+        </>
+      ),
+    },
+    {
+      title: "Verifiable identity",
+      sub: "deploy services and AI agents; issue and verify credentials, wallet to wallet",
+      at: 4.1,
+      icon: (
+        <>
+          <rect x="3" y="5" width="18" height="14" rx="2" {...st} />
+          <circle cx="8.5" cy="11" r="2.2" {...st} />
+          <path d="M6 16.5 a2.8 2.3 0 0 1 5 0 M13.5 9.5 h5 M13.5 13.5 h5" {...st} />
+        </>
+      ),
+    },
+    {
+      title: "One public Trust Graph",
+      sub: "be found, mutually authenticate, and connect: trust before the first message",
+      at: 5.8,
+      icon: (
+        <>
+          <circle cx="6" cy="6" r="2.5" {...st} />
+          <circle cx="18" cy="6" r="2.5" {...st} />
+          <circle cx="12" cy="18" r="2.5" {...st} />
+          <path d="M8 7.5 L16 7.5 M7.5 8 L10.8 15.8 M16.5 8 L13.2 15.8" {...st} />
+        </>
+      ),
+    },
+  ];
+  const ethos = pop(frame, fps, 7.6);
+  return (
+    <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
+      <SceneTitle kicker="the answer" title="Verana answers all of this" />
+      <div style={{ position: "absolute", top: 300, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
+        {CARDS.map((c) => {
+          const s = pop(frame, fps, c.at);
+          return (
+            <div
+              key={c.title}
+              style={{
+                width: 480,
+                background: theme.card,
+                border: "1.5px solid #e2e8f0",
+                borderRadius: 20,
+                boxShadow: "0 14px 40px rgba(15,23,42,0.08)",
+                padding: "34px 30px 30px",
+                textAlign: "center",
+                opacity: s,
+                transform: `translateY(${(1 - s) * 50}px)`,
+              }}
+            >
+              <span style={{ display: "inline-flex", width: 84, height: 84, borderRadius: 21, background: "#f5f3ff", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
+                <svg width={46} height={46} viewBox="0 0 24 24" aria-hidden>
+                  {c.icon}
+                </svg>
+              </span>
+              <div style={{ fontSize: 30, fontWeight: 800, color: theme.ink }}>{c.title}</div>
+              <div style={{ fontSize: 19, color: theme.muted, marginTop: 8, lineHeight: 1.5 }}>{c.sub}</div>
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ position: "absolute", top: 700, left: 0, right: 0, textAlign: "center", opacity: ethos, transform: `translateY(${(1 - ethos) * 24}px)` }}>
+        <span
+          style={{
+            fontSize: 27,
+            fontWeight: 700,
+            color: "#6d28d9",
+            background: "#f5f3ff",
+            border: "1.5px solid #ddd6fe",
+            borderRadius: 999,
+            padding: "14px 38px",
+          }}
+        >
+          open · neutral · owned by no one
+        </span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 /** N-9d: the Verana Foundation (veranafoundation.org): open specs on open
  *  standards, open-source software, non-profit community stewardship, and
  *  the invitation: join free as a contributor, join or create working groups. */
