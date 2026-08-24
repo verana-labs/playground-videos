@@ -353,8 +353,8 @@ export const FoundationsV4: React.FC = () => {
     fontFamily: T4.mono,
     fontSize: 19,
     color: L4.primary,
-    background: "rgba(118,62,240,0.08)",
-    border: "1.5px solid rgba(118,62,240,0.35)",
+    background: L4.card,
+    border: "1px solid #e3e6ec",
     borderRadius: 999,
     padding: "3px 14px",
   };
@@ -447,8 +447,8 @@ export const FoundationsV4: React.FC = () => {
                     fontFamily: T4.mono,
                     fontSize: 18,
                     color: "#1f57c9",
-                    background: "rgba(31,87,201,0.08)",
-                    border: "1.5px solid rgba(31,87,201,0.35)",
+                    background: L4.card,
+                    border: "1px solid #e3e6ec",
                     borderRadius: 999,
                     padding: "4px 14px",
                     transform: `scale(${pop(frame, fps, row.at + i * 0.15)})`,
@@ -604,7 +604,7 @@ export const SectorsV4: React.FC = () => {
                     width: 62,
                     height: 62,
                     borderRadius: 15,
-                    background: "rgba(118,62,240,0.08)",
+                    background: L4.card,
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
@@ -640,8 +640,8 @@ export const SectorsV4: React.FC = () => {
             fontSize: 24,
             fontWeight: 700,
             color: "#763ef0",
-            background: "rgba(118,62,240,0.08)",
-            border: "1.5px solid rgba(118,62,240,0.35)",
+            background: L4.card,
+            border: "1px solid #e3e6ec",
             borderRadius: 999,
             padding: "12px 34px",
           }}
@@ -825,8 +825,8 @@ export const SelfIdentifyV4: React.FC = () => {
               fontFamily: T4.mono,
               fontSize: 19,
               color: T4.accentText,
-              background: "rgba(11,11,18,0.92)",
-              border: "1.5px solid #3b4152",
+              background: "#151824",
+              border: "1px solid #2a2e3d",
               borderRadius: 999,
               padding: "6px 18px",
               opacity: fade,
@@ -867,7 +867,7 @@ export const QrScanPartiesV4: React.FC<{
               fontSize: 17,
               fontWeight: 600,
               color: "#d7dce6",
-              background: "rgba(11,11,18,0.88)",
+              background: "#151824",
               border: "1.5px solid #2a2e3d",
               borderRadius: 999,
               padding: "7px 16px",
@@ -934,8 +934,8 @@ export const SilosV4: React.FC = () => {
                 fontSize: 25,
                 letterSpacing: 1.5,
                 color: "#d7dce6",
-                background: "rgba(11,11,18,0.95)",
-                border: "2px solid #3b4152",
+                background: "#151824",
+                border: "1px solid #2a2e3d",
                 borderRadius: 999,
                 padding: "13px 30px",
                 textTransform: "uppercase",
@@ -1123,8 +1123,8 @@ export const CreateEcoQV4: React.FC = () => {
               fontFamily: T4.mono,
               fontSize: 20,
               color: "#d7dce6",
-              background: "rgba(11,11,18,0.92)",
-              border: "1.5px dashed #3b4152",
+              background: "#151824",
+              border: "1.5px dashed #2a2e3d",
               borderRadius: 999,
               padding: "9px 22px",
               display: "inline-flex",
@@ -1153,8 +1153,8 @@ export const CreateEcoQV4: React.FC = () => {
               fontFamily: T4.mono,
               fontSize: 19,
               color: T4.accentText,
-              background: "rgba(11,11,18,0.92)",
-              border: "1.5px solid #3b4152",
+              background: "#151824",
+              border: "1px solid #2a2e3d",
               borderRadius: 999,
               padding: "7px 20px",
               opacity: s,
@@ -1196,10 +1196,10 @@ export const CrossBorderQV4: React.FC = () => {
           <div key={i} style={{ position: "absolute", left: n.x - (i === 0 ? 15 : 9), top: n.y - (i === 0 ? 15 : 9), width: i === 0 ? 30 : 18, height: i === 0 ? 30 : 18, borderRadius: "50%", background: i === 0 ? "#2a2e3d" : "#1f2331", border: `2px solid ${i === 0 ? "#8b94a5" : "#3b4152"}` }} />
         ))}
         {flag ? (
-          <span style={{ position: "absolute", left: cx - 27, top: cy - 145, fontSize: 30, background: "rgba(11,11,18,0.9)", border: "1.5px solid #3b4152", borderRadius: 12, padding: "4px 10px" }}>{flag}</span>
+          <span style={{ position: "absolute", left: cx - 27, top: cy - 145, fontSize: 30, background: "#151824", border: "1px solid #2a2e3d", borderRadius: 12, padding: "4px 10px" }}>{flag}</span>
         ) : null}
         {tag ? (
-          <span style={{ position: "absolute", left: cx - 62, top: cy + 100, fontFamily: T4.mono, fontSize: 16, color: "#8b94a5", background: "rgba(11,11,18,0.9)", border: "1.5px solid #3b4152", borderRadius: 999, padding: "5px 14px" }}>{tag}</span>
+          <span style={{ position: "absolute", left: cx - 62, top: cy + 100, fontFamily: T4.mono, fontSize: 16, color: "#8b94a5", background: "#151824", border: "1px solid #2a2e3d", borderRadius: 999, padding: "5px 14px" }}>{tag}</span>
         ) : null}
       </div>
     );
@@ -1274,8 +1274,8 @@ export const MutualAuthV4: React.FC = () => {
           fontFamily: T4.mono,
           fontSize: 19,
           color: T4.accentText,
-          background: "rgba(11,11,18,0.94)",
-          border: "1.5px solid #3b4152",
+          background: "#151824",
+          border: "1px solid #2a2e3d",
           borderRadius: 999,
           padding: "6px 18px",
           opacity: fade,
@@ -1292,10 +1292,10 @@ export const MutualAuthV4: React.FC = () => {
         <line x1={560} y1={430} x2={1360} y2={430} stroke="#2a2e3d" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.1)} />
         <line x1={560} y1={730} x2={1360} y2={730} stroke="#2a2e3d" strokeWidth={2} strokeDasharray="7 7" opacity={pop(frame, fps, 1.3)} />
       </svg>
-      <span style={{ position: "absolute", left: 385, top: 290, fontSize: 34, background: "rgba(11,11,18,0.9)", border: "1.5px solid #3b4152", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.4) }}>🇫🇷</span>
+      <span style={{ position: "absolute", left: 385, top: 290, fontSize: 34, background: "#151824", border: "1px solid #2a2e3d", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.4) }}>🇫🇷</span>
       {node(450, 430, "service", 0.5)}
       {node(450, 730, "agent", 0.7)}
-      <span style={{ position: "absolute", left: 1455, top: 290, fontSize: 34, background: "rgba(11,11,18,0.9)", border: "1.5px solid #3b4152", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.6) }}>🇯🇵</span>
+      <span style={{ position: "absolute", left: 1455, top: 290, fontSize: 34, background: "#151824", border: "1px solid #2a2e3d", borderRadius: 12, padding: "5px 12px", opacity: pop(frame, fps, 0.6) }}>🇯🇵</span>
       {node(1470, 430, "service", 0.8)}
       {node(1470, 730, "agent", 1.0)}
       {ping(560, 1360, 430, "who are you?", 1.6, 3.4)}
@@ -1335,8 +1335,8 @@ export const EcosystemSearchV4: React.FC = () => {
                 alignItems: "center",
                 gap: 16,
                 minWidth: 960,
-                background: "rgba(11,11,18,0.95)",
-                border: "1.5px solid #3b4152",
+                background: "#151824",
+                border: "1px solid #2a2e3d",
                 borderRadius: 999,
                 padding: "16px 28px",
                 opacity: pop(frame, fps, 0.8),
@@ -1393,8 +1393,8 @@ export const EcosystemSearchV4: React.FC = () => {
                   whiteSpace: "nowrap",
                   fontFamily: T4.mono,
                   fontSize: 16,
-                  color: "#a7f3d0",
-                  background: "rgba(11,11,18,0.95)",
+                  color: "#29c68c",
+                  background: "#151824",
                   border: `1.5px solid ${"#29c68c"}`,
                   borderRadius: 999,
                   padding: "6px 14px",
@@ -1583,8 +1583,8 @@ export const TrustListsV4: React.FC = () => {
                   fontSize: 14,
                   letterSpacing: 2,
                   color: "#1f57c9",
-                  background: "rgba(31,87,201,0.08)",
-                  border: "1.5px solid rgba(31,87,201,0.35)",
+                  background: L4.card,
+                  border: "1px solid #e3e6ec",
                   borderRadius: 999,
                   padding: "4px 12px",
                 }}
@@ -1829,7 +1829,7 @@ export const BuildEcoTreeV4: React.FC = () => {
       <div style={{ position: "absolute", left: 480 - 190, top: 230, width: 380, opacity: rootIn, transform: `scale(${rootIn * (1 + 0.08 * rootPulse)})` }}>
         <div
           style={{
-            background: "rgba(118,62,240,0.08)",
+            background: L4.card,
             border: `2.5px solid ${L4.primary}`,
             borderRadius: 18,
             boxShadow: `0 14px 36px rgba(11,11,18,0.12), 0 0 0 ${12 * rootPulse}px rgba(124,58,237,0.16)`,
@@ -1851,8 +1851,8 @@ export const BuildEcoTreeV4: React.FC = () => {
                 fontFamily: T4.mono,
                 fontSize: 20,
                 color: "#763ef0",
-                background: "rgba(118,62,240,0.08)",
-                border: "1.5px solid rgba(118,62,240,0.35)",
+                background: L4.card,
+                border: "1px solid #e3e6ec",
                 borderRadius: 999,
                 padding: "12px 20px",
                 display: "inline-flex",
@@ -1994,8 +1994,8 @@ export const BuildEcoTreeV4: React.FC = () => {
             fontSize: 22,
             fontWeight: 800,
             color: "#0e7a57",
-            background: "rgba(41,198,140,0.12)",
-            border: `2px solid ${"#29c68c"}`,
+            background: L4.card,
+            border: "1px solid #8fd8c1",
             borderRadius: 999,
             padding: "9px 26px",
           }}
@@ -2034,7 +2034,7 @@ export const ServiceV4: React.FC = () => {
         width: size,
         height: size,
         borderRadius: "50%",
-        background: "rgba(118,62,240,0.08)",
+        background: L4.card,
         border: `2px solid ${L4.primary}`,
         display: "flex",
         alignItems: "center",
@@ -2109,8 +2109,8 @@ export const ServiceV4: React.FC = () => {
             fontFamily: T4.mono,
             fontSize: 19,
             color: "#763ef0",
-            background: "rgba(118,62,240,0.08)",
-            border: "1.5px solid rgba(118,62,240,0.35)",
+            background: L4.card,
+            border: "1px solid #e3e6ec",
             borderRadius: 999,
             padding: "9px 26px",
             opacity: interpolate(t, [15.4, 15.8], [0, 1], clamp),
@@ -2136,8 +2136,8 @@ export const ServiceV4: React.FC = () => {
             fontFamily: T4.mono,
             fontSize: 15,
             color: "#763ef0",
-            background: "rgba(118,62,240,0.08)",
-            border: "1.5px solid rgba(118,62,240,0.35)",
+            background: L4.card,
+            border: "1px solid #e3e6ec",
             borderRadius: 999,
             padding: "6px 15px",
             opacity: interpolate(t, [1.7, 2.0], [0, 1], clamp),
@@ -2149,7 +2149,7 @@ export const ServiceV4: React.FC = () => {
 
       <FreedomPanel index={2} title="Join" subtitle="the ecosystems you care about" appearAt={1.1} width={W}>
         <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
-          <div style={{ border: "1.5px solid rgba(118,62,240,0.35)", background: "rgba(118,62,240,0.05)", borderRadius: 16, padding: "14px 16px", fontFamily: theme.font }}>
+          <div style={{ border: "1px solid #e3e6ec", background: "#ffffff", borderRadius: 16, padding: "14px 16px", fontFamily: theme.font }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
               <svg width={30} height={30} viewBox="0 0 64 64" aria-hidden>
                 <rect x="0" y="0" width="64" height="64" rx="12" fill="#763EF0" />
@@ -2213,7 +2213,7 @@ export const ServiceV4: React.FC = () => {
             <circle cx={180} cy={95} r={17} fill="rgba(41,198,140,0.12)" stroke={"#29c68c"} strokeWidth={3} opacity={interpolate(t, [4.1, 4.4], [0, 1], clamp)} />
           </svg>
           <div style={{ position: "absolute", left: 0, right: 0, top: 320, textAlign: "center", opacity: pop(frame, fps, 4.4) }}>
-            <span style={{ fontSize: 17, fontWeight: 800, color: "#0e7a57", background: "rgba(41,198,140,0.12)", border: `2px solid ${"#29c68c"}`, borderRadius: 999, padding: "7px 18px", fontFamily: theme.font }}>
+            <span style={{ fontSize: 17, fontWeight: 800, color: "#0e7a57", background: L4.card, border: "1px solid #8fd8c1", borderRadius: 999, padding: "7px 18px", fontFamily: theme.font }}>
               visible in the Trust Graph
             </span>
           </div>
@@ -2233,10 +2233,10 @@ export const ServiceV4: React.FC = () => {
             <line x1={189} y1={100} x2={189} y2={185} stroke={L4.primary} strokeWidth={3} strokeDasharray="8 7" markerEnd="url(#iv-arrow)" opacity={interpolate(t, [3.7, 4.1], [0, 1], clamp)} />
             <line x1={223} y1={95} x2={296} y2={185} stroke={L4.primary} strokeWidth={3} markerEnd="url(#iv-arrow)" opacity={interpolate(t, [4.0, 4.4], [0, 1], clamp)} />
           </svg>
-          <span style={{ position: "absolute", left: 40, top: 108, fontFamily: T4.mono, fontSize: 15, color: L4.primary, background: "rgba(118,62,240,0.08)", border: "1.5px solid rgba(118,62,240,0.35)", borderRadius: 999, padding: "3px 11px", opacity: interpolate(t, [3.6, 3.9], [0, 1], clamp) }}>
+          <span style={{ position: "absolute", left: 40, top: 108, fontFamily: T4.mono, fontSize: 15, color: L4.primary, background: L4.card, border: "1px solid #e3e6ec", borderRadius: 999, padding: "3px 11px", opacity: interpolate(t, [3.6, 3.9], [0, 1], clamp) }}>
             issue
           </span>
-          <span style={{ position: "absolute", left: 252, top: 108, fontFamily: T4.mono, fontSize: 15, color: L4.primary, background: "rgba(118,62,240,0.08)", border: "1.5px solid rgba(118,62,240,0.35)", borderRadius: 999, padding: "3px 11px", opacity: interpolate(t, [4.1, 4.4], [0, 1], clamp) }}>
+          <span style={{ position: "absolute", left: 252, top: 108, fontFamily: T4.mono, fontSize: 15, color: L4.primary, background: L4.card, border: "1px solid #e3e6ec", borderRadius: 999, padding: "3px 11px", opacity: interpolate(t, [4.1, 4.4], [0, 1], clamp) }}>
             verify
           </span>
           <div style={{ position: "absolute", left: 32, top: 196, transform: `scale(${pop(frame, fps, 3.8)})` }}>
@@ -2283,12 +2283,14 @@ const PlaygroundQr: React.FC<{ px: number }> = ({ px }) => {
 export const AnswersV4: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const t = frame / fps;
   const st = { fill: "none", stroke: L4.primary, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  // The site's "Verana, in three parts" cards, verbatim anatomy: surface
+  // card, eyebrow + small primary icon row, display title, muted body.
   const CARDS = [
     {
+      eyebrow: "1 · ecosystems",
       title: "Sovereign ecosystems",
-      sub: "build your own trust registry: your rules, your schemas, your business model",
+      body: "Build your own trust registry: your rules, your schemas, your business model.",
       at: 4.0,
       icon: (
         <>
@@ -2300,8 +2302,9 @@ export const AnswersV4: React.FC = () => {
       ),
     },
     {
+      eyebrow: "2 · identity",
       title: "Verifiable services",
-      sub: "deploy services and AI agents; issue and verify credentials from any ecosystem you are interested in",
+      body: "Deploy services and AI agents; issue and verify credentials from any ecosystem you are interested in.",
       at: 5.5,
       icon: (
         <>
@@ -2312,8 +2315,9 @@ export const AnswersV4: React.FC = () => {
       ),
     },
     {
+      eyebrow: "3 · discovery",
       title: "One public Trust Graph",
-      sub: "be found, mutually authenticate, and connect: trust before the first message",
+      body: "Be found, mutually authenticate, and connect: trust before the first message.",
       at: 7.4,
       icon: (
         <>
@@ -2330,31 +2334,35 @@ export const AnswersV4: React.FC = () => {
     <AbsoluteFill style={{ background: L4.bg, fontFamily: theme.font }}>
       <Glow />
       <SceneTitle kicker="the answer" title="Verana answers all of this" />
-      <div style={{ position: "absolute", top: 300, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
+      <div style={{ position: "absolute", top: 300, left: 0, right: 0, display: "flex", gap: 26, justifyContent: "center" }}>
         {CARDS.map((c) => {
-          const s = pop(frame, fps, c.at);
+          const cs = pop(frame, fps, c.at);
           return (
             <div
               key={c.title}
               style={{
-                width: 480,
+                width: 470,
                 background: L4.card,
                 border: "1px solid #e3e6ec",
-                borderRadius: 20,
-                boxShadow: "0 14px 40px rgba(11,11,18,0.08)",
-                padding: "34px 30px 30px",
-                textAlign: "center",
-                opacity: s,
-                transform: `translateY(${(1 - s) * 50}px)`,
+                borderRadius: 16,
+                boxShadow: "0 10px 28px -24px rgba(11,11,18,0.28)",
+                padding: "26px 28px",
+                opacity: cs,
+                transform: `translateY(${(1 - cs) * 50}px)`,
               }}
             >
-              <span style={{ display: "inline-flex", width: 84, height: 84, borderRadius: 21, background: "rgba(118,62,240,0.08)", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
-                <svg width={46} height={46} viewBox="0 0 24 24" aria-hidden>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <span style={{ fontFamily: T4.mono, fontSize: 15, fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", color: L4.muted }}>
+                  {c.eyebrow}
+                </span>
+                <svg width={22} height={22} viewBox="0 0 24 24" aria-hidden>
                   {c.icon}
                 </svg>
-              </span>
-              <div style={{ fontSize: 30, fontWeight: 800, color: L4.ink }}>{c.title}</div>
-              <div style={{ fontSize: 19, color: L4.muted, marginTop: 8, lineHeight: 1.5 }}>{c.sub}</div>
+              </div>
+              <div style={{ fontFamily: theme.display, fontSize: 31, fontWeight: 600, letterSpacing: "-0.025em", color: L4.ink, marginTop: 16 }}>
+                {c.title}
+              </div>
+              <div style={{ fontSize: 18.5, color: L4.muted, marginTop: 10, lineHeight: 1.55 }}>{c.body}</div>
             </div>
           );
         })}
@@ -2362,13 +2370,15 @@ export const AnswersV4: React.FC = () => {
       <div style={{ position: "absolute", top: 700, left: 0, right: 0, textAlign: "center", opacity: ethos, transform: `translateY(${(1 - ethos) * 24}px)` }}>
         <span
           style={{
-            fontSize: 27,
-            fontWeight: 700,
-            color: "#763ef0",
-            background: "rgba(118,62,240,0.08)",
-            border: "1.5px solid rgba(118,62,240,0.35)",
+            fontFamily: T4.mono,
+            fontSize: 22,
+            fontWeight: 500,
+            letterSpacing: "0.06em",
+            color: L4.primary,
+            background: L4.card,
+            border: "1px solid #e3e6ec",
             borderRadius: 999,
-            padding: "14px 38px",
+            padding: "13px 34px",
           }}
         >
           open · neutral · cross-border · owned by no one
@@ -2387,33 +2397,37 @@ export const FoundationV4: React.FC = () => {
   const t = frame / fps;
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const st = { fill: "none", stroke: L4.primary, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  const pst = { fill: "none", stroke: L4.primary, strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
   const PILLARS = [
     {
+      eyebrow: "cc by-sa 4.0",
       title: "Open specifications",
-      sub: "built exclusively on open standards · CC BY-SA 4.0",
-      at: 3.0,
+      body: "Built exclusively on open standards.",
+      at: 2.2,
       icon: (
         <>
-          <path d="M6 3.5 h9 l4 4 V20.5 h-13 Z M15 3.5 v4 h4" {...st} />
-          <path d="M9 12 h7 M9 15.5 h7" {...st} />
+          <path d="M6 3.5 h9 l4 4 V20.5 h-13 Z M15 3.5 v4 h4" {...pst} />
+          <path d="M9 12 h7 M9 15.5 h7" {...pst} />
         </>
       ),
     },
     {
+      eyebrow: "apache 2.0",
       title: "Open-source software",
-      sub: "Apache 2.0 · public repos, copyright with contributors",
-      at: 5.9,
-      icon: <path d="M9 8 L4.5 12 L9 16 M15 8 L19.5 12 L15 16" {...st} />,
+      body: "Public repos; copyright stays with the contributors.",
+      at: 4.6,
+      icon: <path d="M9 8 L4.5 12 L9 16 M15 8 L19.5 12 L15 16" {...pst} />,
     },
     {
+      eyebrow: "community managed",
       title: "Non-profit foundation",
-      sub: "community managed · steward of the open trust layer",
-      at: 7.1,
+      body: "The steward of the open trust layer.",
+      at: 6.4,
       icon: (
         <>
-          <circle cx="8.5" cy="9" r="3" {...st} />
-          <circle cx="15.5" cy="9" r="3" {...st} />
-          <path d="M3.5 19.5 a5 4.5 0 0 1 10 0 M10.5 19.5 a5 4.5 0 0 1 10 0" {...st} />
+          <circle cx="8.5" cy="9" r="3" {...pst} />
+          <circle cx="15.5" cy="9" r="3" {...pst} />
+          <path d="M3.5 19.5 a5 4.5 0 0 1 10 0 M10.5 19.5 a5 4.5 0 0 1 10 0" {...pst} />
         </>
       ),
     },
@@ -2462,7 +2476,7 @@ export const FoundationV4: React.FC = () => {
       </div>
       <div style={{ position: "absolute", top: 250, left: 0, right: 0, display: "flex", gap: 30, justifyContent: "center" }}>
         {PILLARS.map((c) => {
-          const s = pop(frame, fps, c.at);
+          const cs = pop(frame, fps, c.at);
           return (
             <div
               key={c.title}
@@ -2470,21 +2484,24 @@ export const FoundationV4: React.FC = () => {
                 width: 470,
                 background: L4.card,
                 border: "1px solid #e3e6ec",
-                borderRadius: 20,
-                boxShadow: "0 14px 40px rgba(11,11,18,0.08)",
-                padding: "28px 28px 24px",
-                textAlign: "center",
-                opacity: s,
-                transform: `translateY(${(1 - s) * 50}px)`,
+                borderRadius: 16,
+                boxShadow: "0 10px 28px -24px rgba(11,11,18,0.28)",
+                padding: "26px 28px",
+                textAlign: "left",
+                opacity: cs,
+                transform: `translateY(${(1 - cs) * 50}px)`,
               }}
             >
-              <span style={{ display: "inline-flex", width: 76, height: 76, borderRadius: 19, background: "rgba(118,62,240,0.08)", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
-                <svg width={42} height={42} viewBox="0 0 24 24" aria-hidden>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <span style={{ fontFamily: T4.mono, fontSize: 15, fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", color: L4.muted }}>
+                  {c.eyebrow}
+                </span>
+                <svg width={22} height={22} viewBox="0 0 24 24" aria-hidden>
                   {c.icon}
                 </svg>
-              </span>
-              <div style={{ fontSize: 28, fontWeight: 800, color: L4.ink }}>{c.title}</div>
-              <div style={{ fontSize: 18, color: L4.muted, marginTop: 6, lineHeight: 1.45 }}>{c.sub}</div>
+              </div>
+              <div style={{ fontFamily: theme.display, fontSize: 30, fontWeight: 600, letterSpacing: "-0.025em", color: L4.ink, marginTop: 16 }}>{c.title}</div>
+              <div style={{ fontSize: 18.5, color: L4.muted, marginTop: 8, lineHeight: 1.5 }}>{c.body}</div>
             </div>
           );
         })}
@@ -2497,16 +2514,16 @@ export const FoundationV4: React.FC = () => {
             flexDirection: "column",
             justifyContent: "center",
             background: L4.card,
-            border: `2px solid ${L4.primary}`,
-            borderRadius: 22,
+            border: "1px solid #e3e6ec",
+            borderRadius: 16,
             padding: "12px 34px",
             textAlign: "center",
-            boxShadow: "0 14px 36px rgba(11,11,18,0.10)",
+            boxShadow: "0 10px 28px -24px rgba(11,11,18,0.28)",
             opacity: useIn,
             transform: `translateY(${(1 - useIn) * 30}px)`,
           }}
         >
-          <span style={{ fontSize: 27, fontWeight: 800, color: L4.ink }}>
+          <span style={{ fontFamily: theme.display, fontSize: 27, fontWeight: 600, letterSpacing: "-0.025em", color: L4.ink }}>
             Use it all, <span style={{ color: "#0e7a57" }}>free</span>
           </span>
           <span style={{ fontSize: 17.5, color: L4.muted, marginTop: 3 }}>
@@ -2514,9 +2531,9 @@ export const FoundationV4: React.FC = () => {
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", opacity: joinIn, transform: `translateY(${(1 - joinIn) * 30}px)` }}>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 16, fontSize: 27, fontWeight: 800, color: "#fff", background: T4.gradient, borderRadius: 999, padding: "16px 36px", boxShadow: "0 18px 44px rgba(118,62,240,0.35)" }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 16, fontSize: 27, fontWeight: 600, color: "#ffffff", background: L4.primary, borderRadius: 12, padding: "16px 34px", boxShadow: "0 10px 28px -12px rgba(118,62,240,0.6)" }}>
             Join the Foundation
-            <span style={{ fontSize: 18, fontWeight: 800, color: "#0e7a57", background: "rgba(41,198,140,0.12)", border: "2px solid #29c68c", borderRadius: 999, padding: "4px 15px" }}>
+            <span style={{ fontFamily: T4.mono, fontSize: 16, fontWeight: 500, color: "#ffffff", background: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.45)", borderRadius: 999, padding: "4px 14px" }}>
               free for contributors
             </span>
           </span>
@@ -2535,7 +2552,7 @@ export const FoundationV4: React.FC = () => {
                 fontFamily: T4.mono,
                 fontSize: 18,
                 color: "#763ef0",
-                background: "rgba(118,62,240,0.08)",
+                background: L4.card,
                 border: `1.5px ${w.dashed ? "dashed" : "solid"} rgba(118,62,240,0.35)`,
                 borderRadius: 999,
                 padding: "9px 20px",
@@ -2711,7 +2728,7 @@ export const ConnectV4: React.FC = () => {
         ) : null
       )}
       <div style={{ position: "absolute", left: 0, right: 0, top: 944, display: "flex", justifyContent: "center", opacity: connected, transform: `translateY(${(1 - connected) * 18}px)` }}>
-        <span style={{ fontFamily: T4.mono, fontSize: 22, fontWeight: 500, letterSpacing: "0.06em", color: "#0e7a57", background: "rgba(41,198,140,0.12)", border: "1.5px solid #29c68c", borderRadius: 999, padding: "12px 34px" }}>
+        <span style={{ fontFamily: T4.mono, fontSize: 22, fontWeight: 500, letterSpacing: "0.06em", color: "#0e7a57", background: L4.card, border: "1px solid #8fd8c1", borderRadius: 999, padding: "12px 34px" }}>
           mutually authenticated · connected
         </span>
       </div>
