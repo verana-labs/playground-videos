@@ -373,49 +373,34 @@ export const FoundationsV3: React.FC = () => {
           <div style={{ ...edgeLabel, left: 690, top: 215, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>presents</div>
           <div style={{ ...edgeLabel, left: 468, top: 20, color: theme.muted, background: "#f8fafc", border: "1.5px solid #e2e8f0", opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>trusts?</div>
           {/* credential formats + transport protocols, snapping on below */}
-          <div style={{ position: "absolute", left: 0, right: 0, top: 418, display: "flex", gap: 12, justifyContent: "center", alignItems: "center" }}>
-            <span style={{ fontFamily: theme.mono, fontSize: 14, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", marginRight: 2, opacity: interpolate(t, [3.2, 3.5], [0, 1], clamp) }}>
-              formats
-            </span>
-            {["SD-JWT VC", "mdoc"].map((c, i) => (
-              <span
-                key={c}
-                style={{
-                  fontFamily: theme.mono,
-                  fontSize: 19,
-                  color: "#1d4ed8",
-                  background: "#eff6ff",
-                  border: "1.5px solid #bfdbfe",
-                  borderRadius: 999,
-                  padding: "5px 16px",
-                  transform: `scale(${pop(frame, fps, 3.3 + i * 0.2)})`,
-                }}
-              >
-                {c}
+          {[
+            { label: "formats", items: ["SD-JWT VC", "mdoc", "JSON-LD", "AnonCreds", "vLEI"], top: 414, at: 3.3 },
+            { label: "protocols", items: ["OpenID4VC", "DIDComm", "Linked-VP", "KERI", "ISO 18013-7"], top: 462, at: 3.9 },
+          ].map((row) => (
+            <div key={row.label} style={{ position: "absolute", left: 0, right: 0, top: row.top, display: "flex", gap: 10, justifyContent: "center", alignItems: "center" }}>
+              <span style={{ fontFamily: theme.mono, fontSize: 14, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", marginRight: 2, width: 104, textAlign: "right", opacity: interpolate(t, [row.at - 0.1, row.at + 0.2], [0, 1], clamp) }}>
+                {row.label}
               </span>
-            ))}
-            <span style={{ width: 16 }} />
-            <span style={{ fontFamily: theme.mono, fontSize: 14, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", marginRight: 2, opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>
-              protocols
-            </span>
-            {["OpenID4VC", "DIDComm", "Linked-VP"].map((c, i) => (
-              <span
-                key={c}
-                style={{
-                  fontFamily: theme.mono,
-                  fontSize: 19,
-                  color: "#1d4ed8",
-                  background: "#eff6ff",
-                  border: "1.5px solid #bfdbfe",
-                  borderRadius: 999,
-                  padding: "5px 16px",
-                  transform: `scale(${pop(frame, fps, 3.8 + i * 0.2)})`,
-                }}
-              >
-                {c}
-              </span>
-            ))}
-          </div>
+              {row.items.map((c, i) => (
+                <span
+                  key={c}
+                  style={{
+                    fontFamily: theme.mono,
+                    fontSize: 18,
+                    color: "#1d4ed8",
+                    background: "#eff6ff",
+                    border: "1.5px solid #bfdbfe",
+                    borderRadius: 999,
+                    padding: "4px 14px",
+                    transform: `scale(${pop(frame, fps, row.at + i * 0.15)})`,
+                  }}
+                >
+                  {c}
+                </span>
+              ))}
+              <span style={{ width: 104 }} />
+            </div>
+          ))}
         </div>
       </div>
 
