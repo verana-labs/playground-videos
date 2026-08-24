@@ -374,7 +374,7 @@ export const FoundationsV3: React.FC = () => {
           <div style={{ ...edgeLabel, left: 468, top: 20, color: theme.muted, background: "#f8fafc", border: "1.5px solid #e2e8f0", opacity: interpolate(t, [3.7, 4.0], [0, 1], clamp) }}>trusts?</div>
           {/* credential formats + transport protocols, snapping on below */}
           {[
-            { label: "formats", items: ["SD-JWT VC", "JSON-LD", "AnonCreds", "vLEI", "mdoc"], top: 414, at: 3.3 },
+            { label: "formats", items: ["SD-JWT", "AnonCreds", "JSON-LD", "vLEI", "mdoc"], top: 414, at: 3.3 },
             { label: "protocols", items: ["OpenID4VC", "DIDComm", "Linked-VP", "KERI", "ISO 18013-7"], top: 462, at: 3.9 },
           ].map((row) => (
             <div key={row.label} style={{ position: "absolute", left: 0, right: 0, top: row.top, display: "flex", gap: 10, justifyContent: "center", alignItems: "center" }}>
