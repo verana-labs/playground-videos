@@ -27,7 +27,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     start: 24,
     end: 43,
     lines: [],
-    vo: "The challenges of interconnecting ecosystems. One: create new ecosystems at will, and monetize them. Two: scale across borders. Three: authenticate mutually. And four: discovery: find trusted services, anywhere.",
+    vo: "Let's have a look at the challenges of interconnecting ecosystems. One: create new ecosystems at will, and monetize them. Two: scale across borders. Three: authenticate mutually. And four: discovery: find trusted services, anywhere.",
     visual: { kind: "silos-v3" },
     tone: "dark",
   },
