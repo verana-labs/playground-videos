@@ -1867,7 +1867,6 @@ export const ServiceV3: React.FC = () => {
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-  const bizWallets = ["paradym", "sphereon", "authbound"];
   const W = 424;
   const iconCircle = (kind: "service" | "agent", size: number, at: number, badge?: boolean) => (
     <div
@@ -1939,21 +1938,38 @@ export const ServiceV3: React.FC = () => {
         gap: 30,
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: 116,
+        paddingTop: 46,
       }}
     >
       <SceneTitle kicker="for service builders" title="Deploy your services" />
-      <FreedomPanel index={1} title="Deploy" subtitle="your services and AI agents" appearAt={0.4} width={W}>
-        <div style={{ display: "flex", gap: 30, marginBottom: 26 }}>
-          {iconCircle("service", 104, 0.9)}
-          {iconCircle("agent", 104, 1.1)}
-        </div>
-        <div style={{ display: "flex", gap: 13, marginBottom: 14 }}>
-          {bizWallets.map((id, i) => (
-            <div key={id} style={{ transform: `scale(${pop(frame, fps, 1.3 + i * 0.15)})` }}>
-              <WalletTile id={id} size={80} />
+      {/* below the panels: any personal wallet, via the Verana resolver */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 872, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+        <span
+          style={{
+            fontFamily: theme.mono,
+            fontSize: 19,
+            color: "#6d28d9",
+            background: "#f5f3ff",
+            border: "1.5px solid #ddd6fe",
+            borderRadius: 999,
+            padding: "9px 26px",
+            opacity: interpolate(t, [16.8, 17.2], [0, 1], clamp),
+          }}
+        >
+          issue to any personal wallet · just integrate the Verana resolver
+        </span>
+        <div style={{ display: "flex", gap: 16 }}>
+          {["inji", "eudi", "authbound", "paradym", "bcwallet", "wwwallet", "hologram", "sphereon", "talao", "nl-wallet"].map((id, i) => (
+            <div key={id} style={{ transform: `scale(${pop(frame, fps, 17.3 + i * 0.1)})` }}>
+              <WalletTile id={id} size={64} />
             </div>
           ))}
+        </div>
+      </div>
+      <FreedomPanel index={1} title="Deploy" subtitle="your services and AI agents" appearAt={0.4} width={W}>
+        <div style={{ display: "flex", gap: 38, marginBottom: 30 }}>
+          {iconCircle("service", 124, 0.9)}
+          {iconCircle("agent", 124, 1.1)}
         </div>
         <span
           style={{
@@ -1973,39 +1989,47 @@ export const ServiceV3: React.FC = () => {
 
       <FreedomPanel index={2} title="Join" subtitle="the ecosystems you care about" appearAt={1.1} width={W}>
         <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
-          {[
-            { icon: <VeranaMark size={40} />, name: "Ecosystems on Verana", sub: "sovereign trust registries" },
-            {
-              icon: (
-                <svg width={40} height={40} viewBox="0 0 24 24" aria-hidden>
-                  <path d="M4 5.5 h16 M4 10 h16 M4 14.5 h16 M4 19 h10" stroke="#1d4ed8" strokeWidth="1.9" strokeLinecap="round" />
-                </svg>
-              ),
-              name: "Other trust lists",
-              sub: "official and industry lists",
-            },
-          ].map((e) => (
-            <div
-              key={e.name}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-                border: "1.5px solid #e2e8f0",
-                borderRadius: 16,
-                padding: "16px 16px",
-                fontFamily: theme.font,
-              }}
-            >
-              <span style={{ display: "inline-flex", width: 52, height: 52, borderRadius: 13, background: "#f8fafc", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                {e.icon}
-              </span>
-              <div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: theme.ink }}>{e.name}</div>
-                <div style={{ fontSize: 15.5, color: theme.muted }}>{e.sub}</div>
-              </div>
+          <div style={{ border: "1.5px solid #ddd6fe", background: "#faf9ff", borderRadius: 16, padding: "14px 16px", fontFamily: theme.font }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+              <svg width={30} height={30} viewBox="0 0 64 64" aria-hidden>
+                <rect x="0" y="0" width="64" height="64" rx="12" fill="#763EF0" />
+                <g transform="translate(32 33) scale(0.76923) translate(-27 -27)" fill="white">
+                  <path d="M26.9932 51.6972L5.805 11.0977L2.91263 16.2161L0 10.6048L5.98725 0L26.9932 40.2483L47.9993 0L54 10.6217L51.0773 16.2161L48.1849 11.0977L26.9932 51.6972Z" />
+                  <path d="M13.696 0L26.9935 25.4637L39.9367 0H13.696Z" />
+                </g>
+              </svg>
+              <span style={{ fontSize: 20, fontWeight: 700, color: theme.ink }}>Ecosystems on Verana</span>
             </div>
-          ))}
+            <div style={{ display: "flex", gap: 12 }}>
+              {[
+                { bg: "#ecfdf5", fg: "#059669", d: "M12 3 C7 8 7 14 12 21 C17 14 17 8 12 3 Z" },
+                { bg: "#eff6ff", fg: "#2563eb", d: "M13 2 L5 13 h5 L11 22 L19 10 h-5 Z" },
+                { bg: "#fff7ed", fg: "#ea580c", d: "M12 21 C7 16 4 12.5 4 9 a4.5 4.5 0 0 1 8 -2.5 A4.5 4.5 0 0 1 20 9 c0 3.5 -3 7 -8 12 Z" },
+                { bg: "#fdf2f8", fg: "#db2777", d: "M12 3 a4 4 0 0 1 4 4 c0 1.5 -1 2.6 -2 3.4 L14 20 h-4 l0 -9.6 C9 9.6 8 8.5 8 7 a4 4 0 0 1 4 -4 Z" },
+              ].map((e2, i) => (
+                <span key={i} style={{ display: "inline-flex", width: 52, height: 52, borderRadius: 13, background: e2.bg, alignItems: "center", justifyContent: "center", transform: `scale(${pop(frame, fps, 1.7 + i * 0.12)})` }}>
+                  <svg width={26} height={26} viewBox="0 0 24 24" aria-hidden>
+                    <path d={e2.d} fill={e2.fg} />
+                  </svg>
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style={{ border: "1.5px solid #e2e8f0", borderRadius: 16, padding: "14px 16px", fontFamily: theme.font }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+              <svg width={28} height={28} viewBox="0 0 24 24" aria-hidden>
+                <path d="M4 5.5 h16 M4 10 h16 M4 14.5 h16 M4 19 h10" stroke="#1d4ed8" strokeWidth="1.9" strokeLinecap="round" />
+              </svg>
+              <span style={{ fontSize: 20, fontWeight: 700, color: theme.ink }}>Other Ecosystems</span>
+            </div>
+            <div style={{ display: "flex", gap: 12 }}>
+              {["wallet-logos/eudi", "standards-logos/gleif", "standards-logos/icao"].map((id, i) => (
+                <span key={id} style={{ display: "inline-flex", width: 52, height: 52, borderRadius: 13, background: "#f8fafc", border: "1px solid #e2e8f0", alignItems: "center", justifyContent: "center", overflow: "hidden", transform: `scale(${pop(frame, fps, 2.2 + i * 0.12)})` }}>
+                  <AssetImg id={id} cover={false} style={{ padding: 7 }} />
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </FreedomPanel>
 
@@ -2384,6 +2408,24 @@ export const ConnectV3: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       <SceneTitle kicker="the result" title="Find, authenticate, connect" />
+      {/* the trust graph, named */}
+      <div
+        style={{
+          position: "absolute",
+          left: 1010,
+          top: 258,
+          width: 500,
+          textAlign: "center",
+          fontFamily: theme.mono,
+          fontSize: 17,
+          letterSpacing: 2.5,
+          color: theme.faint,
+          textTransform: "uppercase",
+          opacity: interpolate(t, [0.9, 1.3], [0, 1], clamp),
+        }}
+      >
+        the Trust Graph
+      </div>
       {/* the trust graph */}
       <svg width="100%" height="100%" style={{ position: "absolute", inset: 0 }} aria-hidden>
         {EDGES.map(([a, b], i) => (
