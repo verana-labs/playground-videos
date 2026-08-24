@@ -1035,12 +1035,47 @@ export const CreateEcoQV4: React.FC = () => {
   const t = frame / fps;
   const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
   const hubIn = pop(frame, fps, 0.9);
+  // Capability chips carry the site's /ecosystems icon set.
   const CHIPS = [
-    { label: "trust registry", x: 640, y: 470, at: 1.8 },
-    { label: "credential schemas", x: 1140, y: 470, at: 2.9 },
-    { label: "accreditation lists", x: 640, y: 730, at: 4.0 },
-    { label: "business model", x: 1140, y: 730, at: 5.1 },
+    { label: "trust registry", x: 640, y: 470, at: 1.8, icon: "db" },
+    { label: "credential schemas", x: 1140, y: 470, at: 2.9, icon: "file" },
+    { label: "accreditation lists", x: 640, y: 730, at: 4.0, icon: "sitemap" },
+    { label: "business model", x: 1140, y: 730, at: 5.1, icon: "coins" },
   ];
+  const chipIcon = (k: string) => {
+    const st = { fill: "none", stroke: "#d7dce6", strokeWidth: 1.9, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+    if (k === "db")
+      return (
+        <>
+          <ellipse cx="12" cy="5.5" rx="7.5" ry="2.8" {...st} />
+          <path d="M4.5 5.5 v6.5 c0 1.6 3.4 2.8 7.5 2.8 s7.5 -1.2 7.5 -2.8 V5.5" {...st} />
+          <path d="M4.5 12 v6 c0 1.6 3.4 2.8 7.5 2.8 s7.5 -1.2 7.5 -2.8 v-6" {...st} />
+        </>
+      );
+    if (k === "file")
+      return (
+        <>
+          <path d="M6 3.5 h8 l4 4 V20.5 h-12 Z M14 3.5 v4 h4" {...st} />
+          <path d="M9 12 h6 M9 15.5 h6" {...st} />
+        </>
+      );
+    if (k === "sitemap")
+      return (
+        <>
+          <rect x="9" y="3" width="6" height="5" rx="1" {...st} />
+          <rect x="3" y="16" width="6" height="5" rx="1" {...st} />
+          <rect x="15" y="16" width="6" height="5" rx="1" {...st} />
+          <path d="M12 8 v3 M12 11 L6 16 M12 11 L18 16" {...st} />
+        </>
+      );
+    return (
+      <>
+        <ellipse cx="9" cy="7" rx="5.5" ry="2.6" {...st} />
+        <path d="M3.5 7 v5 c0 1.4 2.5 2.6 5.5 2.6 s5.5 -1.2 5.5 -2.6 V7" {...st} />
+        <path d="M14.5 10.2 c2.8 0.2 5 1.3 5 2.7 v5 c0 1.4 -2.2 2.6 -5 2.6 c-2 0 -3.8 -0.6 -4.7 -1.5" {...st} />
+      </>
+    );
+  };
   const OUT = [
     { label: "discoverable", tx: 300, ty: 300, at: 6.8 },
     { label: "interconnectable", tx: 1620, ty: 300, at: 7.9 },
@@ -1092,10 +1127,16 @@ export const CreateEcoQV4: React.FC = () => {
               border: "1.5px dashed #3b4152",
               borderRadius: 999,
               padding: "9px 22px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
               opacity: s,
               transform: `scale(${s})`,
             }}
           >
+            <svg width={22} height={22} viewBox="0 0 24 24" aria-hidden style={{ flexShrink: 0 }}>
+              {chipIcon(c.icon)}
+            </svg>
             {c.label}
           </span>
         );
