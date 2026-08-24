@@ -6,8 +6,8 @@
 // - VeranaIoLogo: the verana.io lockup (purple gradient tile + white V mark,
 //   from https://verana.io/logo.svg) + "Verana" wordmark in black, as on the
 //   verana.io website.
-// - PlaygroundBanner: the persistent corner banner shown on every frame of
-//   every video (the site-header treatment: white translucent pill).
+// - PlaygroundBanner: the persistent corner lockup on use-case content,
+//   top right, no pill: mark + two-tone wordmark, site typography.
 import React from "react";
 import { theme } from "../theme";
 
@@ -44,8 +44,12 @@ export const VeranaLogo: React.FC<{
   </div>
 );
 
-/** The verana.io lockup: gradient tile + white V, "Verana" in black. */
-export const VeranaIoLogo: React.FC<{ size?: number }> = ({ size = 120 }) => (
+/** The verana.io lockup: gradient tile + white V, "Verana" in black
+ *  (or near-white via tone="dark", for night-stage banners). */
+export const VeranaIoLogo: React.FC<{ size?: number; tone?: "light" | "dark" }> = ({
+  size = 120,
+  tone = "light",
+}) => (
   <div style={{ display: "flex", alignItems: "center", gap: size * 0.3 }}>
     <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden>
       <defs>
@@ -60,33 +64,27 @@ export const VeranaIoLogo: React.FC<{ size?: number }> = ({ size = 120 }) => (
         <path d={V_INNER} />
       </g>
     </svg>
-    <span style={wordmarkStyle(size * 0.62, "#0b0b12")}>Verana</span>
+    <span style={wordmarkStyle(size * 0.62, tone === "dark" ? "#f8fafc" : "#0b0b12")}>Verana</span>
   </div>
 );
 
 /** Persistent playground banner, top-left on every frame (site-header pill). */
 export const PlaygroundBanner: React.FC<{ vertical?: boolean }> = ({ vertical = false }) => {
-  const mark = vertical ? 26 : 30;
-  const text = vertical ? 24 : 27;
+  const mark = vertical ? 34 : 46;
+  const text = vertical ? 30 : 42;
   return (
     <div
       style={{
         position: "absolute",
-        top: vertical ? 36 : 40,
-        left: vertical ? 36 : 48,
+        top: vertical ? 36 : 42,
+        right: vertical ? 36 : 64,
         display: "flex",
         alignItems: "center",
-        gap: 10,
-        background: "rgba(255,255,255,0.88)",
-        border: "1px solid #efeef6",
-        borderRadius: 999,
-        padding: "10px 22px 10px 16px",
-        boxShadow: "0 4px 18px rgba(15,23,42,0.10)",
-        zIndex: 10,
+        gap: 12,
       }}
     >
       <VeranaMark size={mark} />
-      <span style={wordmarkStyle(text, "#111827")}>
+      <span style={wordmarkStyle(text, theme.ink)}>
         Verana <span style={{ color: theme.violet }}>Playground</span>
       </span>
     </div>

@@ -11,6 +11,42 @@ import { QrScanToPhone } from "./components/QrScan";
 import { Constellation } from "./components/Constellation";
 import { BrandOpen, BrandReveal, Triptych } from "./components/Triptych";
 import { EcosystemSearch, SovereignBuild } from "./components/SovereignScenes";
+import { VestaCompany } from "./components/VestaCompany";
+import {
+  VestaBuildEco,
+  VestaJoin,
+  VestaNeeds,
+  VestaProblems,
+} from "./components/VestaStory";
+import { VestaJourney } from "./components/VestaJourney";
+import { PlaygroundClose, SoloOpen, VestaDemos } from "./components/VestaFinish";
+import {
+  EcosystemSearchV2,
+  Foundations,
+  Freedoms,
+  Silos,
+  VeranaClose,
+} from "./components/IntroV2Scenes";
+import {
+  AnswersV3,
+  ConnectV3,
+  EcosystemSearchV3,
+  FoundationV3,
+  BuildEcoTreeV3,
+  BuildEcoV3,
+  CreateEcoQV3,
+  CrossBorderQV3,
+  FoundationsV3,
+  IdentifyV3,
+  MutualAuthV3,
+  QrScanPartiesV3,
+  SectorsV3,
+  SelfIdentifyV3,
+  ServiceV3,
+  SilosV3,
+  TrustListsV3,
+  VeranaCloseV3,
+} from "./components/IntroV3Scenes";
 import { HandoffCard, StandardsStrip, UrlCard, WalletRoster } from "./components/Cards";
 import { CaptureSequence, DirectoryTeaser, ImageScene } from "./components/Scenes";
 import { theme } from "./theme";
@@ -54,6 +90,78 @@ const Visual: React.FC<{ shot: Shot; format: Format }> = ({ shot, format }) => {
       return <StandardsStrip />;
     case "handoff":
       return <HandoffCard emblem={v.emblem} title={v.title} subtitle={v.subtitle} />;
+    case "vesta-company":
+      return <VestaCompany part={v.part} />;
+    case "vesta-problems":
+      return <VestaProblems />;
+    case "vesta-needs":
+      return <VestaNeeds />;
+    case "vesta-join":
+      return <VestaJoin />;
+    case "vesta-build-eco":
+      return <VestaBuildEco />;
+    case "vesta-journey":
+      return <VestaJourney data={v} />;
+    case "vesta-demos":
+      return <VestaDemos />;
+    case "playground-close":
+      return <PlaygroundClose />;
+    case "solo-open":
+      return <SoloOpen emblem={v.emblem} title={v.title} subtitle={v.subtitle} />;
+    case "foundations":
+      return <Foundations />;
+    case "silos":
+      return <Silos />;
+    case "ecosystem-search-v2":
+      return <EcosystemSearchV2 />;
+    case "freedoms":
+      return <Freedoms />;
+    case "verana-close":
+      return <VeranaClose />;
+    case "foundations-v3":
+      return <FoundationsV3 />;
+    case "sectors-v3":
+      return <SectorsV3 />;
+    case "identify-v3":
+      return <IdentifyV3 />;
+    case "create-eco-q-v3":
+      return <CreateEcoQV3 />;
+    case "cross-border-q-v3":
+      return <CrossBorderQV3 />;
+    case "mutual-auth-v3":
+      return <MutualAuthV3 />;
+    case "self-identify-v3":
+      return <SelfIdentifyV3 />;
+    case "qr-scan-parties-v3":
+      return (
+        <QrScanPartiesV3
+          asset={v.asset}
+          qrLabel={v.qrLabel}
+          caption={v.caption}
+          phoneSide={v.phoneSide}
+          vertical={format === "vertical"}
+        />
+      );
+    case "silos-v3":
+      return <SilosV3 />;
+    case "ecosystem-search-v3":
+      return <EcosystemSearchV3 />;
+    case "build-eco-v3":
+      return <BuildEcoV3 />;
+    case "build-eco-tree-v3":
+      return <BuildEcoTreeV3 />;
+    case "build-service-v3":
+      return <ServiceV3 />;
+    case "connect-v3":
+      return <ConnectV3 />;
+    case "answers-v3":
+      return <AnswersV3 />;
+    case "foundation-v3":
+      return <FoundationV3 />;
+    case "verana-close-v3":
+      return <VeranaCloseV3 />;
+    case "trust-lists-v3":
+      return <TrustListsV3 />;
     case "image-scene":
       return <ImageScene items={v.items} tint={v.tint} />;
     case "build":
@@ -82,7 +190,7 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const frames = durationInFrames;
-  const big = shot.visual.kind === "black" || shot.id === "I-8";
+  const big = shot.visual.kind === "black" || shot.id === "I-8" || shot.id === "N-8" || shot.id === "N-8b";
   // The dense standards + Proof of Trust scene needs a smaller line to
   // clear the wallet roster.
   const compact = shot.visual.kind === "standards";
@@ -90,7 +198,8 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
   // The intro's dark question shots dip to black between cuts, so each
   // question lands as its own beat (I-0 already ends on night, I-8 turns on
   // the light).
-  const isQuestion = shot.id.startsWith("I-") && (shot.tone ?? "dark") === "dark";
+  const isQuestion =
+    (shot.id.startsWith("I-") || shot.id.startsWith("N-")) && (shot.tone ?? "dark") === "dark";
   const dip = isQuestion
     ? Math.min(
         interpolate(frame, [0, fps * 0.35], [0, 1], {
@@ -129,7 +238,7 @@ export const ShotRenderer: React.FC<{ shot: Shot; format: Format }> = ({ shot, f
           size={format === "vertical" ? 54 : big ? 76 : compact ? 36 : 56}
           // Question shots: the final line lands early, then everything holds
           // >= 3 s fully assembled (spec pacing rule).
-          leadSeconds={/^I-[0-6]$/.test(shot.id) ? 2.2 : undefined}
+          leadSeconds={/^(I-[0-6]|N-[2-7])$/.test(shot.id) ? 2.2 : undefined}
         />
       </AbsoluteFill>
       </AbsoluteFill>

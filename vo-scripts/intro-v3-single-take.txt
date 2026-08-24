@@ -1,0 +1,49 @@
+Verana. The open trust infrastructure for the verifiable internet.
+
+<break time="1.5s" />
+
+Verifiable credentials are becoming a reality. The groundwork is laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
+
+<break time="1.5s" />
+
+Let's have a look at the challenges of interconnecting ecosystems. One: create new ecosystems at will, and monetize them. Two: scale across borders. Three: authenticate mutually. And four: discovery: find trusted services, anywhere.
+
+<break time="1.5s" />
+
+Let's dig into challenge one: scale, by creating ecosystems. How do we create new trust registries at will: publish schemas and accreditation lists, define business models, and make each ecosystem publicly discoverable, interconnectable, and joinable?
+
+<break time="1.5s" />
+
+Next, challenge two: scale, cross-border. How do we recognize and onboard ecosystems from any country, and any sector?
+
+<break time="1.5s" />
+
+Then, challenge three: mutual authentication. How do services and AI agents from different countries identify each other, and trust each other?
+
+<break time="1.5s" />
+
+And finally, challenge four: discovery. How do we search the graph of trusted services?
+
+<break time="1.5s" />
+
+The good news? Verana answers all of this. Sovereign ecosystems, verifiable services, one public Trust Graph. Open, neutral, cross-border, owned by no one.
+
+<break time="1.5s" />
+
+So let's build. Setting up your own sovereign ecosystem trust registry in Verana is straightforward. Start by creating your trust registry, publish your Ecosystem Governance Framework, your credential schemas and business models. Onboard your ecosystem participants. Your ecosystem exists, and is discoverable.
+
+<break time="1.5s" />
+
+Then deploy your services and AI agents. Choose your business wallet. Join ecosystems, on Verana or on other trust lists. Attach their credentials to your services: you are now visible in the Trust Graph. And issue and verify credentials, to personal wallets, AI agents, or any service with a wallet.
+
+<break time="1.5s" />
+
+And here is the result. You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message.
+
+<break time="1.5s" />
+
+One more thing. Behind Verana: open specifications on open standards, open-source software, and a non-profit foundation, managed by its community. Anyone can use it all for free, and extend their own products and services with it. And anyone can contribute: join the Foundation, free. Join a working group, or create your own.
+
+<break time="1.5s" />
+
+In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Try it yourself, on the public playground. Verana dot io.

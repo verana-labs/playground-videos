@@ -24,7 +24,10 @@ Renders:
 
 ```bash
 npm run render:intro            # out/intro-v1.mp4          (1:12, 16:9)
-npm run render:vesta            # out/vesta.mp4             (4:27, 16:9)
+npm run render:intro2           # out/intro-v2.mp4          (1:32, 16:9, institutional)
+npm run render:intro3           # out/intro-v3.mp4          (draft, copy of v2)
+npm run render:vesta            # out/vesta.mp4             (5:10, 16:9, standalone: no intro)
+npm run render:vesta-full       # out/vesta-full.mp4        (6:19, 16:9, intro + act)
 npm run render:vesta-vertical   # out/vesta-vertical.mp4    (1:00, 9:16)
 npm run render:verandia         # out/verandia.mp4          (deferred act)
 npm run render:verandia-vertical
@@ -71,12 +74,32 @@ then drop the files at these exact paths and re-run `npm run sync`.
 `captures/tax-login.mp4`, `captures/bank-kyc.mp4`, `captures/legal-rep.mp4`,
 `captures/quickcash-refusal.mp4`, `captures/fake-portal.mp4`.
 
-## 3. Music
+## 3. Music and voice-over
 
-Drop one licensed instrumental track at `public/assets/music.mp3` and re-run
-sync. Ducking under UI footage and the fade in/out are automatic (shots
-flagged `duck` in the data). The license must cover YouTube, X, and LinkedIn
-distribution. Without the file, videos render silent.
+Each video ships standalone with its own audio. Drop the files and re-run
+`npm run sync`:
+
+```
+public/assets/music/intro.mp3       # music bed for the intro video
+public/assets/music/intro2.mp3      # music bed for intro v2
+public/assets/music/vesta.mp3       # music bed for the Vesta video
+public/assets/music/verandia.mp3    # (later) Verandia
+public/assets/vo/intro.mp3          # optional narration track, full length
+public/assets/vo/vesta.mp3          # narration for the Vesta video
+```
+
+ElevenLabs-ready narration scripts live in `vo-scripts/`. Preferred flow:
+generate `vesta-single-take.txt` as ONE take (no break tags: even pacing),
+then split it on the paragraph gaps into per-scene clips at
+`public/assets/vo/vesta/<shot-id>.mp3`; the renderer starts each clip
+exactly at its scene, so TTS pacing can never drift. A full-length
+`public/assets/vo/vesta.mp3` wins over the per-scene clips when present.
+`vesta-per-scene.md` lists the same texts block by block if you prefer
+generating scene by scene. The narration track plays at full volume from 0:00 of its video; when it is
+present the music bed drops to 45%. Ducking under UI footage and the fade
+in/out are automatic (shots flagged `duck` in the data). Licenses must cover
+YouTube, X, and LinkedIn distribution. Without the files, videos render
+silent.
 
 ## Editing rules
 

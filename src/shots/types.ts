@@ -2,6 +2,24 @@
 // (verana-spec/playground/video/spec.md §3 to §5) becomes one Shot here, so
 // timings and on-screen copy stay reviewable as data.
 
+/** One journey subsection: the scene graph at a stage, a moving selection,
+ *  and the page's exact story text. */
+export type JourneySelect = { at: number; node: string };
+export type JourneyStepVisual = {
+  kind: "vesta-journey";
+  sectionKicker: string;
+  sectionTitle: string;
+  stage: string;
+  stepId: string;
+  stepTitle: string;
+  /** The page's full copy, kept for reference; not rendered (VO lines carry it). */
+  story?: string;
+  points?: string[];
+  selects: JourneySelect[];
+  noDiagram?: boolean;
+  umbraOverride?: boolean;
+};
+
 export type Visual =
   | { kind: "login-glitch" } // I-1
   | { kind: "agent-flicker" } // I-2
@@ -22,6 +40,47 @@ export type Visual =
   | { kind: "triptych" } // I-9
   | { kind: "standards" } // I-10
   | { kind: "handoff"; emblem: string; title: string; subtitle: string }
+  | {
+      kind: "vesta-company";
+      part: "product-line" | "factory" | "repair-network" | "services";
+    } // S-1a..S-1d: playground journey §1, exact content
+  | { kind: "vesta-problems" } // S-2: problems, titles + van + root cause
+  | { kind: "vesta-needs" } // S-4: the five-item checklist
+  | { kind: "vesta-join" } // S-5: the two ecosystems Vesta joins
+  | { kind: "vesta-build-eco" } // S-6: the ecosystem Vesta builds
+  | JourneyStepVisual // J-1..J-9: Marc's journey, one shot per page subsection
+  | { kind: "vesta-demos" } // D-1: run the demos
+  | { kind: "playground-close" } // the conclusion, playground-branded finale
+  | { kind: "solo-open"; emblem: string; title: string; subtitle: string } // standalone cut opener
+  | { kind: "foundations" } // N-1: W3C + eIDAS layer stack (intro v2)
+  | { kind: "silos" } // N-2: isolated ecosystem islands (intro v2)
+  | { kind: "ecosystem-search-v2" } // N-7: search lens + human/agent pair (intro v2)
+  | { kind: "freedoms" } // N-9: Build · Choose · Bridge (intro v2)
+  | { kind: "verana-close" } // N-10: verana.io finale (intro v2)
+  | { kind: "foundations-v3" } // intro v3 copies of the v2 scenes
+  | { kind: "sectors-v3" } // (unused) the beyond-human-identity sector map
+  | { kind: "identify-v3" } // (unused) entity + controller identification
+  | { kind: "self-identify-v3" } // (unused) the party triangle, who are you?
+  | { kind: "create-eco-q-v3" } // N-3: challenge 1, create ecosystems at will
+  | { kind: "cross-border-q-v3" } // N-4: challenge 2, onboard across borders
+  | { kind: "mutual-auth-v3" } // N-5: challenge 3, mutual authentication
+  | {
+      kind: "qr-scan-parties-v3";
+      asset: string;
+      qrLabel: string;
+      caption?: string;
+      phoneSide: "right" | "left";
+    } // N-5/N-6: the v1 capture plus the person/agent/service chip row
+  | { kind: "silos-v3" }
+  | { kind: "ecosystem-search-v3" }
+  | { kind: "build-eco-v3" } // (unused) the governance card alone
+  | { kind: "build-eco-tree-v3" } // N-9a: root + artifacts + participant tree
+  | { kind: "build-service-v3" }
+  | { kind: "connect-v3" } // N-9c: found, mutually authenticated, connected
+  | { kind: "answers-v3" } // N-8b: the three answer cards
+  | { kind: "foundation-v3" } // N-9d: the Verana Foundation, join free
+  | { kind: "verana-close-v3" }
+  | { kind: "trust-lists-v3" } // N-8a: official trust lists vs the private gap
   | {
       kind: "image-scene";
       items: { asset?: string; mock?: "password" | "pdf"; label?: string }[];
