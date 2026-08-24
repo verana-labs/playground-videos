@@ -46,4 +46,4 @@ Behind Verana: open specifications, built exclusively on open standards. Open-so
 
 <break time="1.5s" />
 
-In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.
+In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Try it yourself, on the public playground. Verana dot io.

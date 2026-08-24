@@ -11,6 +11,7 @@ import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } fr
 import { theme } from "../theme";
 import { AssetImg, useAsset } from "../lib/assets";
 import { QrScanToPhone } from "./QrScan";
+import QRCode from "qrcode";
 import { VeranaIoLogo, VeranaMark } from "./VeranaLogo";
 
 const pop = (frame: number, fps: number, d: number) =>
@@ -2024,6 +2025,31 @@ export const ServiceV3: React.FC = () => {
   );
 };
 
+const PLAYGROUND_URL = "https://playground.testnet.verana.network";
+const pgQr = QRCode.create(PLAYGROUND_URL, { errorCorrectionLevel: "M" });
+const PG_SIZE = pgQr.modules.size;
+const PG_DATA = pgQr.modules.data as Uint8Array;
+
+/** A real, scannable QR to the public playground (quiet zone included). */
+const PlaygroundQr: React.FC<{ px: number }> = ({ px }) => {
+  const cell = px / (PG_SIZE + 8);
+  const rects: React.ReactNode[] = [];
+  for (let y = 0; y < PG_SIZE; y++) {
+    for (let x = 0; x < PG_SIZE; x++) {
+      if (PG_DATA[y * PG_SIZE + x]) {
+        rects.push(
+          <rect key={`${x}-${y}`} x={(x + 4) * cell} y={(y + 4) * cell} width={cell + 0.35} height={cell + 0.35} fill="#0f172a" />
+        );
+      }
+    }
+  }
+  return (
+    <svg width={px} height={px} style={{ display: "block", background: "#fff" }}>
+      {rects}
+    </svg>
+  );
+};
+
 /** N-9d: the Verana Foundation (veranafoundation.org): open specs on open
  *  standards, open-source software, non-profit community stewardship, and
  *  the invitation: join free as a contributor, join or create working groups. */
@@ -2137,6 +2163,9 @@ export const FoundationV3: React.FC = () => {
             </span>
           );
         })}
+      </div>
+      <div style={{ position: "absolute", top: 752, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
+        learn by doing · playground.testnet.verana.network · docs.verana.io
       </div>
     </AbsoluteFill>
   );
@@ -2279,6 +2308,25 @@ export const VeranaCloseV3: React.FC = () => {
           Build and join sovereign ecosystems on an open, public infrastructure, owned by no
           one.
         </div>
+      </div>
+      {/* try it yourself: a real QR to the public playground */}
+      <div
+        style={{
+          position: "absolute",
+          right: 110,
+          bottom: 96,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 12,
+          opacity: interpolate(frame, [fps * 2.6, fps * 3.2], [0, 1], clamp),
+        }}
+      >
+        <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 16px 40px rgba(15,23,42,0.16)", border: "1.5px solid #e2e8f0" }}>
+          <PlaygroundQr px={210} />
+        </div>
+        <div style={{ fontFamily: theme.font, fontSize: 19, fontWeight: 700, color: theme.ink }}>try it yourself</div>
+        <div style={{ fontFamily: theme.mono, fontSize: 14.5, color: theme.muted }}>playground.testnet.verana.network</div>
       </div>
     </AbsoluteFill>
   );

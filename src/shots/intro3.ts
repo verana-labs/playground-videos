@@ -147,7 +147,7 @@ export const INTRO3_SHOTS: Shot[] = validateShots([
     start: 135,
     end: 152,
     lines: [],
-    vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Verana dot io.",
+    vo: "In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Try it yourself, on the public playground. Verana dot io.",
     visual: { kind: "verana-close-v3" },
     tone: "light",
   },
