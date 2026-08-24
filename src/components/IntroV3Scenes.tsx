@@ -2230,7 +2230,7 @@ export const FoundationV3: React.FC = () => {
     {
       title: "Open specifications",
       sub: "built exclusively on open standards · CC BY-SA 4.0",
-      at: 0.7,
+      at: 2.2,
       icon: (
         <>
           <path d="M6 3.5 h9 l4 4 V20.5 h-13 Z M15 3.5 v4 h4" {...st} />
@@ -2241,13 +2241,13 @@ export const FoundationV3: React.FC = () => {
     {
       title: "Open-source software",
       sub: "Apache 2.0 · public repos, copyright with contributors",
-      at: 1.1,
+      at: 4.6,
       icon: <path d="M9 8 L4.5 12 L9 16 M15 8 L19.5 12 L15 16" {...st} />,
     },
     {
       title: "Non-profit foundation",
       sub: "community managed · steward of the open trust layer",
-      at: 1.5,
+      at: 6.4,
       icon: (
         <>
           <circle cx="8.5" cy="9" r="3" {...st} />
@@ -2258,12 +2258,13 @@ export const FoundationV3: React.FC = () => {
     },
   ];
   const WGS = [
-    { label: "specifications", at: 6.6 },
-    { label: "software", at: 6.9 },
-    { label: "business cases", at: 7.2 },
-    { label: "your working group", at: 7.6, dashed: true },
+    { label: "specifications", at: 16.7 },
+    { label: "software", at: 17.0 },
+    { label: "business cases", at: 17.3 },
+    { label: "your working group", at: 17.7, dashed: true },
   ];
-  const joinIn = pop(frame, fps, 5.6);
+  const useIn = pop(frame, fps, 9.5);
+  const joinIn = pop(frame, fps, 13.5);
   return (
     <AbsoluteFill style={{ background: theme.surface, fontFamily: theme.font }}>
       {/* the official foundation logo (veranafoundation.org) beside the title */}
@@ -2326,17 +2327,41 @@ export const FoundationV3: React.FC = () => {
           );
         })}
       </div>
-      {/* the invitation */}
-      <div style={{ position: "absolute", top: 645, left: 0, right: 0, textAlign: "center", opacity: joinIn, transform: `translateY(${(1 - joinIn) * 30}px)` }}>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 16, fontSize: 30, fontWeight: 800, color: "#fff", background: theme.gradient, borderRadius: 999, padding: "16px 42px", boxShadow: "0 18px 44px rgba(118,62,240,0.35)" }}>
-          Join the Foundation
-          <span style={{ fontSize: 19, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: "2px solid #10b981", borderRadius: 999, padding: "4px 16px" }}>
-            free for contributors
+      {/* the double invitation: use it, and contribute */}
+      <div style={{ position: "absolute", top: 632, left: 0, right: 0, display: "flex", gap: 26, justifyContent: "center", alignItems: "stretch" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            background: theme.card,
+            border: `2px solid ${theme.violet}`,
+            borderRadius: 22,
+            padding: "12px 34px",
+            textAlign: "center",
+            boxShadow: "0 14px 36px rgba(15,23,42,0.10)",
+            opacity: useIn,
+            transform: `translateY(${(1 - useIn) * 30}px)`,
+          }}
+        >
+          <span style={{ fontSize: 27, fontWeight: 800, color: theme.ink }}>
+            Use it all, <span style={{ color: theme.greenDark }}>free</span>
           </span>
-        </span>
+          <span style={{ fontSize: 17.5, color: theme.muted, marginTop: 3 }}>
+            extend your own products and services with the Foundation's software
+          </span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", opacity: joinIn, transform: `translateY(${(1 - joinIn) * 30}px)` }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 16, fontSize: 27, fontWeight: 800, color: "#fff", background: theme.gradient, borderRadius: 999, padding: "16px 36px", boxShadow: "0 18px 44px rgba(118,62,240,0.35)" }}>
+            Join the Foundation
+            <span style={{ fontSize: 18, fontWeight: 800, color: theme.greenDark, background: "#ecfdf5", border: "2px solid #10b981", borderRadius: 999, padding: "4px 15px" }}>
+              free for contributors
+            </span>
+          </span>
+        </div>
       </div>
       <div style={{ position: "absolute", top: 775, left: 0, right: 0, display: "flex", gap: 14, justifyContent: "center", alignItems: "center" }}>
-        <span style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", opacity: interpolate(t, [6.3, 6.7], [0, 1], clamp) }}>
+        <span style={{ fontFamily: theme.mono, fontSize: 16, letterSpacing: 1.5, color: theme.faint, textTransform: "uppercase", opacity: interpolate(t, [16.4, 16.8], [0, 1], clamp) }}>
           working groups
         </span>
         {WGS.map((w) => {
@@ -2361,7 +2386,7 @@ export const FoundationV3: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ position: "absolute", top: 880, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [8.6, 9.0], [0, 1], clamp) }}>
+      <div style={{ position: "absolute", top: 880, left: 0, right: 0, textAlign: "center", fontFamily: theme.mono, fontSize: 17, color: theme.faint, opacity: interpolate(t, [18.8, 19.2], [0, 1], clamp) }}>
         learn by doing · playground.testnet.verana.network · docs.verana.io
       </div>
     </AbsoluteFill>

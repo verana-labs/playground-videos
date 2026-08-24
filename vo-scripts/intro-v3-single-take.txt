@@ -2,7 +2,7 @@ Verana. The open trust infrastructure for the verifiable internet.
 
 <break time="1.5s" />
 
-First, the foundations. Verifiable credentials are becoming a reality. The groundwork is laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
+Verifiable credentials are becoming a reality. The groundwork is laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
 <break time="1.5s" />
 
@@ -42,7 +42,7 @@ And here is the result. You are now part of the Trust Graph. Any person, service
 
 <break time="1.5s" />
 
-One more thing. Behind Verana: open specifications, built exclusively on open standards. Open-source software. And a non-profit foundation, managed by its community. Want to contribute? Join the Foundation: it is free for contributors. Join a working group, or create your own.
+One more thing. Behind Verana: open specifications on open standards, open-source software, and a non-profit foundation, managed by its community. Anyone can use it all for free, and extend their own products and services with it. And anyone can contribute: join the Foundation, free. Join a working group, or create your own.
 
 <break time="1.5s" />
 

@@ -17,7 +17,7 @@ regenerate that clip alone with "e-idas".
 Verana. The open trust infrastructure for the verifiable internet.
 
 ## N-1.mp3  (20s)
-First, the foundations. Verifiable credentials are becoming a reality. The groundwork is laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
+Verifiable credentials are becoming a reality. The groundwork is laid: issuer, holder, verifier, one trust triangle. And implementations are arriving in every sector: each ecosystem potentially bringing value to the entire digital economy.
 
 ## N-2.mp3  (21s)
 Let's have a look at the challenges of interconnecting ecosystems. One: create new ecosystems at will, and monetize them. Two: scale across borders. Three: authenticate mutually. And four: discovery: find trusted services, anywhere.
@@ -47,7 +47,7 @@ Then deploy your services and AI agents. Choose your business wallet. Join ecosy
 And here is the result. You are now part of the Trust Graph. Any person, service, or AI agent can find you, mutually authenticate with verifiable credentials, and connect. Trust, established before the first message.
 
 ## N-9d.mp3  (21s)
-One more thing. Behind Verana: open specifications, built exclusively on open standards. Open-source software. And a non-profit foundation, managed by its community. Want to contribute? Join the Foundation: it is free for contributors. Join a working group, or create your own.
+One more thing. Behind Verana: open specifications on open standards, open-source software, and a non-profit foundation, managed by its community. Anyone can use it all for free, and extend their own products and services with it. And anyone can contribute: join the Foundation, free. Join a working group, or create your own.
 
 ## N-10.mp3  (15s)
 In essence: Verana enables trust to scale. Not just within one ecosystem: across the entire digital economy. Try it yourself, on the public playground. Verana dot io.
