@@ -11,6 +11,7 @@
     "render:intro": "remotion render IntroOnly out/intro-v1.mp4",
     "render:intro2": "remotion render IntroV2 out/intro-v2.mp4",
     "render:intro3": "remotion render IntroV3 out/intro-v3.mp4",
+    "render:intro4": "remotion render IntroV4 out/intro-v4.mp4",
     "render:vesta": "remotion render VestaSolo out/vesta.mp4",
     "render:vesta-full": "remotion render VestaFull out/vesta-full.mp4",
     "render:vesta-vertical": "remotion render VestaVertical out/vesta-vertical.mp4",
